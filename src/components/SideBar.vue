@@ -1,26 +1,26 @@
 <template>
-    <b-col cols="3">
+    <b-col cols="12"  md="3">
         <b-form @submit="onSubmit" @reset="onReset">
 
-            <full-name :text="form.fullName"></full-name>
+            <full-name/>
 
-            <job :text="form.job"></job>
+            <job/>
 
             <b-row>
                 <b-col>
-                    <phone :text="form.phone"></phone>
+                    <phone/>
                 </b-col>
 
                 <b-col>
-                    <email :text="form.email"></email>
+                    <email/>
                 </b-col>
             </b-row>
 
-            <links :text="form.links"></links>
+            <links/>
 
-            <social :text="form.sociaux" :options="options" :selected="form.selected"></social>
+            <social/>
 
-            <resume :text="form.resume"></resume>
+            <resume/>
 
             <b-tabs content-class="mt-3">
 
@@ -30,11 +30,11 @@
 
                 <education/>
 
-                <skill :options="levels"/>
+                <skill/>
 
-                <language :options="levels"/>
+                <language/>
 
-                <interest :array="form.intersts"/>
+                <interest/>
 
             </b-tabs>
 
@@ -53,9 +53,10 @@
     import experience   from "./form/experience.vue";
     import project      from "./form/project.vue";
     import education    from "./form/education.vue";
-    import skill    from "./form/skill.vue";
-    import language    from "./form/language.vue";
-    import interest    from "./form/interest.vue";
+    import skill        from "./form/skill.vue";
+    import language     from "./form/language.vue";
+    import interest     from "./form/interest.vue";
+    import {mapState}   from "vuex";
 
 
     export default {
@@ -77,30 +78,12 @@
         },
         data() {
             return {
-                form: {
-                    fullName: '',
-                    job: '',
-                    phone: '',
-                    email: '',
-                    links: [],
-                    sociaux: "",
-                    resume: '',
-                    intersts: []
-                },
-                selected: null,
-                options: [
-                    { value: null, text: 'Please select an social media' },
-                    { value: 'linkedin', text: 'linkedin' },
-                    { value: 'fb', text: 'facebook' },
-                    { value: 'instagram', text: 'instagram' },
-                ],
-                levels: [
-                    { value: null, text: 'Please select the Level' },
-                    { value: 'Beginner', text: 'Beginner' },
-                    { value: 'Intermediate', text: 'Intermediate' },
-                    { value: 'Expert', text: 'Expert' },
-                ]
             }
+        },
+        computed: {
+            ...mapState([
+                'form', 'levels'
+            ]),
         },
         methods: {
             onSubmit(evt) {
@@ -110,7 +93,7 @@
             onReset(evt) {
                 evt.preventDefault();
                 // Reset our form values
-                this.form.fullName = '';
+                // this.form.fullName = '';
                 // Trick to reset/clear native browser form validation state
                 this.show = false;
                 this.$nextTick(() => {

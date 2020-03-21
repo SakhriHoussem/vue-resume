@@ -10,17 +10,21 @@
                 ></b-input>
             </b-col>
             <b-col>
-                <b-form-select :options="options"></b-form-select>
+                <b-form-select :options="levels"></b-form-select>
             </b-col>
         </b-row>
     </b-tab>
 </template>
 
 <script>
+    import {mapState} from "vuex";
+
     export default {
         name: 'skill',
-        props: {
-            options: Array[Object]
+        computed: {
+            ...mapState([
+                'levels'
+            ]),
         }
     }
 </script>

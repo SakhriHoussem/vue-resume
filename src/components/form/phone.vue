@@ -6,14 +6,26 @@
         <b-form-input
                 id="phone"
                 class="mb-2 mr-sm-2 mb-sm-0"
-                v-model="text"
+                :value="form.phone"
+                @input="updatePhoneNum"
                 placeholder="your phone number"
         ></b-form-input>
     </b-form-group>
 </template>
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: 'phone',
-        props: ['text']
+        computed: {
+            ...mapState([
+                'form'
+            ]),
+        },
+        methods: {
+            updatePhoneNum (e) {
+                //todo: add validation
+                this.$store.commit('updateStateField', {field: 'phone', value: e})
+            }
+        }
     }
 </script>

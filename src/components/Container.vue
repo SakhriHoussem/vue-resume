@@ -1,5 +1,5 @@
 <template>
-    <b-row class="text-center">
+    <b-row>
         <app-sidebar></app-sidebar>
         <app-content></app-content>
     </b-row>

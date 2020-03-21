@@ -1,24 +1,31 @@
 <template>
-    <div>
-        <label for="links">add your links:</label>
+    <b-form-group label="add your links:" label-for="links">
         <b-form-tags
                 input-id="links"
                 separator=" ,;"
-                v-model="text"
+                :value="form.links"
+                @input="updateLinks"
                 class="mb-2"
-                :tag-validator="tagValidator"
-        ></b-form-tags>
-    </div>
+                remove-on-delete
+                >
+        </b-form-tags>
+    </b-form-group>
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: 'links',
-        props: ['text'],
+        computed: {
+            ...mapState([
+                'form'
+            ])
+        },
         methods: {
-            tagValidator(email) {
-                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-            }
+            updateLinks(e) {
+                //todo: add validation
+                this.$store.commit('updateStateField', {field: 'links',value: e})
+            },
         }
     }
 </script>

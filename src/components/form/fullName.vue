@@ -5,7 +5,8 @@
     >
         <b-form-input
                 id="full-name"
-                v-model="text"
+                :value="form.fullName"
+                @input="updateFullName"
                 type="text"
                 required
                 placeholder="Enter your Full Name"
@@ -13,8 +14,19 @@
     </b-form-group>
 </template>
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: 'fullName',
-        props: ['text']
+        computed: {
+            ...mapState([
+                'form'
+            ]),
+        },
+        methods : {
+            updateFullName(e) {
+                //todo: add validation
+                this.$store.commit('updateStateField', {field: 'fullName',value: e})
+            }
+        }
     }
 </script>

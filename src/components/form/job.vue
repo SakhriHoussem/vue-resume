@@ -5,7 +5,8 @@
     >
         <b-form-input
                 id="desired-job"
-                v-model="text"
+                :value="form.job"
+                @input="updatJob"
                 type="text"
                 required
                 placeholder="Enter your Desired Job"
@@ -13,8 +14,20 @@
     </b-form-group>
 </template>
 <script>
+    import { mapState } from 'vuex'
+
     export default {
         name: 'job',
-        props: ['text']
+        computed: {
+            ...mapState([
+                'form'
+                    ]),
+        },
+        methods:{
+            updatJob(e) {
+                //todo: add validation
+                this.$store.commit('updateStateField', {field: 'job',value: e})
+            }
+        }
     }
 </script>
