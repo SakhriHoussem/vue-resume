@@ -19,10 +19,19 @@
             <b-badge v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
         </div>
         <h3>
-            <font-awesome-icon icon="box-open" />
+            <font-awesome-icon icon="box-open"/>
             Projects
         </h3>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus est laboriosam neque ratione? Beatae cumque, distinctio doloremque, fugit ipsam laboriosam nobis nostrum obcaecati optio porro quasi quibusdam quo totam.
+        <div v-for="(project, index) in getProjects" :key="index">
+            <b-row>
+                <b-col>
+                    <b-link :href="project.link">{{ project.name }}</b-link>
+                </b-col>
+                <b-col>{{ project.from }} - {{ project.to }}</b-col>
+            </b-row>
+            <p>{{ project.description }}</p>
+            <b-badge v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
+        </div>
         <h3>
             <font-awesome-icon icon="university" />
             Educations
@@ -37,7 +46,7 @@
         name: 'paperContent',
         computed: {
             ...mapGetters([
-                'getResume', 'getExperiences'
+                'getResume', 'getExperiences', 'getProjects'
             ])
         }
     }

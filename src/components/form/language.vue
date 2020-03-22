@@ -3,7 +3,7 @@
         <b-row>
             <b-col>
                 <b-input
-                        id="full-name"
+                        id="Language"
                         type="text"
                         required
                         placeholder="Enter your Language"

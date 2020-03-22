@@ -71,9 +71,9 @@
                         max-rows="6"
                 ></b-form-textarea>
             </b-form-group>
-            <b-form-group label="add Relative Tags:" label-for="tags">
+            <b-form-group label="add Relative Tags:" label-for="experience-tags">
                 <b-form-tags
-                        input-id="links"
+                        input-id="experience-tags"
                         separator=" ,;"
                         v-model="experienceTags"
                         class="mb-2"

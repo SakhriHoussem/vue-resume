@@ -6,7 +6,7 @@
         <b-col cols="12" sm="6" md="12" lg="6" >
             <b-form-input
                     class="form-control"
-                    id="full-name"
+                    id="pseudo"
                     type="text"
                     v-model="pseudo"
                     required

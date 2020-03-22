@@ -3,7 +3,7 @@
         <b-row>
             <b-col>
                 <b-input
-                        id="full-name"
+                        id="skill"
                         type="text"
                         required
                         placeholder="Enter your Skill Name"
