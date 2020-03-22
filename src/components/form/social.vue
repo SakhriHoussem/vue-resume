@@ -32,7 +32,7 @@
         data () {
             return {
                 pseudo: '',
-                socialMedia: ''
+                socialMedia: null
             }
         },
         computed: {

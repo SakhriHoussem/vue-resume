@@ -45,7 +45,8 @@
             </b-row>
             <p>{{ education.description }}</p>
             <b-badge v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
-        </div>    </b-col>
+        </div>
+    </b-col>
 </template>
 
 <script>

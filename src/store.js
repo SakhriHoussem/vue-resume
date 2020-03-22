@@ -14,12 +14,11 @@ export default new Vuex.Store({
             resume: 'test',
             experiences: [],
             projects: [],
-            interests: [],
-            languages: [],
             educations: [],
             skills: [],
+            languages: [],
+            interests: [],
         },
-        selected: null,
         socialNetworksList: [
             { value: null, text: 'Please select an social media' },
             { value: 'linkedin-in', text: 'LinkedIn', url: 'https://www.linkedin.com/in/'},
@@ -29,9 +28,9 @@ export default new Vuex.Store({
         ],
         levels: [
             { value: null, text: 'Please select the Level' },
-            { value: 'Beginner', text: 'Beginner' },
-            { value: 'Intermediate', text: 'Intermediate' },
-            { value: 'Expert', text: 'Expert' },
+            { value: '50', text: 'Beginner' },
+            { value: '75', text: 'Intermediate' },
+            { value: '100', text: 'Expert' },
         ]
     },
     getters: {
@@ -46,6 +45,9 @@ export default new Vuex.Store({
         getExperiences: state => { return  state.form.experiences },
         getProjects: state => { return  state.form.projects },
         getEducations: state => { return  state.form.educations },
+        getSkills: state => { return  state.form.skills },
+        getLanguages: state => { return  state.form.languages },
+        getInterests: state => { return  state.form.interests },
     },
     mutations: {
         updateStateField (state, payload) {

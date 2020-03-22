@@ -45,15 +45,42 @@
 
         <hr>
         <h5>Skills</h5>
+        <b-row v-for="(skill, index) in getSkills" :key="index">
+            <b-col cols="4">
+                {{ skill.name }}
+            </b-col>
+            <b-col cols="8">
+                <b-progress
 
+                        :value="skill.level"
+                        :max="100"
+                        show-progress
+                ></b-progress>
+            </b-col>
+        </b-row>
 
         <hr>
         <h5>Languages</h5>
 
+        <b-row v-for="(language, index) in getLanguages" :key="index">
+            <b-col cols="4">
+                {{ language.name }}
+            </b-col>
+            <b-col cols="8">
+                <b-progress
+
+                        :value="language.level"
+                        :max="100"
+                        show-progress
+                ></b-progress>
+            </b-col>
+        </b-row>
 
         <hr>
         <h5>Interests</h5>
-
+        <p v-for="(interest, index) in getInterests" :key="index">
+            {{ interest }}
+        </p>
 
     </b-col>
 </template>
@@ -70,6 +97,9 @@
                 'getEmail',
                 'getLinks',
                 'getSocialNetworks',
+                'getSkills',
+                'getLanguages',
+                'getInterests',
             ]),
 
         }

@@ -5,18 +5,30 @@
             <b-form-tags
                     input-id="intersts"
                     separator=" ,;"
-                    v-model="array"
+                    :value="form.interests"
+                    @input="updateInterests"
                     class="mb-2"
-            ></b-form-tags>
+                    remove-on-delete
+            >
+            </b-form-tags>
         </div>
     </b-tab>
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: 'interest',
-        props: {
-            array: Array
+        computed: {
+            ...mapState([
+                'form'
+            ])
+        },
+        methods: {
+            updateInterests(e) {
+                //todo: add validation
+                this.$store.commit('updateStateField', {field: 'interests',value: e})
+            }
         }
     }
 </script>
