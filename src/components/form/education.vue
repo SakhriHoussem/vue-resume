@@ -79,7 +79,7 @@
                         class="mb-2"
                         remove-on-delete
                 ></b-form-tags>
-                <b-button type="submit">add</b-button>
+                <b-button block type="submit">add</b-button>
             </b-form-group>
         </b-form>
     </b-tab>

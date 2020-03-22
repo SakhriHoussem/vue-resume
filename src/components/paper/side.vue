@@ -1,7 +1,8 @@
 <template>
     <b-col cols="4">
         <div class="text-center">
-            <b-img src="https://picsum.photos/1024/400/?image=41" fluid alt="Responsive image"></b-img>
+            <b-avatar size="6rem"></b-avatar>
+            <!-- todo: add modal to import profile picture -->
             <h3>  {{ getFullName }} </h3>
             <h4> {{ getJob }} </h4>
         </div>
@@ -44,7 +45,10 @@
         </table>
 
         <hr>
-        <h5>Skills</h5>
+        <h5>
+            <font-awesome-icon icon="wrench"></font-awesome-icon>
+            Skills
+        </h5>
         <b-row v-for="(skill, index) in getSkills" :key="index">
             <b-col cols="4">
                 {{ skill.name }}
@@ -60,7 +64,10 @@
         </b-row>
 
         <hr>
-        <h5>Languages</h5>
+        <h5>
+            <font-awesome-icon icon="language"></font-awesome-icon>
+            Languages
+        </h5>
 
         <b-row v-for="(language, index) in getLanguages" :key="index">
             <b-col cols="4">
@@ -77,7 +84,10 @@
         </b-row>
 
         <hr>
-        <h5>Interests</h5>
+        <h5>
+            <font-awesome-icon icon="plus"></font-awesome-icon>
+            Interests
+        </h5>
         <p v-for="(interest, index) in getInterests" :key="index">
             {{ interest }}
         </p>
