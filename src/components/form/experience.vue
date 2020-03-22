@@ -8,7 +8,7 @@
                 <b-form-input
                         id="role"
                         type="text"
-                        v-model="role"
+                        v-model="experience.role"
                         required
                         placeholder="Enter your Role"
                 ></b-form-input>
@@ -20,7 +20,7 @@
             >
                 <b-form-input
                         id="company"
-                        v-model="company"
+                        v-model="experience.company"
                         type="text"
                         required
                         placeholder="Enter your Company Name"
@@ -35,7 +35,7 @@
                     >
                         <b-form-datepicker
                                 id="experience-from"
-                                v-model="experienceFrom"
+                                v-model="experience.from"
                                 class="mb-2"
                                 required
                         >
@@ -50,7 +50,7 @@
                     >
                         <b-form-datepicker
                                 id="experience-to"
-                                v-model="experienceTo"
+                                v-model="experience.to"
                                 class="mb-2"
                                 required
                         >
@@ -65,7 +65,7 @@
             >
                 <b-form-textarea
                         id="experience-description"
-                        v-model="experienceDescription"
+                        v-model="experience.description"
                         placeholder="write your something about your experience..."
                         rows="3"
                         max-rows="6"
@@ -75,7 +75,7 @@
                 <b-form-tags
                         input-id="experience-tags"
                         separator=" ,;"
-                        v-model="experienceTags"
+                        v-model="experience.tags"
                         class="mb-2"
                         remove-on-delete
                 >
@@ -91,12 +91,14 @@
         name: 'experience',
         data() {
             return {
-                role: '',
-                company: '',
-                experienceFrom: '',
-                experienceTo: '',
-                experienceDescription: '',
-                experienceTags: [],
+                experience: {
+                    role: '',
+                    company: '',
+                    from: '',
+                    to: '',
+                    description: '',
+                    tags: [],
+                }
             }
         },
         methods: {
@@ -105,12 +107,12 @@
                 this.$store.commit('appendStateField', {
                     field: 'experiences',
                     value: {
-                        role:                  this.role,
-                        company:               this.company,
-                        from:        this.experienceFrom,
-                        to:          this.experienceTo,
-                        description: this.experienceDescription,
-                        tags:        this.experienceTags,
+                        role:        this.experience.role,
+                        company:     this.experience.company,
+                        from:        this.experience.from,
+                        to:          this.experience.to,
+                        description: this.experience.description,
+                        tags:        this.experience.tags,
                     }
                 })
             }

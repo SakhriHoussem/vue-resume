@@ -25,7 +25,7 @@
         <div v-for="(project, index) in getProjects" :key="index">
             <b-row>
                 <b-col>
-                    <b-link :href="project.link">{{ project.name }}</b-link>
+                    <b-link target="_blank" :href="project.link">{{ project.name }}</b-link>
                 </b-col>
                 <b-col>{{ project.from }} - {{ project.to }}</b-col>
             </b-row>

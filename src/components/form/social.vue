@@ -44,9 +44,6 @@
             ])
         },
         methods: {
-            findUrl(social, pseudo) {
-                return social.value === pseudo;
-            },
             addSocialNetwork () {
                 //todo: add validation
                 this.$store.commit('appendStateField',

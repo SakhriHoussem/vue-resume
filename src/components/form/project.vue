@@ -108,7 +108,14 @@
             onSubmit() {
                 this.$store.commit('appendStateField', {
                     field: 'projects',
-                    value: this.project
+                    value: {
+                        name:        this.project.name,
+                        link:        this.project.link,
+                        from:        this.project.from,
+                        to:          this.project.to,
+                        description: this.project.description,
+                        tags:        this.project.tags,
+                    }
                 })
             }
         }
