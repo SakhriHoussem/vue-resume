@@ -16,6 +16,7 @@ export default new Vuex.Store({
             projects: [],
             interests: [],
             languages: [],
+            educations: [],
             skills: [],
         },
         selected: null,
@@ -44,6 +45,7 @@ export default new Vuex.Store({
         getResume: state => { return  state.form.resume },
         getExperiences: state => { return  state.form.experiences },
         getProjects: state => { return  state.form.projects },
+        getEducations: state => { return  state.form.educations },
     },
     mutations: {
         updateStateField (state, payload) {

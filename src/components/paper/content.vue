@@ -36,8 +36,16 @@
             <font-awesome-icon icon="university" />
             Educations
         </h3>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus est laboriosam neque ratione? Beatae cumque, distinctio doloremque, fugit ipsam laboriosam nobis nostrum obcaecati optio porro quasi quibusdam quo totam.
-    </b-col>
+        <div v-for="(education, index) in getEducations" :key="index">
+            <b-row>
+                <b-col>
+                    {{ education.degree }} - {{ education.school }}
+                </b-col>
+                <b-col>{{ education.from }} - {{ education.to }}</b-col>
+            </b-row>
+            <p>{{ education.description }}</p>
+            <b-badge v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
+        </div>    </b-col>
 </template>
 
 <script>
@@ -46,7 +54,7 @@
         name: 'paperContent',
         computed: {
             ...mapGetters([
-                'getResume', 'getExperiences', 'getProjects'
+                'getResume', 'getExperiences', 'getProjects', 'getEducations'
             ])
         }
     }
