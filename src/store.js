@@ -12,7 +12,7 @@ export default new Vuex.Store({
             links: ["sakhrihoussem.me", "github.com/sakhrihoussem"],
             socialNetworks: [],
             resume: 'test',
-            experience: [],
+            experiences: [],
             interests: [],
             languages: [],
             skills: [],
@@ -41,6 +41,7 @@ export default new Vuex.Store({
         getLinks: state => { return  state.form.links },
         getSocialNetworks: state => { return  state.form.socialNetworks },
         getResume: state => { return  state.form.resume },
+        getExperiences: state => { return  state.form.experiences },
     },
     mutations: {
         updateStateField (state, payload) {

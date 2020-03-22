@@ -53,7 +53,7 @@
                     { field: 'socialNetworks',
                         value: {icon:   this.socialMedia,
                                 pseudo: this.pseudo,
-                                url:    this.getSocialNetworksList.find( value => value.value === this.socialMedia).url + this.pseudo
+                                url:    this.getSocialNetworksList.find( item => item.value === this.socialMedia).url + this.pseudo
                         }
                     })
             }

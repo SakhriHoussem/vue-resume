@@ -21,24 +21,24 @@
             <social/>
 
             <resume/>
-
-            <b-tabs content-class="mt-3">
-
-                <experience/>
-
-                <project/>
-
-                <education/>
-
-                <skill/>
-
-                <language/>
-
-                <interest/>
-
-            </b-tabs>
-
         </b-form>
+
+        <b-tabs content-class="mt-3">
+
+            <experience/>
+
+            <project/>
+
+            <education/>
+
+            <skill/>
+
+            <language/>
+
+            <interest/>
+
+        </b-tabs>
+
     </b-col>
 </template>
 

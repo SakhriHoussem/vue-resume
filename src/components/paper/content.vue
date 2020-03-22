@@ -9,7 +9,15 @@
             <font-awesome-icon icon="briefcase" />
             Experiences
         </h3>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus est laboriosam neque ratione? Beatae cumque, distinctio doloremque, fugit ipsam laboriosam nobis nostrum obcaecati optio porro quasi quibusdam quo totam.
+        <div v-for="(experience, index) in getExperiences" :key="index">
+            <b-row>
+                <b-col>{{ experience.role }}</b-col>
+                <b-col>{{ experience.from }} - {{ experience.to }}</b-col>
+            </b-row>
+            <div> {{ experience.company }}</div>
+            <p>{{ experience.description }}</p>
+            <b-badge v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
+        </div>
         <h3>
             <font-awesome-icon icon="box-open" />
             Projects
@@ -29,7 +37,7 @@
         name: 'paperContent',
         computed: {
             ...mapGetters([
-                'getResume',
+                'getResume', 'getExperiences'
             ])
         }
     }
