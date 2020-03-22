@@ -20,9 +20,9 @@ export default new Vuex.Store({
         selected: null,
         socialNetworksList: [
             { value: null, text: 'Please select an social media' },
-            { value: 'linkedin-in', text: 'LinkedIn'},
-            { value: 'facebook', text: 'Facebook'},
-            { value: 'instagram', text: 'Instagram'},
+            { value: 'linkedin-in', text: 'LinkedIn', url: 'https://www.linkedin.com/in/'},
+            { value: 'facebook', text: 'Facebook', url: 'https://www.facebook.com/'},
+            { value: 'instagram', text: 'Instagram', url: 'https://www.instagram.com/'},
             //todo: add more social networks
         ],
         levels: [

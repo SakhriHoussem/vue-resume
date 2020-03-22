@@ -28,15 +28,15 @@
                     <font-awesome-icon icon="globe-africa" />
                 </td>
                 <td>
-                    {{ link }}
+                    <b-link target="_blank" :href="link">{{ link }}</b-link>
                 </td>
             </tr>
-            <tr v-for="social in getSocialNetworks" :key="social">
+            <tr v-for="(social, index) in getSocialNetworks" :key="index">
                 <td>
                     <font-awesome-icon :icon="['fab', social.icon]" />
                 </td>
                 <td>
-                    {{social.pseudo}}
+                    <b-link target="_blank" :href="social.url">{{social.pseudo}}</b-link>
                 </td>
             </tr>
 
