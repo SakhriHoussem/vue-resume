@@ -1,6 +1,7 @@
 <template>
     <b-form-group label="add your links:" label-for="links">
         <b-form-tags
+                tag-variant="info"
                 input-id="links"
                 separator=" ,;"
                 :value="form.links"

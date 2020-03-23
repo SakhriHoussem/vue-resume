@@ -3,6 +3,7 @@
         <div>
             <label for="intersts">add your Interests:</label>
             <b-form-tags
+                    tag-variant="info"
                     input-id="intersts"
                     separator=" ,;"
                     :value="form.interests"

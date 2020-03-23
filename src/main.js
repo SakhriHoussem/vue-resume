@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import App from './App.vue';
+import store from './store.js';
 import { BootstrapVue } from 'bootstrap-vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -37,15 +39,11 @@ Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(Vuex);
 
+//you need to import the CSS manually (in case you want to override it)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import App from './App.vue';
-import store from './store.js';
-
 Vue.config.productionTip = false;
-
-
 
 new Vue({
   store,

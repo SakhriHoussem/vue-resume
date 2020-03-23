@@ -1,8 +1,8 @@
 <template>
-  <b-container fluid>
+  <div>
     <app-header/>
     <app-container/>
-  </b-container>
+  </div>
 </template>
 
 <script>
@@ -14,7 +14,6 @@ export default {
   components: {
     appHeader,
     appContainer,
-
   }
 }
 </script>

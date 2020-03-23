@@ -1,50 +1,71 @@
 <template>
     <b-col cols="8">
-        <h3>
+        <h3 class="text-info">
             <font-awesome-icon icon="pencil-alt" />
             Resume
         </h3>
-        <p>{{ getResume }}</p>
-        <h3>
+        <div class="box">
+            <p class="m-0">{{ getResume }}</p>
+        </div>
+
+        <h3 class="text-info">
             <font-awesome-icon icon="briefcase" />
             Experiences
         </h3>
-        <div v-for="(experience, index) in getExperiences" :key="index">
-            <b-row>
-                <b-col>{{ experience.role }}</b-col>
-                <b-col>{{ experience.from }} - {{ experience.to }}</b-col>
-            </b-row>
-            <div> {{ experience.company }}</div>
-            <p>{{ experience.description }}</p>
-            <b-badge v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
+        <div
+                class="box"
+                v-for="(experience, index) in getExperiences"
+                :key="index"
+        >
+            <h4 class="m-0 text-capitalize">
+                {{ experience.role }}
+                <small class="float-right text-muted mt-2 ">
+                    {{ experience.from }} - {{ experience.to }}
+                </small>
+            </h4>
+            <span class="text-muted text-capitalize"> {{ experience.company }}</span>
+            <p class="m-0">{{ experience.description }}</p>
+            <b-badge variant="info" class="mr-2" v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
         </div>
-        <h3>
+
+        <h3 class="text-info">
             <font-awesome-icon icon="box-open"/>
             Projects
         </h3>
-        <div v-for="(project, index) in getProjects" :key="index">
-            <b-row>
-                <b-col>
-                    <b-link target="_blank" :href="project.link">{{ project.name }}</b-link>
-                </b-col>
-                <b-col>{{ project.from }} - {{ project.to }}</b-col>
-            </b-row>
-            <p>{{ project.description }}</p>
-            <b-badge v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
+        <div
+                class="box"
+                v-for="(project, index) in getProjects"
+                :key="index">
+            <h4 class="m-0 text-capitalize">
+                {{ project.name }}
+                <small class="float-right text-muted mt-2 ">
+                    {{ project.from }} - {{ project.to }}
+                </small>
+            </h4>
+            <p class="m-0">
+                {{ project.description }}
+                <b-link class="text-muted small" target="_blank" :href="project.link">more info ...</b-link>
+            </p>
+            <b-badge variant="info" class="mr-2" v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
         </div>
-        <h3>
+        <h3 class="text-info">
             <font-awesome-icon icon="university" />
             Educations
         </h3>
-        <div v-for="(education, index) in getEducations" :key="index">
-            <b-row>
-                <b-col>
-                    {{ education.degree }} - {{ education.school }}
-                </b-col>
-                <b-col>{{ education.from }} - {{ education.to }}</b-col>
-            </b-row>
-            <p>{{ education.description }}</p>
-            <b-badge v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
+        <div
+                class="box"
+                v-for="(education, index) in getEducations"
+                :key="index"
+        >
+            <h4 class="m-0 text-capitalize">
+                    {{ education.degree }}
+                <small class="float-right text-muted mt-2 ">
+                    {{ education.from }} - {{ education.to }}
+                </small>
+            </h4>
+            <span class="text-muted text-capitalize">{{ education.school }}</span>
+            <p class="m-0">{{ education.description }}</p>
+            <b-badge variant="info" class="mr-2" v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
         </div>
     </b-col>
 </template>
@@ -60,3 +81,14 @@
         }
     }
 </script>
+<style scoped>
+    .box{
+        margin: 5px;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .box small {
+        font-size: .90rem;
+    }
+</style>

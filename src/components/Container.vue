@@ -1,8 +1,10 @@
 <template>
-    <b-row>
-        <app-sidebar></app-sidebar>
-        <app-content></app-content>
-    </b-row>
+    <b-container fluid>
+        <b-row>
+            <app-sidebar class="p-2"></app-sidebar>
+            <app-content></app-content>
+        </b-row>
+    </b-container>
 </template>
 
 <script>

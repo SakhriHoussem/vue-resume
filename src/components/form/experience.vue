@@ -26,7 +26,6 @@
                         placeholder="Enter your Company Name"
                 ></b-form-input>
             </b-form-group>
-
             <b-row>
                 <b-col>
                     <b-form-group
@@ -73,6 +72,7 @@
             </b-form-group>
             <b-form-group label="add Relative Tags:" label-for="experience-tags">
                 <b-form-tags
+                        tag-variant="info"
                         input-id="experience-tags"
                         separator=" ,;"
                         v-model="experience.tags"
@@ -81,7 +81,9 @@
                 >
                 </b-form-tags>
             </b-form-group>
-            <b-button block type="submit">add</b-button>
+            <b-button block type="submit" variant="info">
+                <font-awesome-icon icon="plus"></font-awesome-icon>
+            </b-button>
         </b-form>
     </b-tab>
 </template>
@@ -91,6 +93,7 @@
         name: 'experience',
         data() {
             return {
+
                 experience: {
                     role: '',
                     company: '',
@@ -115,7 +118,7 @@
                         tags:        this.experience.tags,
                     }
                 })
-            }
+            },
         }
     }
 </script>

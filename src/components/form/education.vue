@@ -38,6 +38,8 @@
                                 v-model="education.from"
                                 class="mb-2"
                                 required
+                                variant="info"
+                                selected-variant="info"
                         >
                         </b-form-datepicker>
                     </b-form-group>
@@ -49,10 +51,12 @@
                             label-for="education-to"
                     >
                         <b-form-datepicker
+                                tag-variant="info"
                                 id="education-to"
                                 v-model="education.to"
                                 class="mb-2"
                                 required
+                                selected-variant="info"
                         >
                         </b-form-datepicker>
                     </b-form-group>
@@ -73,13 +77,16 @@
             </b-form-group>
             <b-form-group label="add Relative Tags:" label-for="education-tags">
                 <b-form-tags
+                        tag-variant="info"
                         input-id="education-tags"
                         separator=" ,;"
                         v-model="education.tags"
                         class="mb-2"
                         remove-on-delete
                 ></b-form-tags>
-                <b-button block type="submit">add</b-button>
+                <b-button block type="submit" variant="info">
+                    <font-awesome-icon icon="plus"></font-awesome-icon>
+                </b-button>
             </b-form-group>
         </b-form>
     </b-tab>

@@ -17,7 +17,9 @@
             <b-input-group class="mb-2">
                 <b-form-select :options="getSocialNetworksList" v-model="socialMedia"></b-form-select>
                 <b-input-group-append>
-                    <b-button @click="addSocialNetwork" variant="primary">Add</b-button>
+                    <b-button @click="addSocialNetwork" variant="info">
+                        <font-awesome-icon icon="plus"></font-awesome-icon>
+                    </b-button>
                 </b-input-group-append>
             </b-input-group>
         </b-col>

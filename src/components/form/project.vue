@@ -81,9 +81,12 @@
                         separator=" ,;"
                         class="mb-2"
                         v-model="project.tags"
+                        tag-variant="info"
                 ></b-form-tags>
             </b-form-group>
-            <b-button block type="submit">add</b-button>
+            <b-button block type="submit" variant="info">
+                <font-awesome-icon icon="plus"></font-awesome-icon>
+            </b-button>
         </b-form>
     </b-tab>
 </template>

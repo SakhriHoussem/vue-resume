@@ -15,7 +15,9 @@
                     <b-input-group>
                         <b-form-select v-model="skill.level" :options="levels"></b-form-select>
                         <b-input-group-append>
-                            <b-button type="submit" variant="primary">Add</b-button>
+                            <b-button type="submit" variant="info">
+                                <font-awesome-icon icon="plus"></font-awesome-icon>
+                            </b-button>
                         </b-input-group-append>
                     </b-input-group>
                 </b-col>
