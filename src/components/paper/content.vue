@@ -20,7 +20,7 @@
             <h4 class="m-0 text-capitalize">
                 {{ experience.role }}
                 <small class="float-right text-muted mt-2 ">
-                    {{ experience.from }} - {{ experience.to }}
+                    {{ fromTo(experience.fromTo) }}
                 </small>
             </h4>
             <span class="text-muted text-capitalize"> {{ experience.company }}</span>
@@ -39,7 +39,7 @@
             <h4 class="m-0 text-capitalize">
                 {{ project.name }}
                 <small class="float-right text-muted mt-2 ">
-                    {{ project.from }} - {{ project.to }}
+                    {{ fromTo(project.fromTo) }}
                 </small>
             </h4>
             <p class="m-0">
@@ -58,9 +58,9 @@
                 :key="index"
         >
             <h4 class="m-0 text-capitalize">
-                    {{ education.degree }}
+                {{ education.degree }}
                 <small class="float-right text-muted mt-2 ">
-                    {{ education.from }} - {{ education.to }}
+                    {{ fromTo(education.fromTo) }}
                 </small>
             </h4>
             <span class="text-muted text-capitalize">{{ education.school }}</span>
@@ -77,14 +77,19 @@
         computed: {
             ...mapGetters([
                 'getResume', 'getExperiences', 'getProjects', 'getEducations'
-            ])
+            ]),
+        },
+        methods: {
+            fromTo( array ) {
+                return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
+            }
         }
     }
 </script>
 <style scoped>
     .box{
         margin: 5px;
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.02);
         padding: 5px;
         border-radius: 5px;
     }

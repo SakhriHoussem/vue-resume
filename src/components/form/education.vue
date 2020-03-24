@@ -26,42 +26,12 @@
                         placeholder="Enter your education school name"
                 ></b-form-input>
             </b-form-group>
-
-            <b-row>
-                <b-col>
-                    <b-form-group
-                            label="from:"
-                            label-for="education-from"
-                    >
-                        <b-form-datepicker
-                                id="education-from"
-                                v-model="education.from"
-                                class="mb-2"
-                                required
-                                variant="info"
-                                selected-variant="info"
-                        >
-                        </b-form-datepicker>
-                    </b-form-group>
-                </b-col>
-
-                <b-col>
-                    <b-form-group
-                            label="to:"
-                            label-for="education-to"
-                    >
-                        <b-form-datepicker
-                                tag-variant="info"
-                                id="education-to"
-                                v-model="education.to"
-                                class="mb-2"
-                                required
-                                selected-variant="info"
-                        >
-                        </b-form-datepicker>
-                    </b-form-group>
-                </b-col>
-            </b-row>
+            <b-form-group
+                    label="From - To :"
+                    label-for="education-from-to"
+            >
+                <date-picker :input-attr="{ name: 'education-from-to', id: 'education-from-to'}" class="w-100" valueType="MMMM-YYYY" v-model="education.fromTo" range ></date-picker>
+            </b-form-group>
 
             <b-form-group
                     label="Description :"
@@ -100,8 +70,7 @@
                 education: {
                     degree: '',
                     school: '',
-                    from: '',
-                    to: '',
+                    fromTo: '',
                     description: '',
                     tags: []
                 }
@@ -115,8 +84,7 @@
                     value: {
                         degree:        this.education.degree,
                         school:        this.education.school,
-                        from:        this.education.from,
-                        to:          this.education.to,
+                        fromTo:        this.education.fromTo,
                         description: this.education.description,
                         tags:        this.education.tags,
                     }

@@ -1,6 +1,5 @@
 <template>
     <b-col cols="12"  md="3">
-        <b-form @submit="onSubmit" @reset="onReset">
 
             <full-name/>
 
@@ -21,7 +20,6 @@
             <social/>
 
             <resume/>
-        </b-form>
 
         <b-tabs content-class="mt-3">
 
@@ -56,8 +54,6 @@
     import skill        from "./form/skill.vue";
     import language     from "./form/language.vue";
     import interest     from "./form/interest.vue";
-    import {mapState}   from "vuex";
-
 
     export default {
         name: 'appSidebar',
@@ -80,26 +76,5 @@
             return {
             }
         },
-        computed: {
-            ...mapState([
-                'form', 'levels'
-            ]),
-        },
-        methods: {
-            onSubmit(evt) {
-                evt.preventDefault();
-                alert(JSON.stringify(this.form))
-            },
-            onReset(evt) {
-                evt.preventDefault();
-                // Reset our form values
-                // this.form.fullName = '';
-                // Trick to reset/clear native browser form validation state
-                this.show = false;
-                this.$nextTick(() => {
-                    this.show = true;
-                })
-            }
-        }
     }
 </script>

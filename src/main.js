@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import App from './App.vue';
 import store from './store.js';
 import { BootstrapVue } from 'bootstrap-vue'
+import DatePicker from 'vue2-datepicker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebook, faInstagram, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
@@ -38,10 +39,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(Vuex);
+Vue.use(DatePicker);
 
 //you need to import the CSS manually (in case you want to override it)
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vue2-datepicker/index.css';
 
 Vue.config.productionTip = false;
 

@@ -26,38 +26,12 @@
                         placeholder="Enter your Company Name"
                 ></b-form-input>
             </b-form-group>
-            <b-row>
-                <b-col>
-                    <b-form-group
-                            label="from:"
-                            label-for="experience-from"
-                    >
-                        <b-form-datepicker
-                                id="experience-from"
-                                v-model="experience.from"
-                                class="mb-2"
-                                required
-                        >
-                        </b-form-datepicker>
-                    </b-form-group>
-                </b-col>
-
-                <b-col>
-                    <b-form-group
-                            label="to:"
-                            label-for="experience-to"
-                    >
-                        <b-form-datepicker
-                                id="experience-to"
-                                v-model="experience.to"
-                                class="mb-2"
-                                required
-                        >
-                        </b-form-datepicker>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-
+            <b-form-group
+                    label="From - To :"
+                    label-for="experience-from-to"
+            >
+                <date-picker :input-attr="{ name: 'experience-from-to', id: 'experience-from-to'}" class="w-100" v-model="experience.fromTo" valueType="MMMM-YYYY" range></date-picker>
+            </b-form-group>
             <b-form-group
                     label="Description :"
                     label-for="experience-description"
@@ -89,16 +63,16 @@
 </template>
 
 <script>
+
+
     export default {
         name: 'experience',
         data() {
             return {
-
                 experience: {
                     role: '',
                     company: '',
-                    from: '',
-                    to: '',
+                    fromTo: '',
                     description: '',
                     tags: [],
                 }
@@ -112,8 +86,7 @@
                     value: {
                         role:        this.experience.role,
                         company:     this.experience.company,
-                        from:        this.experience.from,
-                        to:          this.experience.to,
+                        fromTo:        this.experience.fromTo,
                         description: this.experience.description,
                         tags:        this.experience.tags,
                     }

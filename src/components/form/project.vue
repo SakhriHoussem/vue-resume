@@ -27,37 +27,12 @@
                 ></b-form-input>
             </b-form-group>
 
-            <b-row>
-                <b-col>
-                    <b-form-group
-                            label="from:"
-                            label-for="project-from"
-                    >
-                        <b-form-datepicker
-                                id="project-from"
-                                v-model="project.from"
-                                class="mb-2"
-                                required
-                        >
-                        </b-form-datepicker>
-                    </b-form-group>
-                </b-col>
-
-                <b-col>
-                    <b-form-group
-                            label="to:"
-                            label-for="project-to"
-                    >
-                        <b-form-datepicker
-                                id="project-to"
-                                v-model="project.to"
-                                class="mb-2"
-                                required
-                        >
-                        </b-form-datepicker>
-                    </b-form-group>
-                </b-col>
-            </b-row>
+            <b-form-group
+                    label="From - To :"
+                    label-for="project-from-to"
+            >
+                <date-picker :input-attr="{ name: 'project-from-to', id: 'project-from-to'}" class="w-100" v-model="project.fromTo" range  valueType="MMMM-YYYY" ></date-picker>
+            </b-form-group>
 
             <b-form-group
                     label="Description :"
@@ -99,8 +74,7 @@
                 project: {
                     name: '',
                     link: '',
-                    from: '',
-                    to: '',
+                    fromTo: '',
                     description: '',
                     tags: []
                 }
@@ -114,8 +88,7 @@
                     value: {
                         name:        this.project.name,
                         link:        this.project.link,
-                        from:        this.project.from,
-                        to:          this.project.to,
+                        fromTo:        this.project.fromTo,
                         description: this.project.description,
                         tags:        this.project.tags,
                     }
