@@ -5,6 +5,7 @@ import store from './store.js';
 import { BootstrapVue } from 'bootstrap-vue'
 import DatePicker from 'vue2-datepicker';
 import { ValidationProvider } from 'vee-validate';
+import { ValidationObserver } from 'vee-validate';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebook, faInstagram, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
@@ -37,6 +38,7 @@ library.add(  faPhone,
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
