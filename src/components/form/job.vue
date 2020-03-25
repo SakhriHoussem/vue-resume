@@ -36,7 +36,7 @@
         },
         methods:{
             updateJob(e) {
-                //todo: add validation
+                // add validation
                 this.$refs.job.validate().then(success => {
                     if (!success) {
                         this.$refs.job.setErrors({});

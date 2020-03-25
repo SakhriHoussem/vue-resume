@@ -37,7 +37,7 @@
 
         methods : {
             updateFullName(e) {
-                //todo: add validation
+                // add validation
                 this.$refs.fullName.validate().then(success => {
                         if (!success) {
                             this.$refs.fullName.setErrors({});
