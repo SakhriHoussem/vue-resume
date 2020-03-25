@@ -24,8 +24,8 @@
     import { mapState } from 'vuex'
     import { extend } from 'vee-validate';
     import { min, alpha_spaces } from 'vee-validate/dist/rules';
-    extend('alpha_spaces', {alpha_spaces, message: 'This {_field_} must be contain alphabets and spaces'});
-    extend('min', {min, message: 'This {_field_} must be longer then 2'});
+    extend('alpha_spaces', alpha_spaces);
+    extend('min', min);
 
     export default {
         name: 'job',
