@@ -14,7 +14,7 @@
                         required
                         placeholder="Enter your Full Name"
                 ></b-form-input>
-                <small v-for="(failedRule, type) in failedRules" :key="type" class="text-danger">{{ type }} : {{ failedRule }}</small>
+                <small v-for="(failedRule, type) in failedRules" :key="type" class="text-danger">{{ failedRule }}</small>
             </b-form-group>
         </ValidationProvider>
     </ValidationObserver>
@@ -23,9 +23,9 @@
     import { mapState } from 'vuex'
     import { extend } from 'vee-validate';
     import { min, alpha_spaces, required } from 'vee-validate/dist/rules';
-    extend('alpha_spaces', alpha_spaces);
-    extend('required', required);
-    extend('min', min);
+    extend('alpha_spaces', {alpha_spaces, message: 'This {_field_} must be contain alphabets and spaces'});
+    extend('required', {required, message: 'This {_field_} is required'});
+    extend('min', {min, message: 'This {_field_} must be longer then 2'});
 
     export default {
         name: 'fullName',
