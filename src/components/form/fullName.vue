@@ -16,7 +16,6 @@
     </b-form-group>
 </template>
 <script>
-    import { mapState } from 'vuex'
     import SimpleVueValidation from "simple-vue-validator";
     const Validator = SimpleVueValidation.Validator;
 
@@ -26,11 +25,6 @@
           return {
               fullName: ''
           }
-        },
-        computed: {
-            ...mapState([
-                'form'
-            ]),
         },
         validators: {
             fullName: function (value) {
