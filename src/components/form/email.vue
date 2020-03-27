@@ -1,50 +1,43 @@
 <template>
-    <ValidationObserver ref="email" immediate  >
-        <ValidationProvider name="email" rules="email|required" v-slot="{ failedRules, invalid, valid }">
             <b-form-group
                     label="Email :"
                     label-for="email"
             >
                 <b-form-input
-                        :class="{ 'is-invalid' : invalid, 'is-valid': valid  }"
+                        :class="{ 'is-invalid' : validation.hasError('email')}"
                         placeholder="Your Email"
                         id="email"
-                        :value="form.email"
+                        v-model="email"
                         @input="updateEmail"
                         required
                 >
                 </b-form-input>
-                <small v-for="(failedRule, type) in failedRules" :key="type" class="text-danger">{{ failedRule }}</small>
+                <small class="text-danger">{{ validation.firstError('email')}}</small>
             </b-form-group>
-        </ValidationProvider>
-    </ValidationObserver>
 </template>
 <script>
-    import { mapState } from 'vuex'
-    import { extend } from 'vee-validate';
-    import { email, required } from 'vee-validate/dist/rules';
-    extend('email', email);
-    extend('required', required);
+    import SimpleVueValidation from "simple-vue-validator";
+    const Validator = SimpleVueValidation.Validator;
+
     export default {
         name: "email",
-        computed: {
-            ...mapState([
-                'form'
-            ])
+        data () {
+            return {
+                email: ''
+            }
+        },
+        validators: {
+            email: function (value) {
+                return Validator.value(value).required().email();
+            }
         },
         methods:{
             updateEmail(e) {
-                //todo: add validation
-                // tagValidator(email) {
-                //     //:tag-validator="tagValidator"
-                //     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-                // }
                 // add validation
-                this.$refs.email.validate().then(success => {
-                    if (!success) {
-                        this.$refs.email.setErrors([]);
+                this.$validate().then((success)=> {
+                    if (success) {
+                        this.$store.commit('updateStateField', {field: 'email',value: e})
                     }
-                    this.$store.commit('updateStateField', {field: 'email',value: e})
                 });
             }
         }

@@ -10,6 +10,7 @@
                         v-model="phone"
                         @input="updatePhoneNum"
                         placeholder="your phone number"
+                        required
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('phone')}}</small>
             </b-form-group>
