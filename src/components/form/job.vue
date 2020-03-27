@@ -10,7 +10,6 @@
                         ref="job"
                         @input="updateJob"
                         type="text"
-                        required
                         placeholder="Enter your Desired Job"
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('job')}}</small>
@@ -29,7 +28,7 @@
         },
         validators: {
             job: function (value) {
-                return Validator.value(value).required().regex('^[A-Za-z ]*$', 'Must only contain alphabetic characters.');
+                return Validator.value(value).regex('^[A-Za-z ]*$', 'Must only contain alphabetic characters.');
             }
         },
         methods:{

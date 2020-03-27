@@ -13,7 +13,7 @@
                     <font-awesome-icon icon="phone" />
                 </td>
                 <td>
-                    {{getPhone}}
+                    <b-link target="_blank" class="text-white" :href="'tel:' + getPhone">{{getPhone}}</b-link>
                 </td>
             </tr>
             <tr>
