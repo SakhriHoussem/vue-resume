@@ -1,48 +1,51 @@
 <template>
-    <ValidationObserver ref="fullName" immediate  >
-        <ValidationProvider name="fullName" rules="required|alpha_spaces|min:3" v-slot="{ failedRules, invalid, valid }">
-            <b-form-group
-                    label="Full Name:"
-                    label-for="full-name"
-            >
-                <b-form-input
-                        :class="{ 'is-invalid' : invalid, 'is-valid': valid  }"
-                        :value="form.fullName"
-                        @input="updateFullName"
-                        id="full-name"
-                        type="text"
-                        required
-                        placeholder="Enter your Full Name"
-                ></b-form-input>
-                <small v-for="(failedRule, type) in failedRules" :key="type" class="text-danger">{{ failedRule }}</small>
-            </b-form-group>
-        </ValidationProvider>
-    </ValidationObserver>
+    <b-form-group
+            label="Full Name:"
+            label-for="full-name"
+    >
+        <b-form-input
+                :class="{ 'is-invalid' : validation.hasError('fullName')}"
+                id="full-name"
+                type="text"
+                v-model="fullName"
+                @input="updateFullName"
+                required
+                placeholder="Enter your Full Name"
+        ></b-form-input>
+        <small class="text-danger">{{ validation.firstError('fullName')}}</small>
+    </b-form-group>
 </template>
 <script>
     import { mapState } from 'vuex'
-    import { extend } from 'vee-validate';
-    import { min, alpha_spaces, required } from 'vee-validate/dist/rules';
-    extend('alpha_spaces', alpha_spaces);
-    extend('required', required);
-    extend('min', min,);
+    import SimpleVueValidation from "simple-vue-validator";
+    const Validator = SimpleVueValidation.Validator;
+
     export default {
         name: 'fullName',
+        data () {
+          return {
+              fullName: ''
+          }
+        },
         computed: {
             ...mapState([
                 'form'
             ]),
         },
+        validators: {
+            fullName: function (value) {
+                return Validator.value(value).required().regex('^[A-Za-z ]*$', 'Must only contain alphabetic characters.');
+            }
+        },
         methods : {
             updateFullName(e) {
                 // add validation
-                this.$refs.fullName.validate().then(success => {
-                        if (!success) {
-                            this.$refs.fullName.setErrors([]);
-                        }
+                this.$validate().then((success)=> {
+                    if (success) {
                         this.$store.commit('updateStateField', {field: 'fullName',value: e})
-                    });
-                }
+                    }
+                });
+            }
         }
     }
 </script>

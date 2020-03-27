@@ -50,6 +50,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue2-datepicker/index.css';
 
+
+
+
+import SimpleVueValidation from 'simple-vue-validator';
+Vue.use(SimpleVueValidation);
+
+
 Vue.config.productionTip = false;
 
 new Vue({
