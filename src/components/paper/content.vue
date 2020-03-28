@@ -9,24 +9,27 @@
                 <vue-markdown :source="getResume"></vue-markdown>
             </div>
         </div>
-        <h3 class="text-info">
-            <font-awesome-icon icon="briefcase" />
-            Experiences
-        </h3>
-        <div
-                class="box"
-                v-for="(experience, index) in getExperiences"
-                :key="index"
-        >
-            <h4 class="m-0 text-capitalize">
-                {{ experience.role }}
-                <small class="float-right text-muted mt-2 ">
-                    {{ fromTo(experience.fromTo) }}
-                </small>
-            </h4>
-            <span class="text-muted text-capitalize"> {{ experience.company }}</span>
-            <p class="m-0">{{ experience.description }}</p>
-            <b-badge variant="info" class="mr-2" v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
+        <div v-if="getExperiences.length">
+            <h3 class="text-info">
+                <font-awesome-icon icon="briefcase" />
+                Experiences
+            </h3>
+            <div
+                    :data-identifier="experience.id"
+                    class="box"
+                    v-for="(experience, index) in getExperiences"
+                    :key="index"
+            >
+                <h4 class="m-0 text-capitalize">
+                    {{ experience.role }}
+                    <small class="float-right text-muted mt-2 ">
+                        {{ fromTo(experience.fromTo) }}
+                    </small>
+                </h4>
+                <span class="text-muted text-capitalize"> {{ experience.company }}</span>
+                <vue-markdown :source="experience.description"></vue-markdown>
+                <b-badge variant="info" class="mr-2" v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
+            </div>
         </div>
 
         <h3 class="text-info">
@@ -72,6 +75,8 @@
 </template>
 
 <script>
+    // todo: add delete btn
+    // todo: add update btn
     import  { mapGetters } from 'vuex'
     import VueMarkdown from 'vue-markdown'
 
@@ -87,6 +92,9 @@
         },
         methods: {
             fromTo( array ) {
+                if (array [0] === array [1]) {
+                    return array[0].split('-').join(' ') + " - " + 'Current'
+                }
                 return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
             },
         }
