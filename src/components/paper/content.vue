@@ -53,24 +53,27 @@
                 <b-badge variant="info" class="mr-2" v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
             </div>
         </div>
-        <h3 class="text-info">
-            <font-awesome-icon icon="university" />
-            Educations
-        </h3>
-        <div
-                class="box"
-                v-for="(education, index) in getEducations"
-                :key="index"
-        >
-            <h4 class="m-0 text-capitalize">
-                {{ education.degree }}
-                <small class="float-right text-muted mt-2 ">
-                    {{ fromTo(education.fromTo) }}
-                </small>
-            </h4>
-            <span class="text-muted text-capitalize">{{ education.school }}</span>
-            <p class="m-0">{{ education.description }}</p>
-            <b-badge variant="info" class="mr-2" v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
+        <div v-if="getEducations.length">
+            <h3 class="text-info">
+                <font-awesome-icon icon="university" />
+                Educations
+            </h3>
+            <div
+                    :data-identifier="education.id"
+                    class="box"
+                    v-for="(education, index) in getEducations"
+                    :key="index"
+            >
+                <h4 class="m-0 text-capitalize">
+                    {{ education.degree }}
+                    <small class="float-right text-muted mt-2 ">
+                        {{ fromTo(education.fromTo) }}
+                    </small>
+                </h4>
+                <span class="text-muted text-capitalize">{{ education.school }}</span>
+                <vue-markdown :source="education.description"></vue-markdown>
+                <b-badge variant="info" class="mr-2" v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
+            </div>
         </div>
     </b-col>
 </template>

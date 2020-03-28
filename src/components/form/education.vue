@@ -6,12 +6,14 @@
                     label-for="education-degree"
             >
                 <b-form-input
+                        :class="{ 'is-invalid' : validation.hasError('education.degree')}"
                         id="education-degree"
                         type="text"
                         v-model="education.degree"
                         required
                         placeholder="Enter your education degree"
                 ></b-form-input>
+                <small class="text-danger">{{ validation.firstError('education.degree')}}</small>
             </b-form-group>
 
             <b-form-group
@@ -19,18 +21,30 @@
                     label-for="education-school"
             >
                 <b-form-input
+                        :class="{ 'is-invalid' : validation.hasError('education.degree')}"
                         id="education-school"
                         type="text"
                         v-model="education.school"
                         required
                         placeholder="Enter your education school name"
                 ></b-form-input>
+                <small class="text-danger">{{ validation.firstError('education.degree')}}</small>
             </b-form-group>
             <b-form-group
                     label="From - To :"
                     label-for="education-from-to"
             >
-                <date-picker :input-attr="{ name: 'education-from-to', id: 'education-from-to'}" class="w-100" valueType="MMMM-YYYY" v-model="education.fromTo" range ></date-picker>
+                <date-picker :input-attr="{
+                                            name: 'education-from-to',
+                                            id: 'education-from-to',
+                                            required: 'required'
+                            }"
+                             class="w-100"
+                             valueType="MMMM-YYYY"
+                             :class="{'is-invalid' : validation.hasError('education.fromTo')}"
+                             v-model="education.fromTo" range>
+                </date-picker>
+                <small class="text-danger">{{ validation.firstError('education.fromTo')}}</small>
             </b-form-group>
 
             <b-form-group
@@ -63,11 +77,15 @@
 </template>
 
 <script>
+    import SimpleVueValidation from "simple-vue-validator";
+    const Validator = SimpleVueValidation.Validator;
+
     export default {
         name: 'education',
         data() {
             return {
                 education: {
+                    id: 1,
                     degree: '',
                     school: '',
                     fromTo: '',
@@ -76,20 +94,45 @@
                 }
             }
         },
+        validators: {
+            'education.degree': function (value) {
+                return Validator.value(value).required().regex('^[A-Za-z ]*$', 'Must only contain alphabetic characters.');
+            },
+            'education.school': function (value) {
+                return Validator.value(value).required();
+            },
+            'education.fromTo': function (value) {
+                return Validator.value(value).required();
+            }
+        },
         methods: {
-            //todo: add validation
+            //  add validation
             onSubmit() {
-                this.$store.commit('appendStateField', {
-                    field: 'educations',
-                    value: {
-                        degree:        this.education.degree,
-                        school:        this.education.school,
-                        fromTo:        this.education.fromTo,
-                        description: this.education.description,
-                        tags:        this.education.tags,
+                this.$validate().then((success)=> {
+                    if (success) {
+                        this.$store.commit('appendStateField', {
+                            field: 'educations',
+                            value: {
+                                id: this.education.id,
+                                degree: this.education.degree,
+                                school: this.education.school,
+                                fromTo: this.education.fromTo,
+                                description: this.education.description,
+                                tags: this.education.tags,
+                            }
+                        });
+                        this.onReset();
                     }
                 })
-            }
+            },
+            onReset() {
+                this.education.id += 1;
+                this.education.degree = "";
+                this.education.school = "";
+                this.education.fromTo = "";
+                this.education.description = "";
+                this.education.tags = [];
+            },
         }
     }
 </script>

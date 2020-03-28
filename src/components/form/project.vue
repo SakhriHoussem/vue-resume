@@ -86,6 +86,7 @@
         data() {
             return {
                 project: {
+                    id: 1,
                     name: '',
                     link: '',
                     fromTo: '',
