@@ -1,25 +1,33 @@
 <template>
     <b-tab title="Skill">
-        <b-form @submit.prevent="onSubmit">
+        <b-form @submit.prevent="onSubmit" @reset="onReset">
             <b-row>
                 <b-col cols="12" sm="6" md="12" lg="6">
                     <b-input
+                            :class="{ 'is-invalid' : validation.hasError('skill.name')}"
                             id="skill"
                             type="text"
                             v-model="skill.name"
                             required
                             placeholder="Enter your Skill Name"
                     ></b-input>
+                    <small class="text-danger">{{ validation.firstError('skill.name')}}</small>
                 </b-col>
                 <b-col cols="12" sm="6" md="12" lg="6">
                     <b-input-group>
-                        <b-form-select v-model="skill.level" :options="levels"></b-form-select>
+                        <b-form-select
+                                required
+                                v-model="skill.level"
+                                :options="levels"
+                                :class="{ 'is-invalid' : validation.hasError('skill.level')}"
+                        ></b-form-select>
                         <b-input-group-append>
                             <b-button type="submit" variant="info">
                                 <font-awesome-icon icon="plus"></font-awesome-icon>
                             </b-button>
                         </b-input-group-append>
                     </b-input-group>
+                    <small class="text-danger">{{ validation.firstError('skill.level')}}</small>
                 </b-col>
             </b-row>
         </b-form>
@@ -28,6 +36,8 @@
 
 <script>
     import {mapState} from "vuex";
+    import SimpleVueValidation from "simple-vue-validator";
+    const Validator = SimpleVueValidation.Validator;
 
     export default {
         name: 'skill',
@@ -44,16 +54,33 @@
                 'levels'
             ]),
         },
+        validators: {
+            'skill.name': function (value) {
+                return Validator.value(value).required();
+            },
+            'skill.level': function (value) {
+                return  Validator.value(value).required()
+            }
+        },
         methods: {
-            //todo: add validation
+            // add validation
             onSubmit() {
-                this.$store.commit('appendStateField', {
-                    field: 'skills',
-                    value: {
-                        name:  this.skill.name,
-                        level: this.skill.level,
+                this.$validate().then((success)=> {
+                    if (success) {
+                        this.$store.commit('appendStateField', {
+                            field: 'skills',
+                            value: {
+                                name: this.skill.name,
+                                level: this.skill.level,
+                            }
+                        });
+                        this.onReset()
                     }
                 })
+            },
+            onReset(){
+                this.skill.name = '';
+                this.skill.level = null;
             }
         }
     }

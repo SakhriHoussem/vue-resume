@@ -72,9 +72,14 @@
                                     pseudo: this.pseudo,
                                     url:    this.getSocialNetworksList.find( item => item.value === this.socialMedia).url + this.pseudo
                                 }
-                            })
+                            });
+                        this.onReset()
                     }
                 });
+            },
+            onReset(){
+                this.pseudo = '';
+                this.pseudo = null;
             }
         }
     }
