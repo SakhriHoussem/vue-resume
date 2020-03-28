@@ -32,25 +32,26 @@
             </div>
         </div>
 
-        <h3 class="text-info">
-            <font-awesome-icon icon="box-open"/>
-            Projects
-        </h3>
-        <div
-                class="box"
-                v-for="(project, index) in getProjects"
-                :key="index">
-            <h4 class="m-0 text-capitalize">
-                {{ project.name }}
-                <small class="float-right text-muted mt-2 ">
-                    {{ fromTo(project.fromTo) }}
-                </small>
-            </h4>
-            <p class="m-0">
-                {{ project.description }}
+        <div v-if="getProjects.length">
+            <h3 class="text-info">
+                <font-awesome-icon icon="box-open"/>
+                Projects
+            </h3>
+            <div
+                    :data-identifier="project.id"
+                    class="box"
+                    v-for="(project, index) in getProjects"
+                    :key="index">
+                <h4 class="m-0 text-capitalize">
+                    {{ project.name }}
+                    <small class="float-right text-muted mt-2 ">
+                        {{ fromTo(project.fromTo) }}
+                    </small>
+                </h4>
+                <vue-markdown :source="project.description"></vue-markdown>
                 <b-link class="text-muted small" target="_blank" :href="project.link">more info ...</b-link>
-            </p>
-            <b-badge variant="info" class="mr-2" v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
+                <b-badge variant="info" class="mr-2" v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
+            </div>
         </div>
         <h3 class="text-info">
             <font-awesome-icon icon="university" />

@@ -111,20 +111,24 @@
             }
         },
         methods: {
-            //todo: add validation
+            // add validation
             onSubmit() {
-                this.$store.commit('appendStateField', {
-                    field: 'experiences',
-                    value: {
-                        id:        this.experience.id,
-                        role:        this.experience.role,
-                        company:     this.experience.company,
-                        fromTo:        this.experience.fromTo,
-                        description: this.experience.description,
-                        tags:        this.experience.tags,
+                this.$validate().then((success)=> {
+                    if (success) {
+                        this.$store.commit('appendStateField', {
+                            field: 'experiences',
+                            value: {
+                                id: this.experience.id,
+                                role: this.experience.role,
+                                company: this.experience.company,
+                                fromTo: this.experience.fromTo,
+                                description: this.experience.description,
+                                tags: this.experience.tags,
+                            }
+                        });
+                        this.onReset()
                     }
-                });
-                this.onReset()
+                })
             },
             onReset() {
                 this.experience.id += 1;
