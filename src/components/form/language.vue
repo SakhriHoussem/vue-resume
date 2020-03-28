@@ -4,21 +4,29 @@
             <b-row>
                 <b-col>
                     <b-input
+                            :class="{ 'is-invalid' : validation.hasError('language.name')}"
                             id="Language"
                             type="text"
                             v-model="language.name"
                             required
                             placeholder="Enter your Language"
                     ></b-input>
+                    <small class="text-danger">{{ validation.firstError('language.name')}}</small>
                 </b-col>
                 <b-col>
                     <b-input-group>
-                        <b-form-select v-model="language.level" :options="levels"></b-form-select>
+                        <b-form-select
+                                :class="{ 'is-invalid' : validation.hasError('language.level')}"
+                                required
+                                v-model="language.level"
+                                :options="levels"
+                        ></b-form-select>
                         <b-input-group-append>
                             <b-button block type="submit" variant="info">
                                 <font-awesome-icon icon="plus"></font-awesome-icon>
                             </b-button>
                         </b-input-group-append>
+                        <small class="text-danger">{{ validation.firstError('language.level')}}</small>
                     </b-input-group>
                 </b-col>
             </b-row>
@@ -28,6 +36,8 @@
 
 <script>
     import {mapState} from "vuex";
+    import SimpleVueValidation from "simple-vue-validator";
+    const Validator = SimpleVueValidation.Validator;
 
     export default {
         name: 'language',
@@ -44,16 +54,33 @@
                 'levels'
             ]),
         },
+        validators: {
+            'language.name': function (value) {
+                return Validator.value(value).required();
+            },
+            'language.level': function (value) {
+                return  Validator.value(value).required()
+            }
+        },
         methods: {
-            //todo: add validation
+            // add validation
             onSubmit() {
-                this.$store.commit('appendStateField', {
-                    field: 'languages',
-                    value: {
-                        name:  this.language.name,
-                        level: this.language.level,
+                this.$validate().then((success)=> {
+                    if (success) {
+                        this.$store.commit('appendStateField', {
+                            field: 'languages',
+                            value: {
+                                name:  this.language.name,
+                                level: this.language.level,
+                            }
+                        });
+                        this.onReset()
                     }
                 })
+            },
+            onReset(){
+                this.language.name = '';
+                this.language.level = null;
             }
         }
     }
