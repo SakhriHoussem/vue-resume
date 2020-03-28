@@ -7,7 +7,7 @@ import SimpleVueValidation from 'simple-vue-validator';
 import DatePicker from 'vue2-datepicker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faFacebook, faInstagram, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import {  faPhone,
           faAt,
           faGlobeAfrica,
@@ -17,7 +17,8 @@ import {  faPhone,
           faUniversity,
           faWrench,
           faLanguage,
-          faPlus
+          faPlus,
+          faInfo
 } from '@fortawesome/free-solid-svg-icons'
 
 // Install FontAwesome
@@ -33,7 +34,8 @@ library.add(  faPhone,
               faUniversity,
               faWrench,
               faLanguage,
-              faPlus
+              faPlus,
+              faInfo
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 // Install BootstrapVue

@@ -1,8 +1,13 @@
 <template>
     <b-form-group
-            label="Resume :"
-            label-for="resume"
     >
+        <label for="resume">
+            Resume :
+            <b-link class="text-muted small" target="_blank" href="https://miaolz123.github.io/vue-markdown/">
+                <font-awesome-icon  icon="info" />
+            </b-link>
+
+        </label>
         <b-form-textarea
                 id="resume"
                 :value="getResume"
@@ -25,7 +30,6 @@
         methods:{
             updateResume(e) {
                 this.$store.commit('updateStateField', {field: 'resume', value: e})
-
             }
         }
     }

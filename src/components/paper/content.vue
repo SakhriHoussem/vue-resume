@@ -1,13 +1,14 @@
 <template>
     <b-col cols="8">
-        <h3 class="text-info">
-            <font-awesome-icon icon="pencil-alt" />
-            Resume
-        </h3>
-        <div class="box">
-            <p class="m-0">{{ getResume }}</p>
+        <div v-if="getResume">
+            <h3 class="text-info">
+                <font-awesome-icon icon="pencil-alt" />
+                Resume
+            </h3>
+            <div class="box">
+                <vue-markdown :source="getResume"></vue-markdown>
+            </div>
         </div>
-
         <h3 class="text-info">
             <font-awesome-icon icon="briefcase" />
             Experiences
@@ -72,8 +73,13 @@
 
 <script>
     import  { mapGetters } from 'vuex'
+    import VueMarkdown from 'vue-markdown'
+
     export default {
         name: 'paperContent',
+        components: {
+            VueMarkdown
+        },
         computed: {
             ...mapGetters([
                 'getResume', 'getExperiences', 'getProjects', 'getEducations'
@@ -82,7 +88,7 @@
         methods: {
             fromTo( array ) {
                 return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
-            }
+            },
         }
     }
 </script>
