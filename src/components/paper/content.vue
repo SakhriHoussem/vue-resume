@@ -22,6 +22,7 @@
             >
                 <h4 class="m-0 text-capitalize">
                     {{ experience.role }}
+                    <button class="close mr-2 ml-2 small" aria-label="close" type="button" @click="removeExpById('experiences', experience.id)">x</button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(experience.fromTo) }}
                     </small>
@@ -44,6 +45,7 @@
                     :key="index">
                 <h4 class="m-0 text-capitalize">
                     {{ project.name }}
+                    <button class="close mr-2 ml-2 small" aria-label="close" type="button" @click="removeExpById('projects', project.id)">x</button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(project.fromTo) }}
                     </small>
@@ -66,6 +68,7 @@
             >
                 <h4 class="m-0 text-capitalize">
                     {{ education.degree }}
+                    <button class="close mr-2 ml-2 small" aria-label="close" type="button" @click="removeExpById('educations', education.id)">x</button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(education.fromTo) }}
                     </small>
@@ -101,6 +104,12 @@
                 }
                 return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
             },
+            removeExpById(object, id ) {
+                this.$store.commit('removeStateElmByID', {
+                    field: object,
+                    id: id
+                });
+            },
         }
     }
 </script>
@@ -116,5 +125,8 @@
     }
     .box p,.box ul{
         margin: 0;
+    }
+    .close {
+        font-size: 1rem !important;
     }
 </style>

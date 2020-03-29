@@ -161,6 +161,10 @@ export default new Vuex.Store({
         appendStateField (state, payload) {
             // mutate state
             state.form[payload.field].push(payload.value)
+        },
+        removeStateElmByID (state, payload) {
+            // mutate state
+            this.state.form[payload.field] = state.form[payload.field].filter( el => { return el.id !== payload.id; });
         }
     },
 });
