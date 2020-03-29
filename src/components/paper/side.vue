@@ -69,28 +69,18 @@
             <font-awesome-icon icon="language"></font-awesome-icon>
             Languages
         </h5>
-        <b-row v-for="(language, index) in getLanguages" :key="index">
-            <b-col cols="4">
+        <div v-for="(language, index) in getLanguages" :key="index">
                 <span class="text-capitalize">
-                    {{ language.name }}
+                    {{ language.name }} <small>({{language.level}})</small>
                 </span>
-            </b-col>
-            <b-col cols="8" class="pt-1">
-                <b-progress
-                        variant="dark"
-                        :value="language.level"
-                        :max="100"
-                        show-progress
-                ></b-progress>
-            </b-col>
-        </b-row>
+        </div>
         <hr>
         <h5>
             <font-awesome-icon icon="plus"></font-awesome-icon>
             Interests
         </h5>
         <ul class="list-unstyled">
-            <li class="ml-4 text-capitalize" v-for="(interest, index) in getInterests" :key="index">
+            <li class="text-capitalize" v-for="(interest, index) in getInterests" :key="index">
                 {{ interest }}
             </li>
         </ul>

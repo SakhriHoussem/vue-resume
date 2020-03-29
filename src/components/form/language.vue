@@ -19,7 +19,7 @@
                                 :class="{ 'is-invalid' : validation.hasError('language.level')}"
                                 required
                                 v-model="language.level"
-                                :options="levels"
+                                :options="LangLevels"
                         ></b-form-select>
                         <b-input-group-append>
                             <b-button block type="submit" variant="info">
@@ -51,7 +51,7 @@
         },
         computed: {
             ...mapState([
-                'levels'
+                'LangLevels'
             ]),
         },
         validators: {
