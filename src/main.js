@@ -18,7 +18,8 @@ import {  faPhone,
           faWrench,
           faLanguage,
           faPlus,
-          faInfo
+          faInfo,
+          faCameraRetro
 } from '@fortawesome/free-solid-svg-icons'
 
 // Install FontAwesome
@@ -35,7 +36,8 @@ library.add(  faPhone,
               faWrench,
               faLanguage,
               faPlus,
-              faInfo
+              faInfo,
+              faCameraRetro
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 // Install BootstrapVue

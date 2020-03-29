@@ -1,8 +1,13 @@
 <template>
     <b-col cols="4">
         <div class="text-center">
-            <b-avatar size="6rem" variant="light"></b-avatar>
-            <!-- todo: add modal to import profile picture -->
+            <b-avatar  button @click="$refs.file.click()" size="10rem" variant="dark">
+                <img v-if="image" :src="image" :alt="getFullName">
+                <font-awesome-icon v-else  icon="camera-retro" />
+            </b-avatar>
+
+            <input type="file" ref="file" id="input-image" v-show="false" @change="onFileChange">
+
             <h3 class="text-capitalize">  {{ getFullName }} </h3>
             <h4 class="text-capitalize text-dark"> {{ getJob }} </h4>
         </div>
@@ -91,6 +96,11 @@
     import { mapGetters } from 'vuex'
     export default {
         name: 'paperSide',
+        data() {
+            return {
+                image: ""
+            }
+        },
         computed: {
             ...mapGetters([
                 'getFullName',
@@ -104,6 +114,23 @@
                 'getInterests',
             ]),
 
+        },
+        methods: {
+            createImage(file) {
+                let reader = new FileReader();
+                reader.onload = (e) => this.image = e.target.result ;
+                reader.readAsDataURL(file);
+            },
+            onFileChange(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length) this.image ="";
+                this.createImage(files[0]);
+            },
         }
     }
 </script>
+<style>
+    button[class*="b-avatar"] {
+        padding: 0 !important;
+    }
+</style>

@@ -37,8 +37,7 @@ export default new Vuex.Store({
                     name: 'Image Classification',
                     link: '',
                     fromTo: ['January-2018', 'May-2018'],
-                    description: 'Development of a Desktop Application for Image Classification Using Python and the TensorFlow Library for Machine Learning.\n' +
-                        '\n',
+                    description: 'Development of a Desktop Application for Image Classification Using Python and the TensorFlow Library for Machine Learning.\n',
                     tags: ['Python', 'TensorFlow']
                 },
                 {
@@ -46,7 +45,7 @@ export default new Vuex.Store({
                     name: 'SEOR Web application',
                     link: '',
                     fromTo: ['January-2016', 'May-2016'],
-                    description: 'Development of a WEB application for the management of equipme for tntshe HSE department of the company SEOR using PHP 5.4 and pure CSS3 for a responsive interface.',
+                    description: 'Development of a WEB application for the management of equipement for HSE department of the company SEOR using PHP 5.4 and pure CSS3 for a responsive interface.',
                     tags: ['PHP5.4', 'CSS3']
                 }
             ],
