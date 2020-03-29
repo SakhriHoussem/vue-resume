@@ -8,6 +8,7 @@
                     :class="{ 'is-invalid' : validation.hasError('socialMedia')}"
                     :options="getSocialNetworksList"
                     v-model="socialMedia"
+                    required
                     name="socialMedia"
             ></b-form-select>
             <small class="text-danger">{{ validation.firstError('socialMedia')}}</small>
@@ -79,7 +80,8 @@
             },
             onReset(){
                 this.pseudo = '';
-                this.pseudo = null;
+                this.socialMedia = null;
+                this.validation.reset();
             }
         }
     }

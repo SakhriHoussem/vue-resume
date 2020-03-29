@@ -137,6 +137,7 @@
                 this.experience.fromTo = "";
                 this.experience.description = "";
                 this.experience.tags = [];
+                this.validation.reset();
             },
         }
     }

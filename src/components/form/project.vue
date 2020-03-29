@@ -133,6 +133,7 @@
                 this.project.fromTo = "";
                 this.project.description = "";
                 this.project.tags = [];
+                this.validation.reset();
             },
         }
     }

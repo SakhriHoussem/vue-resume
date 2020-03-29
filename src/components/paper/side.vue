@@ -3,8 +3,8 @@
         <div class="text-center">
             <b-avatar size="6rem" variant="light"></b-avatar>
             <!-- todo: add modal to import profile picture -->
-            <h3>  {{ getFullName }} </h3>
-            <h4> {{ getJob }} </h4>
+            <h3 class="text-capitalize">  {{ getFullName }} </h3>
+            <h4 class="text-capitalize text-dark"> {{ getJob }} </h4>
         </div>
         <hr>
         <table style="width:100%">
@@ -50,7 +50,9 @@
         </h5>
         <b-row v-for="(skill, index) in getSkills" :key="index">
             <b-col cols="4">
-                {{ skill.name }}
+                <span class="text-capitalize">
+                    {{ skill.name }}
+                </span>
             </b-col>
             <b-col cols="8" class="pt-1">
                 <b-progress
@@ -69,7 +71,9 @@
         </h5>
         <b-row v-for="(language, index) in getLanguages" :key="index">
             <b-col cols="4">
-                {{ language.name }}
+                <span class="text-capitalize">
+                    {{ language.name }}
+                </span>
             </b-col>
             <b-col cols="8" class="pt-1">
                 <b-progress

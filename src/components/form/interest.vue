@@ -27,7 +27,6 @@
         },
         methods: {
             updateInterests(e) {
-                //todo: add validation
                 this.$store.commit('updateStateField', {field: 'interests',value: e})
             }
         }

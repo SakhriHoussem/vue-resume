@@ -132,6 +132,7 @@
                 this.education.fromTo = "";
                 this.education.description = "";
                 this.education.tags = [];
+                this.validation.reset();
             },
         }
     }

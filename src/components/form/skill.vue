@@ -81,6 +81,7 @@
             onReset(){
                 this.skill.name = '';
                 this.skill.level = null;
+                this.validation.reset();
             }
         }
     }

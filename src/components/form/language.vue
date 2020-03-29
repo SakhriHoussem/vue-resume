@@ -81,6 +81,7 @@
             onReset(){
                 this.language.name = '';
                 this.language.level = null;
+                this.validation.reset();
             }
         }
     }

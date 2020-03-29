@@ -48,8 +48,8 @@
                         {{ fromTo(project.fromTo) }}
                     </small>
                 </h4>
+                <b-link v-if="project.link" class="text-muted small" target="_blank" :href="project.link">more info ...</b-link>
                 <vue-markdown :source="project.description"></vue-markdown>
-                <b-link class="text-muted small" target="_blank" :href="project.link">more info ...</b-link>
                 <b-badge variant="info" class="mr-2" v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
             </div>
         </div>
@@ -104,7 +104,7 @@
         }
     }
 </script>
-<style scoped>
+<style>
     .box{
         margin: 5px;
         background-color: rgba(0, 0, 0, 0.02);
@@ -113,5 +113,8 @@
     }
     .box small {
         font-size: .90rem;
+    }
+    .box p,.box ul{
+        margin: 0;
     }
 </style>
