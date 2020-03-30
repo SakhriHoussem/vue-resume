@@ -52,7 +52,7 @@ export default new Vuex.Store({
             educations: [
                 {
                     id: 0,
-                    degree: 'Master Degree in Computer Science  ',
+                    degree: 'Master Degree',
                     school: 'University of Science and Technologie Mohamed Boudiaf,Oran Algeria',
                     fromTo: ['Sept-2013', 'Mai-2018'],
                     description: '',
@@ -165,6 +165,10 @@ export default new Vuex.Store({
         removeStateElmByID (state, payload) {
             // mutate state
             this.state.form[payload.field] = state.form[payload.field].filter( el => { return el.id !== payload.id; });
+        },
+        removeStateElm (state, payload) {
+            // mutate state
+            this.state.form[payload.field] = state.form[payload.field].filter( el => { return el !== payload.elm; });
         }
     },
 });

@@ -5,7 +5,18 @@
                 <font-awesome-icon icon="pencil-alt" />
                 Resume
             </h3>
-            <div class="box">
+            <div
+                    class="box"
+                    @mouseover="showByIndex = getResume"
+                    @mouseout="showByIndex = null"
+            >
+                <b-button v-show="showByIndex === getResume"
+                        class="close mr-2 ml-2 small"
+                        aria-label="close" type="button"
+                        @click="removeResume"
+                        v-b-tooltip.hover
+                        title="Delete Me"
+                >x</b-button>
                 <vue-markdown :source="getResume"></vue-markdown>
             </div>
         </div>
@@ -15,6 +26,8 @@
                 Experiences
             </h3>
             <div
+                    @mouseover="showByIndex = experience"
+                    @mouseout="showByIndex = null"
                     :data-identifier="experience.id"
                     class="box"
                     v-for="(experience, index) in getExperiences"
@@ -22,7 +35,14 @@
             >
                 <h4 class="m-0 text-capitalize">
                     {{ experience.role }}
-                    <button class="close mr-2 ml-2 small" aria-label="close" type="button" @click="removeExpById('experiences', experience.id)">x</button>
+                    <b-button
+                            v-show="showByIndex === experience"
+                            class="close mr-2 ml-2 small"
+                            aria-label="close" type="button"
+                            @click="removeStateElmByID('experiences', experience.id)"
+                            v-b-tooltip.hover
+                            title="Delete Me"
+                    >x</b-button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(experience.fromTo) }}
                     </small>
@@ -39,13 +59,23 @@
                 Projects
             </h3>
             <div
+                    @mouseover="showByIndex = project"
+                    @mouseout="showByIndex = null"
                     :data-identifier="project.id"
                     class="box"
                     v-for="(project, index) in getProjects"
                     :key="index">
                 <h4 class="m-0 text-capitalize">
                     {{ project.name }}
-                    <button class="close mr-2 ml-2 small" aria-label="close" type="button" @click="removeExpById('projects', project.id)">x</button>
+                    <b-button
+                            v-show="showByIndex === project"
+                            class="close mr-2 ml-2 small"
+                            aria-label="close"
+                            type="button"
+                            @click="removeStateElmByID('projects', project.id)"
+                            v-b-tooltip.hover
+                            title="Delete Me"
+                    >x</b-button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(project.fromTo) }}
                     </small>
@@ -61,6 +91,8 @@
                 Educations
             </h3>
             <div
+                    @mouseover="showByIndex = education"
+                    @mouseout="showByIndex = null"
                     :data-identifier="education.id"
                     class="box"
                     v-for="(education, index) in getEducations"
@@ -68,7 +100,15 @@
             >
                 <h4 class="m-0 text-capitalize">
                     {{ education.degree }}
-                    <button class="close mr-2 ml-2 small" aria-label="close" type="button" @click="removeExpById('educations', education.id)">x</button>
+                    <b-button
+                            v-show="showByIndex === education"
+                            class="close mr-2 ml-2 small"
+                            aria-label="close"
+                            type="button"
+                            @click="removeStateElmByID('educations', education.id)"
+                            v-b-tooltip.hover
+                            title="Delete Me"
+                    >x</b-button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(education.fromTo) }}
                     </small>
@@ -89,6 +129,11 @@
 
     export default {
         name: 'paperContent',
+        data () {
+            return {
+                showByIndex: null
+            }
+        },
         components: {
             VueMarkdown
         },
@@ -104,12 +149,21 @@
                 }
                 return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
             },
-            removeExpById(object, id ) {
+            removeStateElmByID(state, id ) {
                 this.$store.commit('removeStateElmByID', {
-                    field: object,
+                    field: state,
                     id: id
                 });
             },
+            removeStateElm(state, elm ) {
+                this.$store.commit('removeStateElm', {
+                    field: state,
+                    elm: elm
+                });
+            },
+            removeResume() {
+                this.$store.commit('updateStateField', {field: 'resume', value: null})
+            }
         }
     }
 </script>
