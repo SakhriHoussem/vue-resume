@@ -1,6 +1,6 @@
 <template>
-    <b-tab title="Language">
-        <b-form @submit.prevent="onSubmit">
+        <b-form @submit.prevent="onSubmit" class="mt-2 mb-3">
+            <label for="langauges">add your Languages:</label>
             <b-row>
                 <b-col>
                     <b-input
@@ -22,16 +22,15 @@
                                 :options="LangLevels"
                         ></b-form-select>
                         <b-input-group-append>
-                            <b-button block type="submit" variant="info">
+                            <b-button type="submit" variant="info">
                                 <font-awesome-icon icon="plus"></font-awesome-icon>
                             </b-button>
                         </b-input-group-append>
-                        <small class="text-danger">{{ validation.firstError('language.level')}}</small>
                     </b-input-group>
+                    <small class="text-danger">{{ validation.firstError('language.level')}}</small>
                 </b-col>
             </b-row>
         </b-form>
-    </b-tab>
 </template>
 
 <script>

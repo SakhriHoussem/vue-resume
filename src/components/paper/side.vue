@@ -1,7 +1,10 @@
 <template>
     <b-col id="paper-side" cols="4">
         <div class="text-center">
-            <b-avatar  button @click="$refs.file.click()" size="10rem" variant="dark">
+            <b-avatar  button @click="$refs.file.click()"
+                       size="10rem" variant="dark"
+                       v-b-tooltip.hover
+                       title="Delete or Change Me">
                 <img v-if="image" :src="image" :alt="getFullName">
                 <font-awesome-icon v-else  icon="camera-retro" />
             </b-avatar>

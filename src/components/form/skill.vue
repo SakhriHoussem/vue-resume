@@ -1,6 +1,6 @@
 <template>
-    <b-tab title="Skill">
-        <b-form @submit.prevent="onSubmit" @reset="onReset">
+        <b-form @submit.prevent="onSubmit" @reset="onReset" class="mt-2 mb-3">
+            <label for="skills">add your skills:</label>
             <b-row>
                 <b-col cols="12" sm="6" md="12" lg="6">
                     <b-input
@@ -31,7 +31,6 @@
                 </b-col>
             </b-row>
         </b-form>
-    </b-tab>
 </template>
 
 <script>

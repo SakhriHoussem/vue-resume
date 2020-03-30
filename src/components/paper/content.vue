@@ -183,4 +183,7 @@
     .close {
         font-size: 1rem !important;
     }
+    .box:hover{
+        background-color: rgba(0, 0, 0, 0.05);
+    }
 </style>

@@ -1,6 +1,5 @@
 <template>
-    <b-tab title="Interests">
-        <div>
+        <div  class="mt-2 mb-3">
             <label for="intersts">add your Interests:</label>
             <b-form-tags
                     tag-variant="info"
@@ -13,7 +12,6 @@
             >
             </b-form-tags>
         </div>
-    </b-tab>
 </template>
 
 <script>

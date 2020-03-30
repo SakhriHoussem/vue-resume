@@ -1,5 +1,5 @@
 <template>
-    <b-tab title="Experience" active>
+    <b-tab title="Experience">
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <b-form-group
                     label="Role:"
