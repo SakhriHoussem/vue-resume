@@ -26,7 +26,11 @@
                         placeholder="Enter your Pseudo"
                 ></b-form-input>
                 <b-input-group-append>
-                    <b-button @click="addSocialNetwork" variant="info">
+                    <b-button
+                            v-b-tooltip.hover
+                            title="Add Social Media"
+                            @click="addSocialNetwork" variant="info"
+                    >
                         <font-awesome-icon icon="plus"></font-awesome-icon>
                     </b-button>
                 </b-input-group-append>
