@@ -3,7 +3,7 @@
 
 
 
-        <b-tabs content-class="mt-3">
+        <b-tabs v-model='tabIndex' content-class="mt-3" fill>
             <info/>
 
             <experience/>
@@ -15,7 +15,12 @@
             <more/>
 
         </b-tabs>
-
+        <div class="text-center">
+            <b-button-group class="mt-4">
+                <b-button variant="dark" @click="tabIndex--">Previous</b-button>
+                <b-button variant="dark" @click="tabIndex++">Next</b-button>
+            </b-button-group>
+        </div>
     </b-col>
 </template>
 
@@ -24,8 +29,7 @@
     import experience   from "./form/experience.vue";
     import project      from "./form/project.vue";
     import education    from "./form/education.vue";
-    import more    from "./form/more.vue";
-
+    import more         from "./form/more.vue";
 
     export default {
         name: 'appSidebar',
@@ -36,5 +40,15 @@
             info,
             more,
         },
+        computed:{
+            tabIndex: {
+                get() {
+                    return this.$store.state.tabs.index
+                },
+                set(value) {
+                    this.$store.state.tabs.index = value
+                }
+            }
+        }
     }
 </script>

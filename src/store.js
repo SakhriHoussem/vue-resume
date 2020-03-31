@@ -19,7 +19,7 @@ export default new Vuex.Store({
                 {
                     id: 0,
                     role: 'Full Stack Developer',
-                    
+
                     company: 'AhSB-Communication',
                     fromTo: ['Nov-2018', 'April-2019'],
                     description: 'It was my responsibility to :\n' +
@@ -135,7 +135,13 @@ export default new Vuex.Store({
             { value: 'Conversational ', text: 'Conversational ' },
             { value: 'Business ', text: 'Business ' },
             { value: 'Fluent', text: 'Fluent' },
-        ]
+        ],
+        edit: {
+            experiences: null
+        },
+        tabs: {
+            index: 1
+        }
     },
     getters: {
         getSocialNetworksList: state => { return  state.socialNetworksList },
@@ -152,6 +158,7 @@ export default new Vuex.Store({
         getSkills: state => { return  state.form.skills },
         getLanguages: state => { return  state.form.languages },
         getInterests: state => { return  state.form.interests },
+        getEditedExperience: state => { return  state.edit.experiences },
     },
     mutations: {
         updateStateField (state, payload) {
@@ -169,6 +176,29 @@ export default new Vuex.Store({
         removeStateElm (state, payload) {
             // mutate state
             this.state.form[payload.field] = state.form[payload.field].filter( el => { return el !== payload.elm; });
+        },
+        editStateElm (state, payload) {
+            // mutate state
+            this.state.edit[payload.field] = payload.value;
+        },
+        ResetEditStateElm (state, payload) {
+            // mutate state
+            this.state.edit[payload.field] = null;
+        },
+        editedState (state, payload) {
+            // mutate state
+            this.state.form[payload.field].push(this.state.edit[payload.field]);
+        },
+        setTabIndex(state, payload){
+            this.state.tabs.index = payload.index;
+
         }
     },
+    actions: {
+        submitEditedState (context, payload) {
+            context.commit('removeStateElmByID',payload);
+            context.commit('editedState', payload);
+            context.commit('ResetEditStateElm', payload);
+        }
+    }
 });

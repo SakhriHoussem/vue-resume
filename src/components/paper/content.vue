@@ -11,16 +11,28 @@
                     @mouseout="showByIndex = null"
             >
                 <b-button v-show="showByIndex === getResume"
-                        class="close mr-2 ml-2 small"
-                        aria-label="close" type="button"
-                        @click="removeResume"
-                        v-b-tooltip.hover
-                        title="Delete Me"
-                >x</b-button>
+                          class="close mr-2 ml-2 small"
+                          aria-label="close" type="button"
+                          @click="removeResume"
+                          v-b-tooltip.hover
+                          title="Delete Me" variant="none"
+                >
+                    <font-awesome-icon icon="times" />
+                </b-button>
+                <b-button v-show="showByIndex === getResume"
+                          class="close mr-2 ml-2 p-0 small"
+                          aria-label="edit"
+                          href="#resume"
+                          @click="setTabIndex(0)"
+                          v-b-tooltip.hover
+                          title="Edit Me" variant="none"
+                >
+                    <font-awesome-icon icon="edit" />
+                </b-button>
                 <vue-markdown :source="getResume"></vue-markdown>
             </div>
         </div>
-        <div v-if="getExperiences.length">
+        <div v-show="getExperiences.length">
             <h3 class="text-info">
                 <font-awesome-icon icon="briefcase" />
                 Experiences
@@ -41,8 +53,19 @@
                             aria-label="close" type="button"
                             @click="removeStateElmByID('experiences', experience.id)"
                             v-b-tooltip.hover
-                            title="Delete Me"
-                    >x</b-button>
+                            title="Delete Me" variant="none"
+                    >
+                        <font-awesome-icon icon="times" />
+                    </b-button>
+                    <b-button v-show="showByIndex === experience"
+                              class="close mr-2 ml-2 p-0 small"
+                              aria-label="edit" type="button"
+                              v-b-tooltip.hover
+                              title="Edit Me" variant="none"
+                              @click="editMe('experiences',experience,1)"
+                    >
+                        <font-awesome-icon icon="edit" />
+                    </b-button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(experience.fromTo) }}
                     </small>
@@ -122,8 +145,6 @@
 </template>
 
 <script>
-    // todo: add delete btn
-    // todo: add update btn
     import  { mapGetters } from 'vuex'
     import VueMarkdown from 'vue-markdown'
 
@@ -163,6 +184,14 @@
             },
             removeResume() {
                 this.$store.commit('updateStateField', {field: 'resume', value: null})
+            }
+            ,
+            editMe(state,data,tabIndex) {
+                this.$store.commit('editStateElm', {field: state, value: data})
+                this.setTabIndex(tabIndex);
+            },
+            setTabIndex(index) {
+                this.$store.commit('setTabIndex', {index: index})
             }
         }
     }

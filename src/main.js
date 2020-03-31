@@ -19,7 +19,9 @@ import {  faPhone,
           faLanguage,
           faPlus,
           faInfo,
-          faCameraRetro
+          faEdit,
+          faCameraRetro,
+          faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 // Install FontAwesome
@@ -37,7 +39,9 @@ library.add(  faPhone,
               faLanguage,
               faPlus,
               faInfo,
-              faCameraRetro
+              faEdit,
+              faCameraRetro,
+              faTimes
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 // Install BootstrapVue
