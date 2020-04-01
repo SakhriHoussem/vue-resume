@@ -138,7 +138,11 @@ export default new Vuex.Store({
         ],
         edit: {
             experiences: null,
-            projects: null,
+            projects:    null,
+        },
+        backups: {
+            experiences: {},
+            projects:    {},
         },
         tabs: {
             index: 1
@@ -193,14 +197,27 @@ export default new Vuex.Store({
         },
         setTabIndex(state, payload){
             this.state.tabs.index = payload.index;
-
-        }
+        },
+        saveStateBackup (state, payload) {
+            // move state from form to backups
+            // state => backups
+            Object.assign(this.state.backups[payload.field], payload.value)
+        },
+        restoreStateBackup (state, payload) {
+            // restore state data form from backups
+            // state <= backups
+            this.state.form[payload.field].push(this.state.backups[payload.field]);
+        },
     },
     actions: {
         submitEditedState (context, payload) {
             context.commit('removeStateElmByID',payload);
             context.commit('editedState', payload);
             context.commit('ResetEditStateElm', payload);
+        },
+        restoreState (context, payload) {
+            context.commit('removeStateElmByID',payload);
+            context.commit('restoreStateBackup', payload);
         }
     }
 });

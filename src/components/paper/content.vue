@@ -197,7 +197,8 @@
             }
             ,
             editMe(state,data,tabIndex) {
-                this.$store.commit('editStateElm', {field: state, value: data})
+                this.$store.commit('saveStateBackup', {field: state, value: data});
+                this.$store.commit('editStateElm', {field: state, value: data});
                 this.setTabIndex(tabIndex);
             },
             setTabIndex(index) {

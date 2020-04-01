@@ -46,8 +46,8 @@
             </b-form-group>
 
             <b-form-group
-                    label="Description :"
-                    label-for="project-description"
+                        label="Description :"
+                        label-for="project-description"
             >
                 <b-form-textarea
                         id="project-description"
@@ -232,14 +232,21 @@
         },
         methods: {
             onReset() {
-                this.project.id = this.$store.state.form.projects.length;
-                this.project.name = "";
-                this.project.link = "";
-                this.project.fromTo = "";
+                this.project.id          = this.$store.state.form.projects.length;
+                this.project.name        = "";
+                this.project.link        = "";
+                this.project.fromTo      = "";
                 this.project.description = "";
-                this.project.tags = [];
+                this.project.tags        = [];
                 this.validation.reset();
-                this.$store.state.edit.projects = null;
+
+                this.$store.dispatch('restoreState', {
+                    field: 'projects',
+                    id:     this.$store.state.edit.projects.id
+                });
+
+                this.$store.state.edit.projects    = null;
+                this.$store.state.backups.projects = {};
             },
             EditState(state, id) {
                 this.$validate().then((success)=> {

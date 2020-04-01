@@ -247,7 +247,15 @@
                 this.experience.description = "";
                 this.experience.tags = [];
                 this.validation.reset();
-                this.$store.state.edit.experiences = null;
+
+                this.$store.dispatch('restoreState', {
+                    field: 'experiences',
+                    id: this.$store.state.edit.experiences.id
+                });
+
+                this.$store.state.edit.experiences    = null;
+                this.$store.state.backups.experiences = {};
+
             },
             EditState(state, id) {
                 this.$validate().then((success)=> {
