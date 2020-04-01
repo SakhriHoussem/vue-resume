@@ -139,10 +139,12 @@ export default new Vuex.Store({
         edit: {
             experiences: null,
             projects:    null,
+            educations:  null,
         },
         backups: {
             experiences: {},
             projects:    {},
+            educations:  {},
         },
         tabs: {
             index: 1
@@ -165,6 +167,7 @@ export default new Vuex.Store({
         getInterests: state => { return  state.form.interests },
         getEditedExperience: state => { return  state.edit.experiences },
         getEditedProject: state => { return  state.edit.projects },
+        getEditedEducation: state => { return  state.edit.educations },
     },
     mutations: {
         updateStateField (state, payload) {
