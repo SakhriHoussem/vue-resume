@@ -6,14 +6,14 @@
                     label-for="project-name"
             >
                 <b-form-input
-                        :class="{ 'is-invalid' : validation.hasError('project.name')}"
+                        :class="{ 'is-invalid' : validation.hasError('name')}"
                         id="project-name"
                         type="text"
                         required
-                        v-model="project.name"
+                        v-model="name"
                         placeholder="Enter your project name"
                 ></b-form-input>
-                <small class="text-danger">{{ validation.firstError('project.name')}}</small>
+                <small class="text-danger">{{ validation.firstError('name')}}</small>
             </b-form-group>
 
             <b-form-group
@@ -21,13 +21,13 @@
                     label-for="project-link"
             >
                 <b-form-input
-                        :class="{ 'is-invalid' : validation.hasError('project.link')}"
+                        :class="{ 'is-invalid' : validation.hasError('link')}"
                         id="project-link"
                         type="url"
-                        v-model="project.link"
+                        v-model="link"
                         placeholder="Enter your project link"
                 ></b-form-input>
-                <small class="text-danger">{{ validation.firstError('project.link')}}</small>
+                <small class="text-danger">{{ validation.firstError('link')}}</small>
             </b-form-group>
 
             <b-form-group
@@ -39,8 +39,8 @@
                                             id: 'project-from-to'
                             }"
                              class="w-100"
-                             :class="{'is-invalid' : validation.hasError('project.fromTo')}"
-                             v-model="project.fromTo"
+                             :class="{'is-invalid' : validation.hasError('fromTo')}"
+                             v-model="fromTo"
                              valueType="MMMM-YYYY" range>
                 </date-picker>
             </b-form-group>
@@ -51,7 +51,7 @@
             >
                 <b-form-textarea
                         id="project-description"
-                        v-model="project.description"
+                        v-model="description"
                         placeholder="write your something about your project..."
                         rows="3"
                         max-rows="6"
@@ -66,11 +66,34 @@
                         input-id="project-tags"
                         separator=" ,;"
                         class="mb-2"
-                        v-model="project.tags"
+                        v-model="tags"
                         tag-variant="info"
                 ></b-form-tags>
             </b-form-group>
-            <b-button block type="submit" variant="info">
+            <div v-if="getEditedProject">
+                <b-button
+                        v-b-tooltip.hover
+                        title="Edit Me"
+                        block type="button"
+                        @click="EditState('projects', getEditedProject.id)"
+                        variant="warning">
+                    <font-awesome-icon icon="edit"></font-awesome-icon>
+                </b-button>
+
+                <b-button
+                        v-b-tooltip.hover
+                        title="Cancel"
+                        block type="button"
+                        @click="onReset"
+                        variant="info">
+                    <font-awesome-icon icon="times"></font-awesome-icon>
+                </b-button>
+            </div>
+            <b-button
+                    v-else
+                    v-b-tooltip.hover
+                    title="Add Project"
+                    block type="submit" variant="info">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
             </b-button>
         </b-form>
@@ -78,6 +101,7 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
     import SimpleVueValidation from "simple-vue-validator";
     const Validator = SimpleVueValidation.Validator;
 
@@ -95,18 +119,139 @@
                 }
             }
         },
+        computed: {
+            ...mapGetters(["getEditedProject"]),
+            id: {
+                get: function () {
+                    if (this.getEditedProject) {
+                        return this.$store.state.edit.projects.id
+                    } else {
+                        return this.$store.state.form.projects.length
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedProject.id) {
+                        this.$store.state.edit.projects.id = value;
+                    } else {
+                        // this.project.id = this.$store.state.form.projects.length;
+                        return this.project.id;
+                    }
+                },
+            },
+            name: {
+                get: function () {
+                    if (this.getEditedProject) {
+                        return this.$store.state.edit.projects.name;
+                    } else {
+                        return this.project.name
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedProject) {
+                        this.$store.state.edit.projects.name = value
+                    } else {
+                        this.project.name = value
+                    }
+                }
+            },
+            link: {
+                get: function () {
+                    if (this.getEditedProject) {
+                        return this.$store.state.edit.projects.link;
+                    } else {
+                        return this.project.link
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedProject) {
+                        this.$store.state.edit.projects.link = value;
+                    } else {
+                        this.project.link = value;
+                    }
+                }
+            },
+            fromTo: {
+                get: function () {
+                    if (this.getEditedProject) {
+                        return this.$store.state.edit.projects.fromTo;
+                    } else {
+                        return this.project.fromTo
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedProject) {
+                        this.$store.state.edit.projects.fromTo = value
+                    } else {
+                        this.project.fromTo = value
+                    }
+                }
+            },
+            description: {
+                get: function () {
+                    if (this.getEditedProject) {
+                        return this.$store.state.edit.projects.description;
+                    } else {
+                        return this.project.description
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedProject) {
+                        this.$store.state.edit.projects.description = value;
+                    } else {
+                        this.project.description = value
+                    }
+                }
+            },
+            tags: {
+                get: function () {
+                    if (this.getEditedProject) {
+                        return this.$store.state.edit.projects.tags;
+                    } else {
+                        return this.project.tags
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedProject) {
+                        this.$store.state.edit.projects.tags = value;
+                    } else {
+                        this.project.tags = value;
+                    }
+                }
+            },
+        },
         validators: {
-            'project.name': function (value) {
+            name: function (value) {
                 return Validator.value(value).required();
             },
-            'project.link': function (value) {
+            link: function (value) {
                 return Validator.value(value).url();
             },
-            'project.fromTo': function (value) {
+            fromTo: function (value) {
                 return Validator.value(value).required();
             }
         },
         methods: {
+            onReset() {
+                this.project.id = this.$store.state.form.projects.length;
+                this.project.name = "";
+                this.project.link = "";
+                this.project.fromTo = "";
+                this.project.description = "";
+                this.project.tags = [];
+                this.validation.reset();
+                this.$store.state.edit.projects = null;
+            },
+            EditState(state, id) {
+                this.$validate().then((success)=> {
+                    if (success) {
+                        this.$store.dispatch('submitEditedState', {
+                            field: state,
+                            id: id
+                        });
+                        this.onReset()
+                    }
+                });
+            },
             // add validation
             onSubmit() {
                 this.$validate().then((success)=> {
@@ -114,26 +259,17 @@
                         this.$store.commit('appendStateField', {
                             field: 'projects',
                             value: {
-                                id:        this.project.id,
-                                name:        this.project.name,
-                                link:        this.project.link,
+                                id:            this.project.id,
+                                name:          this.project.name,
+                                link:          this.project.link,
                                 fromTo:        this.project.fromTo,
-                                description: this.project.description,
-                                tags:        this.project.tags,
+                                description:   this.project.description,
+                                tags:          this.project.tags,
                             }
                         });
                         this.onReset()
                     }
                 })
-            },
-            onReset() {
-                this.project.id += 1;
-                this.project.name = "";
-                this.project.link = "";
-                this.project.fromTo = "";
-                this.project.description = "";
-                this.project.tags = [];
-                this.validation.reset();
             },
         }
     }

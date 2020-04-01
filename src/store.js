@@ -137,7 +137,8 @@ export default new Vuex.Store({
             { value: 'Fluent', text: 'Fluent' },
         ],
         edit: {
-            experiences: null
+            experiences: null,
+            projects: null,
         },
         tabs: {
             index: 1
@@ -159,6 +160,7 @@ export default new Vuex.Store({
         getLanguages: state => { return  state.form.languages },
         getInterests: state => { return  state.form.interests },
         getEditedExperience: state => { return  state.edit.experiences },
+        getEditedProject: state => { return  state.edit.projects },
     },
     mutations: {
         updateStateField (state, payload) {
@@ -174,11 +176,11 @@ export default new Vuex.Store({
             this.state.form[payload.field] = state.form[payload.field].filter( el => { return el.id !== payload.id; });
         },
         removeStateElm (state, payload) {
-            // mutate state
+            // delete an object form the state
             this.state.form[payload.field] = state.form[payload.field].filter( el => { return el !== payload.elm; });
         },
         editStateElm (state, payload) {
-            // mutate state
+            // move experience from form to edit
             this.state.edit[payload.field] = payload.value;
         },
         ResetEditStateElm (state, payload) {

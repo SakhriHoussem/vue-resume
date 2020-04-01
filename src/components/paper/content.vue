@@ -93,12 +93,22 @@
                     <b-button
                             v-show="showByIndex === project"
                             class="close mr-2 ml-2 small"
-                            aria-label="close"
-                            type="button"
+                            aria-label="close" type="button"
                             @click="removeStateElmByID('projects', project.id)"
                             v-b-tooltip.hover
-                            title="Delete Me"
-                    >x</b-button>
+                            title="Delete Me" variant="none"
+                    >
+                        <font-awesome-icon icon="times" />
+                    </b-button>
+                    <b-button v-show="showByIndex === project"
+                              class="close mr-2 ml-2 p-0 small"
+                              aria-label="edit" type="button"
+                              v-b-tooltip.hover
+                              title="Edit Me" variant="none"
+                              @click="editMe('projects',project,2)"
+                    >
+                        <font-awesome-icon icon="edit" />
+                    </b-button>
                     <small class="float-right text-muted mt-2 ">
                         {{ fromTo(project.fromTo) }}
                     </small>
