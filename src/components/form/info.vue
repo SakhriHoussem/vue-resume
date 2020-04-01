@@ -1,5 +1,5 @@
 <template>
-    <b-tab title="Infos" active>
+    <b-tab title="Infos" id="info" active>
         <full-name/>
 
         <job/>

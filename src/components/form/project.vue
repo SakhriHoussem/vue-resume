@@ -1,5 +1,5 @@
 <template>
-    <b-tab title="Project">
+    <b-tab title="Project" id="project">
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <b-form-group
                     label="Project Name:"

@@ -61,6 +61,7 @@
                               class="close mr-2 ml-2 p-0 small"
                               aria-label="edit" type="button"
                               v-b-tooltip.hover
+                              href="#experience"
                               title="Edit Me" variant="none"
                               @click="editMe('experiences',experience,1)"
                     >
@@ -103,6 +104,7 @@
                     <b-button v-show="showByIndex === project"
                               class="close mr-2 ml-2 p-0 small"
                               aria-label="edit" type="button"
+                              href="#project"
                               v-b-tooltip.hover
                               title="Edit Me" variant="none"
                               @click="editMe('projects',project,2)"
@@ -147,6 +149,7 @@
                               class="close mr-2 ml-2 p-0 small"
                               aria-label="edit" type="button"
                               v-b-tooltip.hover
+                              href="#education"
                               title="Edit Me" variant="none"
                               @click="editMe('educations',education,3)"
                     >

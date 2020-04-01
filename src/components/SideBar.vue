@@ -1,5 +1,5 @@
 <template>
-    <b-col cols="12"  md="3">
+    <b-col cols="12"  md="4">
 
 
 
@@ -15,7 +15,7 @@
             <more/>
 
         </b-tabs>
-        <div class="text-center">
+        <div class="text-center ">
             <b-button-group class="mt-4">
                 <b-button variant="dark" @click="tabIndex--">Previous</b-button>
                 <b-button variant="dark" @click="tabIndex++">Next</b-button>

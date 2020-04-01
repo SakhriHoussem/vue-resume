@@ -1,5 +1,5 @@
 <template>
-    <b-tab title="More">
+    <b-tab title="More" id="more">
         <skill/>
 
         <language/>
