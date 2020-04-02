@@ -29,6 +29,7 @@ import {  faPhone,
           faEdit,
           faCameraRetro,
           faTimes,
+          faFilePdf
 } from '@fortawesome/free-solid-svg-icons'
 
 // Install FontAwesome
@@ -53,6 +54,7 @@ library.add(  faPhone,
               faBehance,
               faDribbble,
               faTwitter,
+              faFilePdf
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 // Install BootstrapVue
