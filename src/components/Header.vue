@@ -3,13 +3,33 @@
         <b-navbar-brand href="#">Vue Resume</b-navbar-brand>
         <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav class="ml-auto">
-                <b-nav-item
-                            @click="print"
-                            v-b-tooltip.hover
-                            title="Print Me"
-                    >
-                        <font-awesome-icon icon="file-pdf" />
-                </b-nav-item>
+
+                <gh-btns-watch
+                        slug="SakhriHoussem/vue-resume"
+                        show-count
+                />
+                <gh-btns-star
+                        slug="SakhriHoussem/vue-resume"
+                        show-count
+                />
+                <gh-btns-fork
+                        slug="SakhriHoussem/vue-resume"
+                        show-count
+                />
+                <gh-btns-follow
+                        user="SakhriHoussem"
+                        show-count
+                />
+                <b-button
+                        @click="print"
+                        v-b-tooltip.hover
+                        title="Print Me"
+                        variant="dark"
+                        size="sm"
+                        class="pt-0 pb-0"
+                >
+                    <font-awesome-icon icon="file-pdf" />
+                </b-button>
             </b-navbar-nav>
         </b-collapse>
 

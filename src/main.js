@@ -7,6 +7,8 @@ import SimpleVueValidation from 'simple-vue-validator';
 import DatePicker from 'vue2-datepicker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import 'vue-github-buttons/dist/vue-github-buttons.css'; // Stylesheet
+import VueGitHubButtons from 'vue-github-buttons'; // Component plugin
 import { faFacebook,
          faInstagram,
          faLinkedinIn,
@@ -63,6 +65,7 @@ Vue.use(BootstrapVue);
 Vue.use(Vuex);
 Vue.use(DatePicker);
 Vue.use(SimpleVueValidation);
+Vue.use(VueGitHubButtons, { useCache: true });
 
 //you need to import the CSS manually (in case you want to override it)
 import 'bootstrap/dist/css/bootstrap.css'
