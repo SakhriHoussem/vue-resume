@@ -39,12 +39,13 @@
 <script>
     import jsPDF from 'jspdf'
     import html2canvas from 'html2canvas'
+
     export default {
         name: 'appHeader',
         methods: {
             print () {
-                const filename  = 'resume.pdf';
-                html2canvas(document.querySelector('#paper')).then(canvas => {
+                const filename  = this.$store.state.form.fullName+' Resume.pdf';
+                html2canvas(document.querySelector('#paper'), {scale: 5}).then(canvas => {
                     let pdf = new jsPDF('p', 'mm', 'a4');
                     pdf.addImage(canvas.toDataURL('image/jpeg'), 'JPEG', -4, 0, 211, 298);
                     pdf.save(filename);
