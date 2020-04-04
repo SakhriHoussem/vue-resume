@@ -1,15 +1,54 @@
 <template>
     <b-col id="paper-side" cols="4">
         <div class="text-center">
-            <b-avatar  button @click="$refs.file.click()"
+            <div v-if="image"
+                 id="img-avatar"
+                 @mouseover="showByIndex = image"
+                 @mouseout="showByIndex = null"
+            >
+                <div class="bg-white">
+                    <b-button
+                            class="close"
+                            aria-label="close" type="button"
+                            v-b-tooltip.hover
+                            title="Delete Me" variant="none"
+                            @click="image = null"
+                            v-show="showByIndex === image"
+                    >
+                        <font-awesome-icon icon="times" />
+                    </b-button>
+                    <b-button v-show="showByIndex === image"
+                              class="close"
+                              aria-label="edit" type="button"
+                              v-b-tooltip.hover
+                              title="Edit Me" variant="none"
+                              @click="$refs.file.click()"
+                    >
+                        <font-awesome-icon icon="edit" />
+                    </b-button>
+                </div>
+                <b-img
+                        :src="image"
+                        :alt="getFullName"
+                        thumbnail center
+                >
+                </b-img>
+            </div>
+            <b-avatar  v-else
+                       button @click="$refs.file.click()"
                        size="10rem" variant="dark"
                        v-b-tooltip.hover
-                       title="Delete or Change Me">
-                <img v-if="image" :src="image" :alt="getFullName">
-                <font-awesome-icon v-else  icon="camera-retro" />
+                       title="Change Me">
+                <font-awesome-icon icon="camera-retro" />
             </b-avatar>
 
-            <input type="file" ref="file" id="input-image" v-show="false" @change="onFileChange">
+            <input type="file"
+                   ref="file"
+                   id="input-image"
+                   v-show="false"
+                   @change="onFileChange"
+                   accept="image/*"
+            >
 
             <h3 class="text-capitalize">  {{ getFullName }} </h3>
             <h4 class="text-capitalize text-dark"> {{ getJob }} </h4>
@@ -198,5 +237,16 @@
     #paper-side .hover:hover{
         background-color: #14798d;
         border-radius: 3px;
+    }
+    #img-avatar div {
+        padding: 3px;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        border-radius: 5px;
+    }
+
+    #img-avatar div button{
+        padding: 3px;
     }
 </style>
