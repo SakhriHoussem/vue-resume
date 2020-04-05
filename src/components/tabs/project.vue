@@ -1,5 +1,5 @@
 <template>
-    <b-tab :title="$t('tabs.project')" id="project">
+    <b-tab :title="$t('tabs.project')" id="projects">
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <b-form-group
                     :label="$t('labels.projectName')+':'"

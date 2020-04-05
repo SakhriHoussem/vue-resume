@@ -37,9 +37,9 @@
 <script>
     import { mapGetters } from 'vuex'
     import avatar from './avatar'
-    import unstyledList from './unstyledList'
-    import unstyledTable from './unstyledTable'
-    import customList from './customList'
+    import unstyledList from '../lists/unstyledList'
+    import unstyledTable from '../lists/unstyledTable'
+    import customList from '../lists/customList'
     export default {
         name: 'paperSide',
         components: {
@@ -47,11 +47,6 @@
             unstyledList,
             unstyledTable,
             customList,
-        },
-        data() {
-            return {
-                showByIndex: null,
-            }
         },
         computed: {
             ...mapGetters([
@@ -67,13 +62,5 @@
             ]),
 
         },
-        methods: {
-            removeStateElm(state, elm ) {
-                this.$store.commit('removeStateElm', {
-                    field: state,
-                    elm: elm
-                });
-            },
-        }
     }
 </script>

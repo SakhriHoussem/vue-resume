@@ -1,242 +1,51 @@
 <template>
     <b-col cols="8">
-        <div v-if="getResume">
-            <h3 class="text-info">
-                <font-awesome-icon icon="pencil-alt" />
-                {{$t('titles.resume')}}
-            </h3>
-            <div
-                    class="box"
-                    @mouseover="showByIndex = getResume"
-                    @mouseout="showByIndex = null"
-            >
-                <b-button v-show="showByIndex === getResume"
-                          class="close mr-2 ml-2 small"
-                          aria-label="close" type="button"
-                          @click="removeResume"
-                          v-b-tooltip.hover
-                          :title="$t('toggles.delete')" variant="none"
-                >
-                    <font-awesome-icon icon="times" />
-                </b-button>
-                <b-button v-show="showByIndex === getResume"
-                          class="close mr-2 ml-2 p-0 small"
-                          aria-label="edit"
-                          href="#resume"
-                          @click="setTabIndex(0)"
-                          v-b-tooltip.hover
-                          :title="$t('toggles.edit')" variant="none"
-                >
-                    <font-awesome-icon icon="edit" />
-                </b-button>
-                <vue-markdown :source="getResume"></vue-markdown>
-            </div>
-        </div>
-        <div v-show="getExperiences.length">
-            <h3 class="text-info">
-                <font-awesome-icon icon="briefcase" />
-                {{$t('titles.experiences')}}
-            </h3>
-            <div
-                    @mouseover="showByIndex = experience"
-                    @mouseout="showByIndex = null"
-                    :data-identifier="experience.id"
-                    class="box"
-                    v-for="(experience, index) in getExperiences"
-                    :key="index"
-            >
-                <h4 class="m-0 text-capitalize">
-                    {{ experience.role }}
-                    <b-button
-                            v-show="showByIndex === experience"
-                            class="close mr-2 ml-2 small"
-                            aria-label="close" type="button"
-                            @click="removeStateElmByID('experiences', experience.id)"
-                            v-b-tooltip.hover
-                            :title="$t('toggles.delete')" variant="none"
-                    >
-                        <font-awesome-icon icon="times" />
-                    </b-button>
-                    <b-button v-show="showByIndex === experience"
-                              class="close mr-2 ml-2 p-0 small"
-                              aria-label="edit" type="button"
-                              v-b-tooltip.hover
-                              href="#experience"
-                              :title="$t('toggles.edit')" variant="none"
-                              @click="editMe('experiences',experience,1)"
-                    >
-                        <font-awesome-icon icon="edit" />
-                    </b-button>
-                    <small class="float-right text-muted mt-2 ">
-                        {{ fromTo(experience.fromTo) }}
-                    </small>
-                </h4>
-                <span class="text-muted text-capitalize"> {{ experience.company }}</span>
-                <vue-markdown :source="experience.description"></vue-markdown>
-                <b-badge variant="info" class="mr-2" v-for="tag in experience.tags" :key="tag">{{ tag }}</b-badge>
-            </div>
-        </div>
+        <box
+            :title="$t('titles.resume')"
+            :item="getResume"
+            icon="pencil-alt"
+            state="resume"
+        ></box>
 
-        <div v-if="getProjects.length">
-            <h3 class="text-info">
-                <font-awesome-icon icon="box-open"/>
-                {{$t('titles.projects')}}
-            </h3>
-            <div
-                    @mouseover="showByIndex = project"
-                    @mouseout="showByIndex = null"
-                    :data-identifier="project.id"
-                    class="box"
-                    v-for="(project, index) in getProjects"
-                    :key="index">
-                <h4 class="m-0 text-capitalize">
-                    {{ project.name }}
-                    <b-button
-                            v-show="showByIndex === project"
-                            class="close mr-2 ml-2 small"
-                            aria-label="close" type="button"
-                            @click="removeStateElmByID('projects', project.id)"
-                            v-b-tooltip.hover
-                            :title="$t('toggles.delete')" variant="none"
-                    >
-                        <font-awesome-icon icon="times" />
-                    </b-button>
-                    <b-button v-show="showByIndex === project"
-                              class="close mr-2 ml-2 p-0 small"
-                              aria-label="edit" type="button"
-                              href="#project"
-                              v-b-tooltip.hover
-                              :title="$t('toggles.edit')" variant="none"
-                              @click="editMe('projects',project,2)"
-                    >
-                        <font-awesome-icon icon="edit" />
-                    </b-button>
-                    <small class="float-right text-muted mt-2 ">
-                        {{ fromTo(project.fromTo) }}
-                    </small>
-                </h4>
-                <b-link v-if="project.link" class="text-muted small" target="_blank" :href="project.link">more info ...</b-link>
-                <vue-markdown :source="project.description"></vue-markdown>
-                <b-badge variant="info" class="mr-2" v-for="tag in project.tags" :key="tag">{{ tag }}</b-badge>
-            </div>
-        </div>
-        <div v-if="getEducations.length">
-            <h3 class="text-info">
-                <font-awesome-icon icon="university" />
-                {{$t('titles.educations')}}
-            </h3>
-            <div
-                    @mouseover="showByIndex = education"
-                    @mouseout="showByIndex = null"
-                    :data-identifier="education.id"
-                    class="box"
-                    v-for="(education, index) in getEducations"
-                    :key="index"
-            >
-                <h4 class="m-0 text-capitalize">
-                    {{ education.degree }}
-                    <b-button
-                            v-show="showByIndex === education"
-                            class="close mr-2 ml-2 small"
-                            aria-label="close" type="button"
-                            @click="removeStateElmByID('educations', education.id)"
-                            v-b-tooltip.hover
-                            :title="$t('toggles.delete')" variant="none"
-                    >
-                        <font-awesome-icon icon="times" />
-                    </b-button>
-                    <b-button v-show="showByIndex === education"
-                              class="close mr-2 ml-2 p-0 small"
-                              aria-label="edit" type="button"
-                              v-b-tooltip.hover
-                              href="#education"
-                              :title="$t('toggles.edit')" variant="none"
-                              @click="editMe('educations',education,3)"
-                    >
-                        <font-awesome-icon icon="edit" />
-                    </b-button>
-                    <small class="float-right text-muted mt-2 ">
-                        {{ fromTo(education.fromTo) }}
-                    </small>
-                </h4>
-                <span class="text-muted text-capitalize">{{ education.school }}</span>
-                <vue-markdown :source="education.description"></vue-markdown>
-                <b-badge variant="info" class="mr-2" v-for="tag in education.tags" :key="tag">{{ tag }}</b-badge>
-            </div>
-        </div>
+        <box
+            :title="$t('titles.experiences')"
+            :items="getExperiences"
+            icon="briefcase"
+            state="experiences"
+        ></box>
+
+        <box
+            :title="$t('titles.projects')"
+            :items="getProjects"
+            icon="box-open"
+            state="projects"
+            tab-index=2
+        ></box>
+
+        <box
+            :title="$t('titles.educations')"
+            :items="getEducations"
+            icon="text-info"
+            state="educations"
+            tab-index=3
+        ></box>
+
     </b-col>
 </template>
 
 <script>
     import  { mapGetters } from 'vuex'
-    import VueMarkdown from 'vue-markdown'
+    import box from './box'
 
     export default {
         name: 'paperContent',
-        data () {
-            return {
-                showByIndex: null
-            }
-        },
         components: {
-            VueMarkdown
+            box
         },
         computed: {
             ...mapGetters([
                 'getResume', 'getExperiences', 'getProjects', 'getEducations'
             ]),
         },
-        methods: {
-            fromTo( array ) {
-                if (array [0] === array [1]) {
-                    return array[0].split('-').join(' ') + " - " + 'Current'
-                }
-                return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
-            },
-            removeStateElmByID(state, id ) {
-                this.$store.commit('removeStateElmByID', {
-                    field: state,
-                    id: id
-                });
-            },
-            removeStateElm(state, elm ) {
-                this.$store.commit('removeStateElm', {
-                    field: state,
-                    elm: elm
-                });
-            },
-            removeResume() {
-                this.$store.commit('updateStateField', {field: 'resume', value: null})
-            }
-            ,
-            editMe(state,data,tabIndex) {
-                this.$store.commit('saveStateBackup', {field: state, value: data});
-                this.$store.commit('editStateElm', {field: state, value: data});
-                this.setTabIndex(tabIndex);
-            },
-            setTabIndex(index) {
-                this.$store.commit('setTabIndex', {index: index})
-            }
-        }
     }
 </script>
-<style>
-    .box{
-        margin: 5px;
-        background-color: rgba(0, 0, 0, 0.02);
-        padding: 5px;
-        border-radius: 5px;
-    }
-    .box small {
-        font-size: .90rem;
-    }
-    .box p,.box ul{
-        margin: 0;
-    }
-    .close {
-        font-size: 1rem !important;
-    }
-    .box:hover{
-        background-color: rgba(0, 0, 0, 0.05);
-    }
-</style>

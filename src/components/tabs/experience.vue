@@ -1,5 +1,5 @@
 <template>
-    <b-tab :title="$t('tabs.experience')" id="experience" >
+    <b-tab :title="$t('tabs.experience')" id="experiences" >
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <div>
                 <b-form-group
