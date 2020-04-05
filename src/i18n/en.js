@@ -65,7 +65,7 @@ export default {   // English
     titles: {
         resume: 'Resume',
         experiences: 'Experiences',
-        Projects: 'Projects',
+        projects: 'Projects',
         skills: 'Skills',
         languages: 'Languages',
         educations: 'Educations',
