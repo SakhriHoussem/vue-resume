@@ -19,7 +19,7 @@
             :items="getProjects"
             icon="box-open"
             state="projects"
-            tab-index=2
+            :tab-index=2
         ></box>
 
         <box
@@ -27,7 +27,7 @@
             :items="getEducations"
             icon="text-info"
             state="educations"
-            tab-index=3
+            :tab-index=3
         ></box>
 
     </b-col>
