@@ -1,54 +1,7 @@
 <template>
     <b-col id="paper-side" cols="4">
         <div class="text-center">
-            <div v-if="image"
-                 id="img-avatar"
-                 @mouseover="showByIndex = image"
-                 @mouseout="showByIndex = null"
-            >
-                <div class="bg-white">
-                    <b-button
-                            class="close"
-                            aria-label="close" type="button"
-                            v-b-tooltip.hover
-                            :title="$t('toggles.delete')" variant="none"
-                            @click="image = null"
-                            v-show="showByIndex === image"
-                    >
-                        <font-awesome-icon icon="times" />
-                    </b-button>
-                    <b-button v-show="showByIndex === image"
-                              class="close"
-                              aria-label="edit" type="button"
-                              v-b-tooltip.hover
-                              :title="$t('toggles.edit')" variant="none"
-                              @click="$refs.file.click()"
-                    >
-                        <font-awesome-icon icon="edit" />
-                    </b-button>
-                </div>
-                <b-img
-                        :src="image"
-                        :alt="getFullName"
-                        thumbnail center
-                >
-                </b-img>
-            </div>
-            <b-avatar  v-else
-                       button @click="$refs.file.click()"
-                       size="10rem" variant="dark"
-                       v-b-tooltip.hover
-                       :title="$t('toggles.change')">
-                <font-awesome-icon icon="camera-retro" />
-            </b-avatar>
-
-            <input type="file"
-                   ref="file"
-                   id="input-image"
-                   v-show="false"
-                   @change="onFileChange"
-                   accept="image/*"
-            >
+            <avatar/>
 
             <h3 class="text-capitalize">  {{ getFullName }} </h3>
             <h4 v-if="getJob" class="text-capitalize text-dark"> {{ getJob }} </h4>
@@ -183,11 +136,14 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import avatar from './avatar'
     export default {
         name: 'paperSide',
+        components: {
+            avatar
+        },
         data() {
             return {
-                image: "",
                 showByIndex: null,
             }
         },
@@ -206,26 +162,10 @@
 
         },
         methods: {
-            createImage(file) {
-                let reader = new FileReader();
-                reader.onload = (e) => this.image = e.target.result ;
-                reader.readAsDataURL(file);
-            },
-            onFileChange(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                if (!files.length) this.image ="";
-                this.createImage(files[0]);
-            },
             removeStateElm(state, elm ) {
                 this.$store.commit('removeStateElm', {
                     field: state,
                     elm: elm
-                });
-            },
-            removeStateById(state, id ) {
-                this.$store.commit('removeStateElmByID', {
-                    field: state,
-                    id: id
                 });
             },
         }
