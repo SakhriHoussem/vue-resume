@@ -35,3 +35,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - css framwork   : [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue)
 - github buttons : [vue-github-buttons](https://github.com/gluons/vue-github-buttons)
 - markdown : [vue-markdown](https://github.com/miaolz123/vue-markdown)
+- lang : [vue-i18n](https://github.com/kazupon/vue-i18n)
