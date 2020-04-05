@@ -1,8 +1,8 @@
 <template>
-    <b-tab title="Project" id="project">
+    <b-tab :title="$t('tabs.project')" id="project">
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <b-form-group
-                    label="Project Name:"
+                    :label="$t('labels.projectName')+':'"
                     label-for="project-name"
             >
                 <b-form-input
@@ -11,13 +11,13 @@
                         type="text"
                         required
                         v-model="name"
-                        placeholder="Enter your project name"
+                        :placeholder="$t('placeholders.projectName')"
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('name')}}</small>
             </b-form-group>
 
             <b-form-group
-                    label="project link :"
+                    :label="$t('labels.projectLink')+':'"
                     label-for="project-link"
             >
                 <b-form-input
@@ -25,13 +25,13 @@
                         id="project-link"
                         type="url"
                         v-model="link"
-                        placeholder="Enter your project link"
+                        :placeholder="$t('placeholders.projectLink')"
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('link')}}</small>
             </b-form-group>
 
             <b-form-group
-                    label="From - To :"
+                    :label="$t('labels.fromTo')+':'"
                     label-for="project-from-to"
             >
                 <date-picker :input-attr="{
@@ -41,25 +41,27 @@
                              class="w-100"
                              :class="{'is-invalid' : validation.hasError('fromTo')}"
                              v-model="fromTo"
-                             valueType="MMMM-YYYY" range>
+                             valueType="MMMM-YYYY" range
+                            :placeholder="$t('placeholders.fromTo')"
+                >
                 </date-picker>
             </b-form-group>
 
             <b-form-group
-                        label="Description :"
+                        :label="$t('labels.description')+':'"
                         label-for="project-description"
             >
                 <b-form-textarea
                         id="project-description"
                         v-model="description"
-                        placeholder="write your something about your project..."
+                        :placeholder="$t('placeholders.description')+'...'"
                         rows="3"
                         max-rows="6"
                 ></b-form-textarea>
             </b-form-group>
 
             <b-form-group
-                    label="add some tags:"
+                    :label="$t('labels.tags')+':'"
                     label-for="project-tags"
             >
                 <b-form-tags
@@ -68,12 +70,13 @@
                         class="mb-2"
                         v-model="tags"
                         tag-variant="info"
+                        :placeholder="$t('placeholders.tags')"
                 ></b-form-tags>
             </b-form-group>
             <div v-if="getEditedProject">
                 <b-button
                         v-b-tooltip.hover
-                        title="Edit Me"
+                        :title="$t('toggles.edit')"
                         block type="button"
                         @click="EditState('projects', getEditedProject.id)"
                         variant="warning">
@@ -82,7 +85,7 @@
 
                 <b-button
                         v-b-tooltip.hover
-                        title="Cancel"
+                        :title="$t('toggles.cancel')"
                         block type="button"
                         @click="onReset"
                         variant="info">
@@ -92,7 +95,7 @@
             <b-button
                     v-else
                     v-b-tooltip.hover
-                    title="Add Project"
+                    :title="$t('buttons.add')+ ' ' +$t('tabs.project')"
                     block type="submit" variant="info">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
             </b-button>

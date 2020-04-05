@@ -1,15 +1,17 @@
 <template>
     <b-row>
         <b-col cols="12">
-            <label>add your Social media:</label>
+            <label>{{$t('labels.socialNetworks')}}:</label>
         </b-col>
         <b-col cols="12" sm="5" md="12" lg="5" >
+            <!-- todo: translate this select tag-->
             <b-form-select
                     :class="{ 'is-invalid' : validation.hasError('socialMedia')}"
                     :options="getSocialNetworksList"
                     v-model="socialMedia"
                     required
                     name="socialMedia"
+                    :placeholder="$t('placeholders.socialNetworks')"
             ></b-form-select>
             <small class="text-danger">{{ validation.firstError('socialMedia')}}</small>
         </b-col>
@@ -23,7 +25,7 @@
                         v-model="pseudo"
                         name="pseudo"
                         required
-                        placeholder="Enter your Pseudo"
+                        :placeholder="$t('placeholders.pseudo')"
                 ></b-form-input>
                 <b-input-group-append>
                     <b-button

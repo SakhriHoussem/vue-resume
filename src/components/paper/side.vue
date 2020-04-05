@@ -11,7 +11,7 @@
                             class="close"
                             aria-label="close" type="button"
                             v-b-tooltip.hover
-                            title="Delete Me" variant="none"
+                            :title="$t('toggles.delete')" variant="none"
                             @click="image = null"
                             v-show="showByIndex === image"
                     >
@@ -21,7 +21,7 @@
                               class="close"
                               aria-label="edit" type="button"
                               v-b-tooltip.hover
-                              title="Edit Me" variant="none"
+                              :title="$t('toggles.edit')" variant="none"
                               @click="$refs.file.click()"
                     >
                         <font-awesome-icon icon="edit" />
@@ -38,7 +38,7 @@
                        button @click="$refs.file.click()"
                        size="10rem" variant="dark"
                        v-b-tooltip.hover
-                       title="Change Me">
+                       :title="$t('toggles.change')">
                 <font-awesome-icon icon="camera-retro" />
             </b-avatar>
 
@@ -51,7 +51,8 @@
             >
 
             <h3 class="text-capitalize">  {{ getFullName }} </h3>
-            <h4 class="text-capitalize text-dark"> {{ getJob }} </h4>
+            <h4 v-if="getJob" class="text-capitalize text-dark"> {{ getJob }} </h4>
+            <h1 v-else class="text-capitalize text-dark"> CV </h1>
         </div>
         <hr>
         <table style="width:100%">
@@ -82,7 +83,7 @@
                             aria-label="close" type="button"
                             @click="removeStateElm('links', link)"
                             v-b-tooltip.hover
-                            title="Delete Me"
+                            :title="$t('toggles.delete')"
                     >x</b-button>
                 </td>
             </tr>
@@ -97,7 +98,7 @@
                             aria-label="close" type="button"
                             @click="removeStateElm('socialNetworks', social)"
                             v-b-tooltip.hover
-                            title="Delete Me"
+                            :title="$t('toggles.delete')"
                     >x</b-button>
                 </td>
             </tr>
@@ -107,7 +108,7 @@
         <hr v-if="getSkills.length">
         <h5 v-if="getSkills.length">
             <font-awesome-icon icon="wrench"></font-awesome-icon>
-            Skills
+            {{$t('titles.skills')}}
         </h5>
         <b-row v-for="(skill, index) in getSkills"
                :key="index" class="hover"
@@ -126,7 +127,7 @@
                         aria-label="close" type="button"
                         @click="removeStateElm('skills', skill)"
                         v-b-tooltip.hover
-                        title="Delete Me"
+                        :title="$t('toggles.delete')"
                 >x</b-button>
                 <b-progress
                         variant="dark"
@@ -141,7 +142,7 @@
         <hr v-if="getLanguages.length">
         <h5 v-if="getLanguages.length">
             <font-awesome-icon icon="language"></font-awesome-icon>
-            Languages
+            {{$t('titles.languages')}}
         </h5>
         <ul  class="list-unstyled">
             <li @mouseover="showByIndex = language" @mouseout="showByIndex = null" v-for="(language, index) in getLanguages" :key="index" class="text-capitalize hover pl-1 pr-1">
@@ -151,7 +152,7 @@
                         type="button"
                         @click="removeStateElm('languages', language)"
                         v-b-tooltip.hover
-                        title="Delete Me"
+                        :title="$t('toggles.delete')"
                 >x</button>
                 {{ language.name }} <small>({{language.level}})</small>
             </li>
@@ -159,7 +160,7 @@
         <hr v-if="getInterests.length">
         <h5 v-if="getInterests.length">
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            Interests
+            {{$t('titles.interests')}}
         </h5>
         <ul class="list-unstyled">
             <li class="text-capitalize hover pl-1 pr-1" @mouseover="showByIndex = interest" @mouseout="showByIndex = null" v-for="(interest, index) in getInterests" :key="index">
@@ -171,7 +172,7 @@
                         aria-label="close" type="button"
                         @click="removeStateElm('interests', interest)"
                         v-b-tooltip.hover
-                        title="Delete Me"
+                        :title="$t('toggles.delete')"
                 >x
                 </b-button>
             </li>

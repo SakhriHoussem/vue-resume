@@ -17,8 +17,8 @@
         </b-tabs>
         <div class="text-center ">
             <b-button-group class="mt-4">
-                <b-button variant="dark" @click="tabIndex--">Previous</b-button>
-                <b-button variant="dark" @click="tabIndex++">Next</b-button>
+                <b-button variant="dark" @click="tabIndex--">{{$t('buttons.previous')}}</b-button>
+                <b-button variant="dark" @click="tabIndex++">{{$t('buttons.next')}}</b-button>
             </b-button-group>
         </div>
     </b-col>

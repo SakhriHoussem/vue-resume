@@ -1,5 +1,5 @@
 <template>
-    <b-tab title="More" id="more">
+    <b-tab :title="$t('tabs.more')" id="more">
         <skill/>
 
         <language/>

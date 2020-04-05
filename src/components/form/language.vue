@@ -1,6 +1,6 @@
 <template>
         <b-form @submit.prevent="onSubmit" class="mt-2 mb-3">
-            <label for="langauges">add your Languages:</label>
+            <label for="langauges">{{$t('labels.languages')}}:</label>
             <b-row>
                 <b-col>
                     <b-input
@@ -9,12 +9,13 @@
                             type="text"
                             v-model="language.name"
                             required
-                            placeholder="Enter your Language"
+                            :placeholder="$t('placeholders.languages')"
                     ></b-input>
                     <small class="text-danger">{{ validation.firstError('language.name')}}</small>
                 </b-col>
                 <b-col>
                     <b-input-group>
+                        <!-- todo: translate this select tag-->
                         <b-form-select
                                 :class="{ 'is-invalid' : validation.hasError('language.level')}"
                                 required
@@ -22,7 +23,10 @@
                                 :options="LangLevels"
                         ></b-form-select>
                         <b-input-group-append>
-                            <b-button type="submit" variant="info">
+                            <b-button
+                                    v-b-tooltip.hover
+                                    :title="$t('buttons.add')"
+                                    type="submit" variant="info">
                                 <font-awesome-icon icon="plus"></font-awesome-icon>
                             </b-button>
                         </b-input-group-append>

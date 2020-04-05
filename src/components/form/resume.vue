@@ -2,7 +2,7 @@
     <b-form-group
     >
         <label for="resume">
-            Resume :
+            {{$t('labels.resume')}}:
             <b-link class="text-muted small" target="_blank" href="https://miaolz123.github.io/vue-markdown/">
                 <font-awesome-icon  icon="info" />
             </b-link>
@@ -12,7 +12,7 @@
                 id="resume"
                 :value="getResume"
                 @input="updateResume"
-                placeholder="write your resume..."
+                :placeholder="$t('placeholders.resume')+'...'"
                 rows="3"
                 max-rows="6"
         ></b-form-textarea>

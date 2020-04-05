@@ -1,6 +1,6 @@
 <template>
         <div  class="mt-2 mb-3">
-            <label for="intersts">add your Interests:</label>
+            <label for="intersts">{{$t('labels.interests')}}:</label>
             <b-form-tags
                     tag-variant="info"
                     input-id="intersts"
@@ -9,6 +9,7 @@
                     @input="updateInterests"
                     class="mb-2"
                     remove-on-delete
+                    :placeholder="$t('placeholders.interests')"
             >
             </b-form-tags>
         </div>

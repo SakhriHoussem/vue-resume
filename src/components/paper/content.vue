@@ -3,7 +3,7 @@
         <div v-if="getResume">
             <h3 class="text-info">
                 <font-awesome-icon icon="pencil-alt" />
-                Resume
+                {{$t('titles.resume')}}
             </h3>
             <div
                     class="box"
@@ -15,7 +15,7 @@
                           aria-label="close" type="button"
                           @click="removeResume"
                           v-b-tooltip.hover
-                          title="Delete Me" variant="none"
+                          :title="$t('toggles.delete')" variant="none"
                 >
                     <font-awesome-icon icon="times" />
                 </b-button>
@@ -25,7 +25,7 @@
                           href="#resume"
                           @click="setTabIndex(0)"
                           v-b-tooltip.hover
-                          title="Edit Me" variant="none"
+                          :title="$t('toggles.edit')" variant="none"
                 >
                     <font-awesome-icon icon="edit" />
                 </b-button>
@@ -35,7 +35,7 @@
         <div v-show="getExperiences.length">
             <h3 class="text-info">
                 <font-awesome-icon icon="briefcase" />
-                Experiences
+                {{$t('titles.experiences')}}
             </h3>
             <div
                     @mouseover="showByIndex = experience"
@@ -53,7 +53,7 @@
                             aria-label="close" type="button"
                             @click="removeStateElmByID('experiences', experience.id)"
                             v-b-tooltip.hover
-                            title="Delete Me" variant="none"
+                            :title="$t('toggles.delete')" variant="none"
                     >
                         <font-awesome-icon icon="times" />
                     </b-button>
@@ -62,7 +62,7 @@
                               aria-label="edit" type="button"
                               v-b-tooltip.hover
                               href="#experience"
-                              title="Edit Me" variant="none"
+                              :title="$t('toggles.edit')" variant="none"
                               @click="editMe('experiences',experience,1)"
                     >
                         <font-awesome-icon icon="edit" />
@@ -80,7 +80,7 @@
         <div v-if="getProjects.length">
             <h3 class="text-info">
                 <font-awesome-icon icon="box-open"/>
-                Projects
+                {{$t('titles.projects')}}
             </h3>
             <div
                     @mouseover="showByIndex = project"
@@ -97,7 +97,7 @@
                             aria-label="close" type="button"
                             @click="removeStateElmByID('projects', project.id)"
                             v-b-tooltip.hover
-                            title="Delete Me" variant="none"
+                            :title="$t('toggles.delete')" variant="none"
                     >
                         <font-awesome-icon icon="times" />
                     </b-button>
@@ -106,7 +106,7 @@
                               aria-label="edit" type="button"
                               href="#project"
                               v-b-tooltip.hover
-                              title="Edit Me" variant="none"
+                              :title="$t('toggles.edit')" variant="none"
                               @click="editMe('projects',project,2)"
                     >
                         <font-awesome-icon icon="edit" />
@@ -123,7 +123,7 @@
         <div v-if="getEducations.length">
             <h3 class="text-info">
                 <font-awesome-icon icon="university" />
-                Educations
+                {{$t('titles.educations')}}
             </h3>
             <div
                     @mouseover="showByIndex = education"
@@ -141,7 +141,7 @@
                             aria-label="close" type="button"
                             @click="removeStateElmByID('educations', education.id)"
                             v-b-tooltip.hover
-                            title="Delete Me" variant="none"
+                            :title="$t('toggles.delete')" variant="none"
                     >
                         <font-awesome-icon icon="times" />
                     </b-button>
@@ -150,7 +150,7 @@
                               aria-label="edit" type="button"
                               v-b-tooltip.hover
                               href="#education"
-                              title="Edit Me" variant="none"
+                              :title="$t('toggles.edit')" variant="none"
                               @click="editMe('educations',education,3)"
                     >
                         <font-awesome-icon icon="edit" />

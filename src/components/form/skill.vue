@@ -1,6 +1,6 @@
 <template>
         <b-form @submit.prevent="onSubmit" @reset="onReset" class="mt-2 mb-3">
-            <label for="skills">add your skills:</label>
+            <label for="skills">{{$t('labels.skills')}}:</label>
             <b-row>
                 <b-col cols="12" sm="6" md="12" lg="6">
                     <b-input
@@ -9,7 +9,7 @@
                             type="text"
                             v-model="skill.name"
                             required
-                            placeholder="Enter your Skill Name"
+                            :placeholder="$t('placeholders.skills')"
                     ></b-input>
                     <small class="text-danger">{{ validation.firstError('skill.name')}}</small>
                 </b-col>
@@ -22,7 +22,10 @@
                                 :class="{ 'is-invalid' : validation.hasError('skill.level')}"
                         ></b-form-select>
                         <b-input-group-append>
-                            <b-button type="submit" variant="info">
+                            <b-button
+                                    v-b-tooltip.hover
+                                    :title="$t('buttons.add')"
+                                    type="submit" variant="info">
                                 <font-awesome-icon icon="plus"></font-awesome-icon>
                             </b-button>
                         </b-input-group-append>

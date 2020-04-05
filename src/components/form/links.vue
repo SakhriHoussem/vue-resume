@@ -1,5 +1,5 @@
 <template>
-    <b-form-group label="add your links:" label-for="links">
+    <b-form-group :label="$t('labels.links')+':'" label-for="links">
         <b-form-tags
                 tag-variant="info"
                 input-id="links"
@@ -10,6 +10,7 @@
                 remove-on-delete
                 required
                 :tag-validator="tagValidator"
+                :placeholder="$t('placeholders.links')"
         >
         </b-form-tags>
     </b-form-group>

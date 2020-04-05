@@ -1,6 +1,6 @@
 <template>
             <b-form-group
-                    label="Phone Number :"
+                    :label="$t('labels.phone')+':'"
                     label-for="phone"
             >
                 <b-form-input
@@ -9,7 +9,7 @@
                         class="mb-2 mr-sm-2 mb-sm-0"
                         v-model="phone"
                         @input="updatePhoneNum"
-                        placeholder="your phone number"
+                        :placeholder="$t('placeholders.phone')"
                         required
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('phone')}}</small>

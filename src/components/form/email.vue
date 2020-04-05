@@ -1,11 +1,11 @@
 <template>
             <b-form-group
-                    label="Email :"
+                    :label="$t('labels.email') +':'"
                     label-for="email"
             >
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('email')}"
-                        placeholder="Your Email"
+                        :placeholder="$t('placeholders.email')"
                         id="email"
                         v-model="email"
                         @input="updateEmail"

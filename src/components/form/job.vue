@@ -1,6 +1,6 @@
 <template>
             <b-form-group
-                    label="Desired job :"
+                    :label="$t('labels.job')+':'"
                     label-for="desired-job"
             >
                 <b-form-input
@@ -10,7 +10,7 @@
                         ref="job"
                         @input="updateJob"
                         type="text"
-                        placeholder="Enter your Desired Job"
+                        :placeholder="$t('placeholders.job')"
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('job')}}</small>
             </b-form-group>

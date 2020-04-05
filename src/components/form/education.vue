@@ -2,7 +2,7 @@
     <b-tab title="Education" id="education">
         <b-form @submit.prevent="onSubmit">
             <b-form-group
-                    label="education Degree:"
+                    :label="$t('labels.schoolDegree')+':'"
                     label-for="education-degree"
             >
                 <b-form-input
@@ -11,13 +11,13 @@
                         type="text"
                         v-model="degree"
                         required
-                        placeholder="Enter your education degree"
+                        :placeholder="$t('placeholders.schoolDegree')"
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('degree')}}</small>
             </b-form-group>
 
             <b-form-group
-                    label="school Name :"
+                    :label="$t('labels.schoolName')+':'"
                     label-for="education-school"
             >
                 <b-form-input
@@ -26,12 +26,12 @@
                         type="text"
                         v-model="school"
                         required
-                        placeholder="Enter your education school name"
+                        :placeholder="$t('placeholders.schoolName')"
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('degree')}}</small>
             </b-form-group>
             <b-form-group
-                    label="From - To :"
+                    :label="$t('labels.fromTo')+':'"
                     label-for="education-from-to"
             >
                 <date-picker :input-attr="{
@@ -42,24 +42,26 @@
                              class="w-100"
                              valueType="MMMM-YYYY"
                              :class="{'is-invalid' : validation.hasError('fromTo')}"
-                             v-model="fromTo" range>
+                             v-model="fromTo" range
+                            :placeholder="$t('placeholders.fromTo')"
+                >
                 </date-picker>
-                <small class="text-danger">{{ validation.firstError('fromTo')}}</small>
+                <small class="text-danger">{{ validation.firstError('fromTo')}}:</small>
             </b-form-group>
 
             <b-form-group
-                    label="Description :"
+                    :label="$t('labels.description')+':'"
                     label-for="education-description"
             >
                 <b-form-textarea
                         id="education-description"
                         v-model="description"
-                        placeholder="write your something about your education..."
+                        :placeholder="$t('placeholders.description')"
                         rows="3"
                         max-rows="6"
                 ></b-form-textarea>
             </b-form-group>
-            <b-form-group label="add Relative Tags:" label-for="education-tags">
+            <b-form-group :label="$t('labels.tags')+':'" label-for="education-tags">
                 <b-form-tags
                         tag-variant="info"
                         input-id="education-tags"
@@ -67,12 +69,13 @@
                         v-model="tags"
                         class="mb-2"
                         remove-on-delete
+                        :placeholder="$t('placeholders.tags')"
                 ></b-form-tags>
             </b-form-group>
             <div v-if="getEditedEducation">
                 <b-button
                         v-b-tooltip.hover
-                        title="Edit Me"
+                        :title="$t('toggles.edit')"
                         block type="button"
                         @click="EditState('educations', getEditedEducation.id)"
                         variant="warning">
@@ -81,7 +84,7 @@
 
                 <b-button
                         v-b-tooltip.hover
-                        title="Cancel"
+                        :title="$t('toggles.cancel')"
                         block type="button"
                         @click="onReset"
                         variant="info">
@@ -90,6 +93,8 @@
             </div>
             <b-button
                     v-else
+                    v-b-tooltip.hover
+                    :title="$t('toggles.submit')"
                     block type="submit" variant="info">
                 <font-awesome-icon icon="plus"></font-awesome-icon>
             </b-button>

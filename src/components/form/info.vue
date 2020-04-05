@@ -1,5 +1,5 @@
 <template>
-    <b-tab title="Infos" id="info" active>
+    <b-tab :title="$t('tabs.infos')" id="info" active>
         <full-name/>
 
         <job/>

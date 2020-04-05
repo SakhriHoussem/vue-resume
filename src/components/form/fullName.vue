@@ -1,6 +1,6 @@
 <template>
     <b-form-group
-            label="Full Name:"
+            :label="$t('labels.fullName')+':'"
             label-for="full-name"
     >
         <b-form-input
@@ -10,7 +10,7 @@
                 v-model="fullName"
                 @input="updateFullName"
                 required
-                placeholder="Enter your Full Name"
+                :placeholder="$t('placeholders.fullName')"
         ></b-form-input>
         <small class="text-danger">{{ validation.firstError('fullName')}}</small>
     </b-form-group>

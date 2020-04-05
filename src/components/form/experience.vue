@@ -1,9 +1,9 @@
 <template>
-    <b-tab title="Experience" id="experience" >
+    <b-tab :title="$t('tabs.experience')" id="experience" >
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <div>
                 <b-form-group
-                        label="Role:"
+                        :label="$t('labels.role')+':'"
                         label-for="role"
                 >
                     <b-form-input
@@ -12,13 +12,13 @@
                             type="text"
                             v-model="role"
                             required
-                            placeholder="Enter your Role"
+                            :placeholder="$t('placeholders.role')"
                     ></b-form-input>
                     <small class="text-danger">{{ validation.firstError('role')}}</small>
                 </b-form-group>
 
                 <b-form-group
-                        label="Company:"
+                        :label="$t('labels.company')+':'"
                         label-for="company"
                 >
                     <b-form-input
@@ -27,12 +27,12 @@
                             v-model="company"
                             type="text"
                             required
-                            placeholder="Enter your Company Name"
+                            :placeholder="$t('placeholders.company')"
                     ></b-form-input>
                     <small class="text-danger">{{ validation.firstError('company')}}</small>
                 </b-form-group>
                 <b-form-group
-                        label="From - To :"
+                        :label="$t('labels.fromTo')+':'"
                         label-for="experience-from-to"
                 >
                     <date-picker
@@ -44,12 +44,13 @@
                             class="w-100"
                             :class="{'is-invalid' : validation.hasError('fromTo')}"
                             v-model="fromTo"
+                            :placeholder="$t('placeholders.fromTo')"
                             valueType="MMMM-YYYY" range>
                     </date-picker>
                     <small class="text-danger">{{ validation.firstError('fromTo')}}</small>
                 </b-form-group>
                 <b-form-group>
-                    <label for="experience-description">Description :
+                    <label for="experience-description">{{$t('labels.description')}}:
                         <b-link class="text-muted small" target="_blank" href="https://miaolz123.github.io/vue-markdown/">
                             <font-awesome-icon  icon="info" />
                         </b-link>
@@ -57,13 +58,13 @@
                     <b-form-textarea
                             id="experience-description"
                             v-model="description"
-                            placeholder="write your something about your experience..."
+                            :placeholder="$t('placeholders.description')+'...'"
                             rows="3"
                             required
                             max-rows="6"
                     ></b-form-textarea>
                 </b-form-group>
-                <b-form-group label="add Relative Tags:" label-for="experience-tags">
+                <b-form-group :label="$t('labels.tags')+':'" label-for="experience-tags">
                     <b-form-tags
                             tag-variant="info"
                             input-id="experience-tags"
@@ -71,6 +72,7 @@
                             v-model="tags"
                             class="mb-2"
                             remove-on-delete
+                            :placeholder="$t('placeholders.tags')"
                     >
                     </b-form-tags>
                 </b-form-group>
@@ -79,7 +81,7 @@
                 <div v-if="getEditedExperience">
                     <b-button
                             v-b-tooltip.hover
-                            title="Edit Me"
+                            :title="$t('labels.edit')"
                             block type="button"
                             @click="EditState('experiences', getEditedExperience.id)"
                             variant="warning">
@@ -88,7 +90,7 @@
 
                     <b-button
                             v-b-tooltip.hover
-                            title="Cancel"
+                            :title="$t('labels.cancel')"
                             block type="button"
                             @click="onReset"
                             variant="info">
@@ -98,7 +100,7 @@
                 <b-button
                         v-else
                         v-b-tooltip.hover
-                        title="Add Experience"
+                        :title="$t('buttons.add')+ ' ' +$t('tabs.experience')"
                         block type="submit" variant="info">
                     <font-awesome-icon icon="plus"></font-awesome-icon>
                 </b-button>
