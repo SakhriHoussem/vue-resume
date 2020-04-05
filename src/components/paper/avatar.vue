@@ -28,7 +28,7 @@
             </div>
             <b-img
                     :src="image"
-                    :alt="getFullName"
+                    :alt="alt"
                     thumbnail center
             >
             </b-img>
@@ -52,18 +52,17 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
 
     export default {
         name: 'avatar',
+        props: {
+            alt: {default : 'avatar'}
+        },
         data () {
             return {
                 image: "",
                 showByIndex: null,
             }
-        },
-        computed: {
-            ...mapGetters(['getFullName'])
         },
         methods: {
             onFileChange(e) {
@@ -79,3 +78,18 @@
         }
     }
 </script>
+<style scoped>
+    button[class*="b-avatar"] {
+        padding: 0 !important;
+    }
+    #img-avatar div button{
+        padding: 3px;
+    }
+    #img-avatar div {
+        padding: 3px;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        border-radius: 5px;
+    }
+</style>
