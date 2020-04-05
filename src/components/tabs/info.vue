@@ -22,13 +22,13 @@
     </b-tab>
 </template>
 <script>
-    import fullName     from "./fullName";
-    import job          from "./job";
-    import phone        from "./phone";
-    import email        from "./email";
-    import links        from "./links";
-    import social       from "./social.vue";
-    import resume       from "./resume.vue";
+    import fullName     from "../form/fullName";
+    import job          from "../form/job";
+    import phone        from "../form/phone";
+    import email        from "../form/email";
+    import links        from "../form/links";
+    import social       from "../form/social.vue";
+    import resume       from "../form/resume.vue";
 
     export default {
         name: 'info',

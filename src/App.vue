@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import appHeader from './components/Header.vue'
-import appContainer from './components/Container.vue'
+import appHeader from './components/header.vue'
+import appContainer from './components/container.vue'
 
 export default {
   name: 'App',

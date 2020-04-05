@@ -8,9 +8,9 @@
     </b-tab>
 </template>
 <script>
-    import skill        from "./skill.vue";
-    import language     from "./language.vue";
-    import interest     from "./interest.vue";
+    import skill        from "../form/skill.vue";
+    import language     from "../form/language.vue";
+    import interest     from "../form/interest.vue";
 
         export default {
             name: 'more',

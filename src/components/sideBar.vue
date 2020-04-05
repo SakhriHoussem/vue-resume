@@ -25,11 +25,11 @@
 </template>
 
 <script>
-    import info         from "./form/info.vue";
-    import experience   from "./form/experience.vue";
-    import project      from "./form/project.vue";
-    import education    from "./form/education.vue";
-    import more         from "./form/more.vue";
+    import info         from "./tabs/info.vue";
+    import experience   from "./tabs/experience.vue";
+    import project      from "./tabs/project.vue";
+    import education    from "./tabs/education.vue";
+    import more         from "./tabs/more.vue";
 
     export default {
         name: 'appSidebar',

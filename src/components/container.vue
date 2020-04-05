@@ -14,8 +14,8 @@
 </template>
 
 <script>
-    import appSidebar from './SideBar'
-    import paper from './Paper.vue'
+    import appSidebar from './sideBar'
+    import paper from './paper.vue'
 
     export default {
         name: 'appContainer',
