@@ -21,14 +21,14 @@
                     label-for="education-school"
             >
                 <b-form-input
-                        :class="{ 'is-invalid' : validation.hasError('degree')}"
+                        :class="{ 'is-invalid' : validation.hasError('school')}"
                         id="education-school"
                         type="text"
                         v-model="school"
                         required
                         :placeholder="$t('placeholders.schoolName')"
                 ></b-form-input>
-                <small class="text-danger">{{ validation.firstError('degree')}}</small>
+                <small class="text-danger">{{ validation.firstError('school')}}</small>
             </b-form-group>
             <b-form-group
                     :label="$t('labels.fromTo')+':'"
@@ -222,7 +222,7 @@
         },
         validators: {
             degree: function (value) {
-                return Validator.value(value).required().regex('^[A-Za-z ]*$', 'Must only contain alphabetic characters.');
+                return Validator.value(value).required().regex('^[A-Za-z0-9 ]*$', 'Must only contain alphabetic characters.');
             },
             school: function (value) {
                 return Validator.value(value).required();
