@@ -36,7 +36,7 @@
                         >
                             <font-awesome-icon icon="times" />
                         </b-button>
-                        <span v-if="typeof item === 'object'">{{ item.name }}<small>({{item.level}})</small></span>
+                        <span v-if="typeof item === 'object'"> {{ item.name }} <small>  ( {{item.level}} ) </small></span>
                         <span v-else>{{ item }}</span>
 
                     </li>

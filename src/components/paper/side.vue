@@ -12,12 +12,12 @@
         <custom-list :item="getEmail" icon="at"></custom-list>
         <custom-list :items="getLinks" icon="globe-africa" state="links"></custom-list>
         <custom-list :items="getSocialNetworks" state="socialNetworks"></custom-list>
-        <unstyled-table
+        <unstyled-list
                 :items="getSkills"
                 :title="$t('titles.skills')"
                 icon="wrench"
                 state="skills"
-        ></unstyled-table>
+        ></unstyled-list>
         <unstyled-list
                 :items="getLanguages"
                 :title="$t('titles.languages')"
@@ -38,14 +38,12 @@
     import { mapGetters } from 'vuex'
     import avatar from './avatar'
     import unstyledList from '../lists/unstyledList'
-    import unstyledTable from '../lists/unstyledTable'
     import customList from '../lists/customList'
     export default {
         name: 'paperSide',
         components: {
             avatar,
             unstyledList,
-            unstyledTable,
             customList,
         },
         computed: {

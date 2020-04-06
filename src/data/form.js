@@ -56,38 +56,38 @@ export default {
     skills: [
         {
             name: 'php',
-            level: 75
+            level: 'Intermediate'
         },
         {
             name: 'laravel',
-            level: 75
+            level: 'Intermediate'
         },
         {
             name: 'js',
-            level: 75
+            level: 'Intermediate'
         },
         {
             name: 'vueJs',
-            level: 50
+            level: 'Intermediate'
         },
         {
             name: 'jQuery',
-            level: 50
+            level: 'Intermediate'
         },
         {
             name: 'css',
-            level: 75
+            level: 'Intermediate'
         },
         {
             name: 'bootstrap',
-            level: 75
+            level: 'Intermediate'
         },                {
             name: 'foundation',
-            level: 75
+            level: 'Intermediate'
         },
         {
             name: 'Illustrator',
-            level: 50
+            level: 'Beginner'
         },
     ],
     languages: [
