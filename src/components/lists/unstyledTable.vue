@@ -15,22 +15,27 @@
                     {{ item.name }}
                 </span>
             </b-col>
-            <b-col cols="8" class="pt-1">
+            <b-col cols="8">
                 <b-button
                         v-show="showByIndex === item"
                         class="close mr-2 ml-2 small"
                         aria-label="close" type="button"
                         @click="removeStateElm(state, item)"
+                        variant="none"
                         v-b-tooltip.hover
                         :title="$t('toggles.delete')"
-                >x</b-button>
-                <b-progress
-                        variant="dark"
-                        :value="item.level"
-                        :max="100"
-                        show-progress
                 >
-                </b-progress>
+                    <font-awesome-icon icon="times" />
+                </b-button>
+                <div class="pt-1">
+                    <b-progress
+                            variant="dark"
+                            :value="item.level"
+                            :max="100"
+                            show-progress
+                    >
+                    </b-progress>
+                </div>
             </b-col>
         </b-row>
     </div>

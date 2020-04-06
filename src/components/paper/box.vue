@@ -17,7 +17,7 @@
                           v-b-tooltip.hover
                           :title="$t('toggles.delete')" variant="none"
                 >
-                    <font-awesome-icon icon="times" />
+                    <font-awesome-icon size="lg" icon="times" />
                 </b-button>
                 <b-button v-show="showByIndex === item"
                           class="close mr-2 ml-2 p-0 small"
@@ -59,7 +59,7 @@
                             v-b-tooltip.hover
                             :title="$t('toggles.delete')" variant="none"
                     >
-                        <font-awesome-icon icon="times" />
+                        <font-awesome-icon size="lg" icon="times" />
                     </b-button>
                     <b-button v-show="showByIndex === elm"
                               class="close mr-2 ml-2 p-0 small"
