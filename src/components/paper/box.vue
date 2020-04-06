@@ -39,6 +39,15 @@
                 <font-awesome-icon :icon="icon" />
                 {{title}}
             </h3>
+            <draggable v-model="items"
+                       v-bind="dragOptions"
+                       @start="drag = true"
+                       @end="drag = false"
+            >
+                <transition-group
+                        type="transition"
+                        :name="!drag ? 'flip-list' : null"
+                >
             <div
                     @mouseover="showByIndex = elm"
                     @mouseout="showByIndex = null"
@@ -79,16 +88,21 @@
                 <vue-markdown :source="elm.description"></vue-markdown>
                 <b-badge variant="info" class="mr-2" v-for="tag in elm.tags" :key="tag">{{ tag }}</b-badge>
             </div>
+                </transition-group>
+            </draggable>
         </div>
     </div>
 </template>
 
 <script>
     import VueMarkdown from 'vue-markdown'
+    import draggable from 'vuedraggable'
+
     export default {
         name: 'box',
         components: {
             VueMarkdown,
+            draggable,
         },
         props: {
             item: {type: String, default: null},
@@ -101,6 +115,16 @@
         data () {
             return {
                 showByIndex: null
+            }
+        },
+        computed: {
+            dragOptions() {
+                return {
+                    animation: 200,
+                    group: "description",
+                    disabled: false,
+                    ghostClass: "ghost"
+                };
             }
         },
         methods: {
@@ -137,6 +161,7 @@
         background-color: rgba(0, 0, 0, 0.02);
         padding: 5px;
         border-radius: 5px;
+        cursor: pointer;
     }
     .box small {
         font-size: .90rem;

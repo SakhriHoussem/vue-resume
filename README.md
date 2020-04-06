@@ -36,3 +36,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - github buttons : [vue-github-buttons](https://github.com/gluons/vue-github-buttons)
 - markdown : [vue-markdown](https://github.com/miaolz123/vue-markdown)
 - lang : [vue-i18n](https://github.com/kazupon/vue-i18n)
+- drag & drop : [Vue-Draggable](https://github.com/SortableJS/Vue.Draggable)
