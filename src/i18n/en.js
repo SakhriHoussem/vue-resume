@@ -60,7 +60,9 @@ export default {   // English
         change: 'Change Me',
         cancel: 'Cancel',
         submit: 'Submit',
-        print: 'Print me',
+        print: 'Print Me',
+        move: 'Move Me',
+
     },
     titles: {
         resume: 'Resume',

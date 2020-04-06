@@ -61,6 +61,7 @@ export default { // Francais
         cancel: 'Annuler',
         submit: 'Valider',
         print: 'Imprime Moi',
+        move: 'Déplace Moi',
     },
     titles: {
         resume: 'Resumer',

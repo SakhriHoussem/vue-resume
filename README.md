@@ -32,7 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - validation     : [simple-vue-validate](https://github.com/semisleep/simple-vue-validator)
 - icons          : [fontAwesome](https://github.com/FortAwesome/vue-fontawesome)
 - date           : [vue2-datepicker](https://github.com/mengxiong10/vue2-datepicker)
-- css framwork   : [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue)
+- css framework   : [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue)
 - github buttons : [vue-github-buttons](https://github.com/gluons/vue-github-buttons)
 - markdown : [vue-markdown](https://github.com/miaolz123/vue-markdown)
 - lang : [vue-i18n](https://github.com/kazupon/vue-i18n)

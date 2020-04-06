@@ -10,6 +10,9 @@
                 v-bind="dragOptions"
                 @start="drag = true"
                 @end="drag = false"
+                v-b-tooltip.hover
+                :title="$t('toggles.move')"
+                :group="state"
         >
             <transition-group
                     type="transition"

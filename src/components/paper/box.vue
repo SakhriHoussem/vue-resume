@@ -11,7 +11,7 @@
                     @mouseout="showByIndex = null"
             >
                 <b-button v-show="showByIndex === item"
-                          class="close mr-2 ml-2 small"
+                          class="close p-1 small"
                           aria-label="close" type="button"
                           @click="removeItem"
                           v-b-tooltip.hover
@@ -20,7 +20,7 @@
                     <font-awesome-icon size="lg" icon="times" />
                 </b-button>
                 <b-button v-show="showByIndex === item"
-                          class="close mr-2 ml-2 p-0 small"
+                          class="close p-1 small"
                           aria-label="edit"
                           :href="'#'+state"
                           @click="setTabIndex(0)"
@@ -43,6 +43,8 @@
                        v-bind="dragOptions"
                        @start="drag = true"
                        @end="drag = false"
+                       handle=".handle"
+                       :group="state"
             >
                 <transition-group
                         type="transition"
@@ -57,12 +59,22 @@
                     :key="index"
             >
                 <h4 class="m-0 text-capitalize">
+                    <b-button
+                            v-show="showByIndex === elm && items.length>1"
+                            class="handle p-2 close small"
+                            aria-label="close" type="button"
+                            variant="none"
+                            v-b-tooltip.hover
+                            :title="$t('toggles.move')"
+                    >
+                        <font-awesome-icon icon="bars" />
+                    </b-button>
                     {{ elm.role }}
                     {{ elm.name }}
                     {{ elm.degree }}
                     <b-button
                             v-show="showByIndex === elm"
-                            class="close mr-2 ml-2 small"
+                            class="close p-1 pt-2 small"
                             aria-label="close" type="button"
                             @click="removeStateElmByID(state, elm.id)"
                             v-b-tooltip.hover
@@ -71,7 +83,7 @@
                         <font-awesome-icon size="lg" icon="times" />
                     </b-button>
                     <b-button v-show="showByIndex === elm"
-                              class="close mr-2 ml-2 p-0 small"
+                              class="close p-1 pt-2 small"
                               aria-label="edit" type="button"
                               v-b-tooltip.hover
                               :href="'#'+state"
@@ -161,7 +173,6 @@
         background-color: rgba(0, 0, 0, 0.02);
         padding: 5px;
         border-radius: 5px;
-        cursor: pointer;
     }
     .box small {
         font-size: .90rem;
@@ -174,5 +185,11 @@
     }
     .box:hover{
         background-color: rgba(0, 0, 0, 0.05);
+    }
+    .handle {
+        float: left;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        cursor: pointer;
     }
 </style>

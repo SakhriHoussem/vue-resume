@@ -10,6 +10,7 @@
                 v-bind="dragOptions"
                 @start="drag = true"
                 @end="drag = false"
+                :group="state"
         >
             <transition-group
                     type="transition"
@@ -19,6 +20,8 @@
                        :key="index" class="hover"
                        @mouseover="showByIndex = item"
                        @mouseout="showByIndex = null"
+                       v-b-tooltip.hover
+                       :title="$t('toggles.move')"
                 >
                     <b-col cols="4">
                 <span class="text-capitalize">

@@ -11,12 +11,20 @@
                     v-bind="dragOptions"
                     @start="drag = true"
                     @end="drag = false"
+                    :group="state"
             >
                 <transition-group
                         type="transition"
                         :name="!drag ? 'flip-list' : null"
                 >
-                    <li class="text-capitalize hover pl-1 pr-1" @mouseover="showByIndex = item" @mouseout="showByIndex = null" v-for="(item, index) in items" :key="index">
+                    <li class="text-capitalize hover pl-1 pr-1"
+                        @mouseover="showByIndex = item"
+                        @mouseout="showByIndex = null"
+                        v-for="(item, index) in items"
+                        :key="index"
+                        v-b-tooltip.hover
+                        :title="$t('toggles.move')"
+                    >
                         <b-button
                                 v-show="showByIndex === item"
                                 class="close mr-2 ml-2 small"
