@@ -25,7 +25,7 @@
         <box
             :title="$t('titles.educations')"
             :items="getEducations"
-            icon="text-info"
+            icon="university"
             state="educations"
             :tab-index=3
         ></box>
