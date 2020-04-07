@@ -65,6 +65,8 @@
                 // get paper side
                 const paperSide = document.getElementById('paper-side');
 
+                // change the default width of the paper
+                document.getElementById('paper').setAttribute("style","width:1000px");
                 // change the default height of the paper
                 paperSide.setAttribute("style","min-height:" + paperSideHeight + "px");
 
@@ -87,8 +89,9 @@
                     // pdf.addImage(canvas.toDataURL('image/jpeg'), 'JPEG', -2, 0, 211, pdf.internal.pageSize.getHeight());
                     pdf.save(filename);
 
-                    // restore the default height
+                    // restore the default height and width
                     paperSide.removeAttribute("style");
+                    document.getElementById('paper').removeAttribute("style");
                 });
             },
         }
