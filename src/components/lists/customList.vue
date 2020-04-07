@@ -64,7 +64,8 @@
         },
         data () {
             return {
-                showByIndex: null
+                showByIndex: null,
+                drag: null
             }
         },
         computed: {

@@ -28,7 +28,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Resources
-those are some tutorials and article helped me to make this app
+those are some tutorials and article that helped me to make this app
 - [Vue Mastery](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance) 
 - [Laracasts JavaScript Skill](https://laracasts.com/skills/javascript) 
 - [Learn Vue.js - Full Course for Beginners - 2019](https://www.youtube.com/watch?v=4deVCNJq3qc) 

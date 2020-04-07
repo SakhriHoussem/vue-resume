@@ -1,5 +1,5 @@
 <template>
-    <b-col id="paper-side" cols="4">
+    <b-col id="paper-side" class="font-weight-bold" cols="4">
         <div class="text-center">
             <avatar :alt="getFullName" />
 

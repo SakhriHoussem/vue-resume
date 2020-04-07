@@ -55,8 +55,8 @@
                     @mouseout="showByIndex = null"
                     :data-identifier="elm.id"
                     class="box"
-                    v-for="(elm, index) in items"
-                    :key="index"
+                    v-for="elm in items"
+                    :key="elm.id"
             >
                 <h4 class="m-0 text-capitalize">
                     <b-button
@@ -126,7 +126,8 @@
         },
         data () {
             return {
-                showByIndex: null
+                showByIndex: null,
+                drag: null
             }
         },
         computed: {
