@@ -29,8 +29,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Resources
 those are some tutorials and article helped me to make this app
-- [Pass Data Between Components](https://www.smashingmagazine.com/2020/01/data-components-vue-js/#emitting-custom-events-share-data-child-parent) 
+- [Vue Mastery](https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance) 
+- [Laracasts JavaScript Skill](https://laracasts.com/skills/javascript) 
 - [Learn Vue.js - Full Course for Beginners - 2019](https://www.youtube.com/watch?v=4deVCNJq3qc) 
+- [Pass Data Between Components](https://www.smashingmagazine.com/2020/01/data-components-vue-js/#emitting-custom-events-share-data-child-parent) 
 - [Structure and manage Vuex store with Modules](https://scrimba.com/p/pnyzgAP/cMPa2Uk) 
 
 #### Dependencies
