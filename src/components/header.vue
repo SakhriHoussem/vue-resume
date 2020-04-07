@@ -56,6 +56,9 @@
         components: {localeChanger},
         methods: {
             print () {
+                // change the default width of the paper
+                document.getElementById('paper').setAttribute("style","width:1000px");
+                
                 const filename = this.$store.state.form.fullName + ' Resume.pdf';
                 const a4Width  = 210.0015555555555;  // paper Standard Width
                 const a4Height = 297.0000833333333; // paper Standard Height
@@ -65,8 +68,7 @@
                 // get paper side
                 const paperSide = document.getElementById('paper-side');
 
-                // change the default width of the paper
-                document.getElementById('paper').setAttribute("style","width:1000px");
+
                 // change the default height of the paper
                 paperSide.setAttribute("style","min-height:" + paperSideHeight + "px");
 
