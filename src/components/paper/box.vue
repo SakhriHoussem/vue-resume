@@ -163,7 +163,7 @@
                 }
 
                 if ( current ) {
-                    if ( Array.isArray(array) ) { return array[0] + " - " + currentTxt }
+                    if ( Array.isArray(array) ) { return array[0].split('-').join(' ') + " - " + currentTxt }
                     return array + ' - ' + currentTxt;
                 }
 
