@@ -31,10 +31,13 @@
                     ></b-form-input>
                     <small class="text-danger">{{ validation.firstError('company')}}</small>
                 </b-form-group>
-                <b-form-group
-                        :label="$t('labels.fromTo')+':'"
-                        label-for="experience-from-to"
-                >
+                <b-form-group>
+                    <label v-if="experience.isCurrentJob" for="experience-from-to">
+                        {{ $t('labels.fromTo') | current }} :
+                    </label>
+                    <label v-else for="experience-from-to">
+                        {{ $t('labels.fromTo') }} :
+                    </label>
                     <date-picker
                             :input-attr="{
                                         name: 'experience-from-to',
@@ -44,9 +47,17 @@
                             class="w-100"
                             :class="{'is-invalid' : validation.hasError('fromTo')}"
                             v-model="fromTo"
-                            :placeholder="$t('placeholders.fromTo')"
-                            valueType="MMMM-YYYY" range>
+                            :placeholder="$t('placeholders.fromTo')  | current"
+                            valueType="MMM-YYYY" :range="!isCurrentJob">
                     </date-picker>
+                    <b-form-checkbox
+                            v-if="!hasCurrentJob || !getCurrentJob || ( getExperienceBackup && getExperienceBackup.isCurrentJob )"
+                            v-model="isCurrentJob"
+                            name=" current"
+                            inline
+                    >
+                        {{ $t('labels.current') }}
+                    </b-form-checkbox>
                     <small class="text-danger">{{ validation.firstError('fromTo')}}</small>
                 </b-form-group>
                 <b-form-group>
@@ -81,7 +92,7 @@
                 <div v-if="getEditedExperience">
                     <b-button
                             v-b-tooltip.hover
-                            :title="$t('labels.edit')"
+                            :title="$t('toggles.edit')"
                             block type="button"
                             @click="EditState('experiences', getEditedExperience.id)"
                             variant="warning">
@@ -90,7 +101,7 @@
 
                     <b-button
                             v-b-tooltip.hover
-                            :title="$t('labels.cancel')"
+                            :title="$t('toggles.cancel')"
                             block type="button"
                             @click="onReset"
                             variant="info">
@@ -127,11 +138,12 @@
                     fromTo: '',
                     description: '',
                     tags: [],
-                }
+                    isCurrentJob: false
+                },
             }
         },
         computed: {
-            ...mapGetters(["getEditedExperience"]),
+            ...mapGetters(["getEditedExperience","hasCurrentJob", "getExperienceBackup", "getCurrentJob"]),
             id: {
                 get: function () {
                     if (this.getEditedExperience) {
@@ -228,6 +240,22 @@
                     }
                 }
             },
+            isCurrentJob: {
+                get: function () {
+                    if (this.getEditedExperience) {
+                        return this.$store.state.edit.experiences.isCurrentJob;
+                    } else {
+                        return this.experience.isCurrentJob
+                    }
+                },
+                set: function (value) {
+                    if (this.getEditedExperience) {
+                        return this.$store.state.edit.experiences.isCurrentJob = value;
+                    } else {
+                        this.experience.isCurrentJob = value
+                    }
+                }
+            },
         },
         validators: {
             role: function (value) {
@@ -238,7 +266,7 @@
             },
             fromTo: function (value) {
                 return Validator.value(value).required();
-            }
+            },
         },
         methods: {
             onReset() {
@@ -248,6 +276,7 @@
                 this.experience.fromTo = "";
                 this.experience.description = "";
                 this.experience.tags = [];
+                this.experience.isCurrentJob = false;
                 this.validation.reset();
 
                 this.$store.dispatch('restoreState', {
@@ -255,13 +284,19 @@
                     id: this.$store.state.edit.experiences.id
                 });
 
+                this.$store.commit('resetStateBackup', {
+                    field: 'experiences',
+                });
                 this.$store.state.edit.experiences    = null;
-                this.$store.state.backups.experiences = {};
-
             },
             EditState(state, id) {
                 this.$validate().then((success)=> {
                     if (success) {
+                        if (this.isCurrentJob) {
+                            this.$store.commit('hasCurrentJob', {
+                                has: true,
+                            });
+                        }
                         this.$store.dispatch('submitEditedState', {
                             field: state,
                             id: id
@@ -277,18 +312,29 @@
                         this.$store.commit('appendStateField', {
                             field: 'experiences',
                             value: {
-                                id:          this.experience.id,
-                                role:        this.experience.role,
-                                company:     this.experience.company,
-                                fromTo:      this.experience.fromTo,
-                                description: this.experience.description,
-                                tags:        this.experience.tags,
+                                id:           this.experience.id,
+                                role:         this.experience.role,
+                                company:      this.experience.company,
+                                fromTo:       this.experience.fromTo,
+                                isCurrentJob: this.experience.isCurrentJob,
+                                description:  this.experience.description,
+                                tags:         this.experience.tags,
                             }
                         });
+                        if (this.isCurrentJob) {
+                            this.$store.commit('hasCurrentJob', {
+                                has: true,
+                            });
+                        }
                         this.onReset()
                     }
                 })
             },
+        },
+        filters: {
+            current: function (value) {
+                return value.split('-')[0]
+            }
         }
     }
 </script>

@@ -26,6 +26,7 @@ export default { // Francais
         skills: 'Ajoutez Votre Compétence',
         languages: 'Ajoutez Votre Langue',
         interests: 'Ajoutez vos Centres d\'Intérêt',
+        current: 'Courant',
     },
     placeholders: {
         fullName: 'Saisie Votre Nom Complet',

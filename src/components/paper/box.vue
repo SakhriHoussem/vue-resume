@@ -50,56 +50,56 @@
                         type="transition"
                         :name="!drag ? 'flip-list' : null"
                 >
-            <div
-                    @mouseover="showByIndex = elm"
-                    @mouseout="showByIndex = null"
-                    :data-identifier="elm.id"
-                    class="box"
-                    v-for="elm in items"
-                    :key="elm.id"
-            >
-                <h4 class="m-0 text-capitalize">
-                    <b-button
-                            v-show="showByIndex === elm && items.length>1"
-                            class="handle p-2 close small"
-                            aria-label="close" type="button"
-                            variant="none"
-                            v-b-tooltip.hover
-                            :title="$t('toggles.move')"
+                    <div
+                            @mouseover="showByIndex = elm"
+                            @mouseout="showByIndex = null"
+                            :data-identifier="elm.id"
+                            class="box"
+                            v-for="elm in items"
+                            :key="elm.id"
                     >
-                        <font-awesome-icon icon="bars" />
-                    </b-button>
-                    {{ elm.role }}
-                    {{ elm.name }}
-                    {{ elm.degree }}
-                    <b-button
-                            v-show="showByIndex === elm"
-                            class="close p-1 pt-2 small"
-                            aria-label="close" type="button"
-                            @click="removeStateElmByID(state, elm.id)"
-                            v-b-tooltip.hover
-                            :title="$t('toggles.delete')" variant="none"
-                    >
-                        <font-awesome-icon size="lg" icon="times" />
-                    </b-button>
-                    <b-button v-show="showByIndex === elm"
-                              class="close p-1 pt-2 small"
-                              aria-label="edit" type="button"
-                              v-b-tooltip.hover
-                              :href="'#'+state"
-                              :title="$t('toggles.edit')" variant="none"
-                              @click="editMe(state, elm, tabIndex)"
-                    >
-                        <font-awesome-icon icon="edit" />
-                    </b-button>
-                    <small class="float-right text-muted mt-2 ">
-                        {{ fromTo(elm.fromTo) }}
-                    </small>
-                </h4>
-                <span class="text-muted text-capitalize"> {{ elm.company }}{{ elm.link }}{{ elm.school }}</span>
-                <vue-markdown :source="elm.description"></vue-markdown>
-                <b-badge variant="info" class="mr-2" v-for="tag in elm.tags" :key="tag">{{ tag }}</b-badge>
-            </div>
+                        <h4 class="m-0 text-capitalize">
+                            <b-button
+                                    v-show="showByIndex === elm && items.length>1"
+                                    class="handle p-2 close small"
+                                    aria-label="close" type="button"
+                                    variant="none"
+                                    v-b-tooltip.hover
+                                    :title="$t('toggles.move')"
+                            >
+                                <font-awesome-icon icon="bars" />
+                            </b-button>
+                            {{ elm.role }}
+                            {{ elm.name }}
+                            {{ elm.degree }}
+                            <b-button
+                                    v-show="showByIndex === elm"
+                                    class="close p-1 pt-2 small"
+                                    aria-label="close" type="button"
+                                    @click="removeStateElmByID(state, elm.id)"
+                                    v-b-tooltip.hover
+                                    :title="$t('toggles.delete')" variant="none"
+                            >
+                                <font-awesome-icon size="lg" icon="times" />
+                            </b-button>
+                            <b-button v-show="showByIndex === elm"
+                                      class="close p-1 pt-2 small"
+                                      aria-label="edit" type="button"
+                                      v-b-tooltip.hover
+                                      :href="'#'+state"
+                                      :title="$t('toggles.edit')" variant="none"
+                                      @click="editMe(state, elm, tabIndex)"
+                            >
+                                <font-awesome-icon icon="edit" />
+                            </b-button>
+                            <small class="float-right text-muted mt-2 ">
+                                {{ fromTo(elm.fromTo, elm.isCurrentJob, $t('labels.current')) }}
+                            </small>
+                        </h4>
+                        <span class="text-muted text-capitalize"> {{ elm.company }}{{ elm.link }}{{ elm.school }}</span>
+                        <vue-markdown :source="elm.description"></vue-markdown>
+                        <b-badge variant="info" class="mr-2" v-for="tag in elm.tags" :key="tag">{{ tag }}</b-badge>
+                    </div>
                 </transition-group>
             </draggable>
         </div>
@@ -148,16 +148,25 @@
                 this.$store.commit('setTabIndex', {index: index})
             },
             removeStateElmByID(state, id ) {
-                this.$store.commit('removeStateElmByID', {
+                this.$store.dispatch('removeStateElmByID', {
                     field: state,
                     id: id
                 });
             },
-            fromTo( array ) {
-                if (array [0] === array [1]) {
-                    return array[0].split('-').join(' ') + " - " + 'Current'
+            fromTo( array, current = false, currentTxt = 'current') {
+
+                if ( !current && Array.isArray(array ) ) {
+                    if ( array [0] === array [1] ) {
+                        return array[0].split('-').join(' ') + " - " + currentTxt
+                    }
+                    return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
                 }
-                return array[0].split('-').join(' ') + " - " + array[1].split('-').join(' ')
+
+                if ( current ) {
+                    if ( Array.isArray(array) ) { return array[0] + " - " + currentTxt }
+                    return array + ' - ' + currentTxt;
+                }
+
             },
             editMe(state,data,tabIndex) {
                 this.$store.commit('saveStateBackup', {field: state, value: data});

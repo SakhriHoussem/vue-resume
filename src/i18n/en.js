@@ -26,6 +26,7 @@ export default {   // English
         skills: 'Add your Skill',
         languages: 'Add your Language',
         interests: 'Add your Interests',
+        current: 'Current',
     },
     placeholders: {
         fullName: 'Enter your Full Name',

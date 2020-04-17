@@ -38,6 +38,15 @@ export default {
     restoreStateBackup (state, payload) {
         // restore state data form from backups
         // state <= backups
-        this.state.form[payload.field].push(this.state.backups[payload.field]);
+        this.state.form[payload.field].push(Object.assign({}, this.state.backups[payload.field]));
+    },
+    resetStateBackup (state, payload) {
+        // reset state data of backups
+        for (const key in this.state.backups[payload.field]) {
+            delete this.state.backups[payload.field][key];
+        }
+    },
+    hasCurrentJob (state, payload) {
+        this.state.tabs.hasCurrentJob = payload.has;
     },
 }

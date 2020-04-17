@@ -14,6 +14,16 @@ export default {
     getLanguages: state => { return  state.form.languages },
     getInterests: state => { return  state.form.interests },
     getEditedExperience: state => { return  state.edit.experiences },
+    getExperienceBackup: state => { return  state.backups.experiences },
     getEditedProject: state => { return  state.edit.projects },
     getEditedEducation: state => { return  state.edit.educations },
+    hasCurrentJob: state => { return  state.tabs.hasCurrentJob },
+    getStateElmByID: (state) => (field, id) => {
+        // get state by id
+        return state.form[field].find( el =>  el.id === id);
+    },
+    getCurrentJob: (state) => {
+        // get state by id
+        return state.form.experiences.find( el =>  el.isCurrentJob);
+    },
 }

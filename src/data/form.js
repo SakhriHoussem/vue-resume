@@ -14,8 +14,9 @@ export default {
             id: 0,
             role: 'Full Stack Developer',
 
-            company: 'AhSB-Communication',
-            fromTo: ['Nov-2018', 'April-2019'],
+            company: 'AhSB Communication',
+            fromTo: ['Nov-2018', 'Apr-2019'],
+            isCurrentJob: false,
             description: 'It was my responsibility to :\n' +
                 '\n' +
                 '- Perform unit tests under the supervision of the IANDI team on their Platform 1SPECT using PHP Unit .\n' +
@@ -30,7 +31,7 @@ export default {
             id: 0,
             name: 'Image Classification',
             link: '',
-            fromTo: ['January-2018', 'May-2018'],
+            fromTo: ['Jan-2018', 'May-2018'],
             description: 'Development of a Desktop Application for Image Classification Using Python and the TensorFlow Library for Machine Learning.\n',
             tags: ['Python', 'TensorFlow']
         },
@@ -38,7 +39,7 @@ export default {
             id: 1,
             name: 'SEOR Web application',
             link: '',
-            fromTo: ['January-2016', 'May-2016'],
+            fromTo: ['Jan-2016', 'May-2016'],
             description: 'Development of a WEB application for the management of equipement for HSE department of the company SEOR using PHP 5.4 and pure CSS3 for a responsive interface.',
             tags: ['PHP5.4', 'CSS3']
         }
@@ -48,7 +49,7 @@ export default {
             id: 0,
             degree: 'Master Degree',
             school: 'University of Science and Technologie Mohamed Boudiaf,Oran Algeria',
-            fromTo: ['Sept-2013', 'Mai-2018'],
+            fromTo: ['Sep-2013', 'May-2018'],
             description: '',
             tags: []
         }
