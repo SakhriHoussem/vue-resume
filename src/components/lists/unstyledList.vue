@@ -91,6 +91,9 @@
     .hover:hover{
         background-color: #14798d;
         border-radius: 3px;
-        cursor: pointer;
+        cursor: grab;
+    }
+    .hover:active{
+        cursor: grabbing;
     }
 </style>

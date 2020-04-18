@@ -1,10 +1,11 @@
 <template>
     <b-tab :title="$t('tabs.project')" id="projects">
         <b-form @submit.prevent="onSubmit" @reset="onReset">
-            <b-form-group
-                    :label="$t('labels.projectName')+':'"
-                    label-for="project-name"
-            >
+            <b-form-group>
+                <label for="project-name">
+                    <font-awesome-icon icon="signature" />
+                    {{ $t('labels.projectName') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('name')}"
                         id="project-name"
@@ -16,10 +17,11 @@
                 <small class="text-danger">{{ validation.firstError('name')}}</small>
             </b-form-group>
 
-            <b-form-group
-                    :label="$t('labels.projectLink')+':'"
-                    label-for="project-link"
-            >
+            <b-form-group>
+                <label for="project-link">
+                    <font-awesome-icon icon="link" />
+                    {{ $t('labels.projectLink') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('link')}"
                         id="project-link"
@@ -30,10 +32,11 @@
                 <small class="text-danger">{{ validation.firstError('link')}}</small>
             </b-form-group>
 
-            <b-form-group
-                    :label="$t('labels.fromTo')+':'"
-                    label-for="project-from-to"
-            >
+            <b-form-group>
+                <label for="project-from-to">
+                    <font-awesome-icon icon="calendar-alt" />
+                    {{ $t('labels.fromTo') }} :
+                </label>
                 <date-picker :input-attr="{
                                             name: 'project-from-to',
                                             id: 'project-from-to'
@@ -47,10 +50,11 @@
                 </date-picker>
             </b-form-group>
 
-            <b-form-group
-                        :label="$t('labels.description')+':'"
-                        label-for="project-description"
-            >
+            <b-form-group>
+                <label for="project-description">
+                    <font-awesome-icon icon="pencil-alt" />
+                    {{ $t('labels.description') }} :
+                </label>
                 <markdown-editor
                         id="project-description"
                         v-model="description"
@@ -61,10 +65,11 @@
                 ></markdown-editor>
             </b-form-group>
 
-            <b-form-group
-                    :label="$t('labels.tags')+':'"
-                    label-for="project-tags"
-            >
+            <b-form-group>
+                <label for="project-tags">
+                    <font-awesome-icon icon="tags" />
+                    {{ $t('labels.tags') }} :
+                </label>
                 <b-form-tags
                         input-id="project-tags"
                         separator=" ,;"

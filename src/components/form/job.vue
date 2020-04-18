@@ -1,8 +1,9 @@
 <template>
-            <b-form-group
-                    :label="$t('labels.job')+':'"
-                    label-for="desired-job"
-            >
+            <b-form-group>
+                <label for="desired-job">
+                    <font-awesome-icon icon="briefcase" />
+                    {{ $t('labels.job') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('job')}"
                         id="desired-job"

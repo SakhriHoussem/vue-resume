@@ -200,6 +200,11 @@
         float: left;
         padding-top: 8px;
         padding-bottom: 8px;
-        cursor: pointer;
+    }
+    .handle:hover {
+        cursor: grab;
+    }
+    .handle:active {
+        cursor: grabbing;
     }
 </style>

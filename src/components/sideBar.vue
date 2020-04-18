@@ -1,27 +1,25 @@
 <template>
-    <b-col cols="12"  md="4">
-
-
-
+    <div>
         <b-tabs v-model='tabIndex' content-class="mt-3" fill>
             <info/>
-
             <experience/>
-
             <project/>
-
             <education/>
-
             <more/>
-
         </b-tabs>
         <div class="text-center ">
             <b-button-group class="mt-4">
-                <b-button variant="dark" @click="tabIndex--">{{$t('buttons.previous')}}</b-button>
-                <b-button variant="dark" @click="tabIndex++">{{$t('buttons.next')}}</b-button>
+                <b-button variant="dark" @click="tabIndex--">
+                    <font-awesome-icon icon="step-backward"/>
+                    {{ $t('buttons.previous') }}
+                </b-button>
+                <b-button variant="dark" @click="tabIndex++">
+                    {{$t('buttons.next')}}
+                    <font-awesome-icon icon="step-forward"/>
+                </b-button>
             </b-button-group>
         </div>
-    </b-col>
+    </div>
 </template>
 
 <script>

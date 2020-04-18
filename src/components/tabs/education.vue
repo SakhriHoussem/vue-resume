@@ -1,10 +1,11 @@
 <template>
     <b-tab title="Education" id="educations">
         <b-form @submit.prevent="onSubmit">
-            <b-form-group
-                    :label="$t('labels.schoolDegree')+':'"
-                    label-for="education-degree"
-            >
+            <b-form-group>
+                <label for="education-degree">
+                    <font-awesome-icon icon="graduation-cap" />
+                    {{ $t('labels.schoolDegree') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('degree')}"
                         id="education-degree"
@@ -16,10 +17,11 @@
                 <small class="text-danger">{{ validation.firstError('degree')}}</small>
             </b-form-group>
 
-            <b-form-group
-                    :label="$t('labels.schoolName')+':'"
-                    label-for="education-school"
-            >
+            <b-form-group>
+                <label for="education-school">
+                    <font-awesome-icon icon="university" />
+                    {{ $t('labels.schoolName') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('school')}"
                         id="education-school"
@@ -30,10 +32,11 @@
                 ></b-form-input>
                 <small class="text-danger">{{ validation.firstError('school')}}</small>
             </b-form-group>
-            <b-form-group
-                    :label="$t('labels.fromTo')+':'"
-                    label-for="education-from-to"
-            >
+            <b-form-group>
+                <label for="education-from-to">
+                    <font-awesome-icon icon="calendar-alt" />
+                    {{ $t('labels.fromTo') }} :
+                </label>
                 <date-picker :input-attr="{
                                             name: 'education-from-to',
                                             id: 'education-from-to',
@@ -46,13 +49,14 @@
                             :placeholder="$t('placeholders.fromTo')"
                 >
                 </date-picker>
-                <small class="text-danger">{{ validation.firstError('fromTo')}}:</small>
+                <small class="text-danger">{{ validation.firstError('fromTo')}}</small>
             </b-form-group>
 
-            <b-form-group
-                    :label="$t('labels.description')+':'"
-                    label-for="education-description"
-            >
+            <b-form-group>
+                <label for="education-description">
+                    <font-awesome-icon icon="pencil-alt" />
+                    {{ $t('labels.description') }} :
+                </label>
                 <markdown-editor
                         id="education-description"
                         v-model="description"
@@ -62,7 +66,11 @@
                         :toolbar="'redo undo | bold italic heading | link | numlist bullist quote | preview'"
                 ></markdown-editor>
             </b-form-group>
-            <b-form-group :label="$t('labels.tags')+':'" label-for="education-tags">
+            <b-form-group>
+                <label for="education-tags">
+                    <font-awesome-icon icon="tags" />
+                    {{ $t('labels.tags') }} :
+                </label>
                 <b-form-tags
                         tag-variant="info"
                         input-id="education-tags"
@@ -82,7 +90,6 @@
                         variant="warning">
                     <font-awesome-icon icon="edit"></font-awesome-icon>
                 </b-button>
-
                 <b-button
                         v-b-tooltip.hover
                         :title="$t('toggles.cancel')"

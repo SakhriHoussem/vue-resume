@@ -1,8 +1,8 @@
 <template>
-    <b-form-group
-    >
+    <b-form-group>
         <label for="resume">
-            {{$t('labels.resume')}}:
+            <font-awesome-icon icon="pencil-alt" />
+            {{ $t('labels.resume') }} :
         </label>
         <markdown-editor
                 id="resume"

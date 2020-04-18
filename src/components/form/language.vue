@@ -1,6 +1,9 @@
 <template>
         <b-form @submit.prevent="onSubmit" class="mt-2 mb-3">
-            <label for="langauges">{{$t('labels.languages')}}:</label>
+            <label for="langauge">
+                <font-awesome-icon icon="language" />
+                {{$t('labels.languages')}} :
+            </label>
             <b-row>
                 <b-col>
                     <b-input

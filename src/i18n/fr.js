@@ -9,11 +9,11 @@ export default { // Francais
     labels: {
         fullName: 'Nom Complet',
         job: 'Emploi Désiré',
-        phone: 'Numéro de Téléphone',
+        phone: 'Téléphone',
         email: 'Email',
         links: 'Ajoutez vos Liens',
         socialNetworks: 'Ajoutez vos Réseaux Sociaux',
-        resume: 'Résumer',
+        resume: 'Parcours Professionnel',
         role: 'Ajoutez votre Rôle',
         company: 'Ajouter le Nom de l\'Entreprise',
         fromTo: 'De - À',

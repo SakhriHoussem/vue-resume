@@ -1,8 +1,9 @@
 <template>
-            <b-form-group
-                    :label="$t('labels.email') +':'"
-                    label-for="email"
-            >
+            <b-form-group>
+                <label label-for="email">
+                    <font-awesome-icon icon="at" />
+                    {{ $t('labels.email') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('email')}"
                         :placeholder="$t('placeholders.email')"

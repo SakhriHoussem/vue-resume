@@ -1,5 +1,9 @@
 <template>
-    <b-form-group :label="$t('labels.links')+':'" label-for="links">
+    <b-form-group>
+        <label for="links">
+            <font-awesome-icon icon="link" />
+            {{ $t('labels.links') }} :
+        </label>
         <b-form-tags
                 tag-variant="info"
                 input-id="links"

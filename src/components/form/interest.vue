@@ -1,6 +1,9 @@
 <template>
         <div  class="mt-2 mb-3">
-            <label for="intersts">{{$t('labels.interests')}}:</label>
+            <label for="intersts">
+                <font-awesome-icon icon="plus" />
+                {{$t('labels.interests')}}:
+            </label>
             <b-form-tags
                     tag-variant="info"
                     input-id="intersts"

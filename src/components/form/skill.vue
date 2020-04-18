@@ -1,6 +1,9 @@
 <template>
         <b-form @submit.prevent="onSubmit" @reset="onReset" class="mt-2 mb-3">
-            <label for="skills">{{$t('labels.skills')}}:</label>
+            <label for="skills">
+                <font-awesome-icon icon="wrench" />
+                {{ $t('labels.skills') }} :
+            </label>
             <b-row>
                 <b-col cols="12" sm="6" md="12" lg="6">
                     <b-input

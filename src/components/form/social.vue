@@ -1,7 +1,8 @@
 <template>
     <b-row>
         <b-col cols="12">
-            <label>{{$t('labels.socialNetworks')}}:</label>
+            <font-awesome-icon icon="network-wired" />
+            <label> {{ $t('labels.socialNetworks') }} : </label>
         </b-col>
         <b-col cols="12" sm="5" md="12" lg="5" >
             <!-- todo: translate this select tag-->

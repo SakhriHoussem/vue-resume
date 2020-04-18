@@ -1,8 +1,9 @@
 <template>
-    <b-form-group
-            :label="$t('labels.fullName')+':'"
-            label-for="full-name"
-    >
+    <b-form-group>
+        <label for="full-name">
+            <font-awesome-icon icon="signature" />
+            {{ $t('labels.fullName') }} :
+        </label>
         <b-form-input
                 :class="{ 'is-invalid' : validation.hasError('fullName')}"
                 id="full-name"

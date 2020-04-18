@@ -1,13 +1,15 @@
 <template>
     <b-container fluid>
         <b-row>
-            <app-sidebar class="p-2"></app-sidebar>
-            <b-col  md="8" cols="12" class="bg-light p-4">
+            <b-col order-md="2" md="8" cols="12" class="bg-light p-4">
                 <b-row>
                     <b-col class="bg-white" cols="12" lg="10" offset-lg="1">
                         <paper/>
                     </b-col>
                 </b-row>
+            </b-col>
+            <b-col cols="12" order-md="1" md="4">
+                <app-sidebar class="p-2"></app-sidebar>
             </b-col>
         </b-row>
         <b-button

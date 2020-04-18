@@ -1,6 +1,8 @@
 <template>
     <b-navbar toggleable="lg" type="dark" variant="info">
-        <b-navbar-brand href="#">Vue Resume</b-navbar-brand>
+        <b-navbar-brand href="#">
+            <font-awesome-icon :icon="['fab','vuejs']"/>ue Resume
+        </b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav class="m-auto">

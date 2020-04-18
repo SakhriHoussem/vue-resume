@@ -1,8 +1,9 @@
 <template>
-            <b-form-group
-                    :label="$t('labels.phone')+':'"
-                    label-for="phone"
-            >
+            <b-form-group>
+                <label for="phone">
+                    <font-awesome-icon icon="phone" />
+                    {{ $t('labels.phone') }} :
+                </label>
                 <b-form-input
                         :class="{ 'is-invalid' : validation.hasError('phone')}"
                         id="phone"

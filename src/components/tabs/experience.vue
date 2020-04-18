@@ -2,10 +2,11 @@
     <b-tab :title="$t('tabs.experience')" id="experiences" >
         <b-form @submit.prevent="onSubmit" @reset="onReset">
             <div>
-                <b-form-group
-                        :label="$t('labels.role')+':'"
-                        label-for="role"
-                >
+                <b-form-group>
+                    <label for="role">
+                        <font-awesome-icon icon="user" />
+                        {{ $t('labels.role') }} :
+                    </label>
                     <b-form-input
                             :class="{ 'is-invalid' : validation.hasError('role')}"
                             id="role"
@@ -17,10 +18,11 @@
                     <small class="text-danger">{{ validation.firstError('role')}}</small>
                 </b-form-group>
 
-                <b-form-group
-                        :label="$t('labels.company')+':'"
-                        label-for="company"
-                >
+                <b-form-group>
+                    <label for="company">
+                        <font-awesome-icon icon="building" />
+                        {{ $t('labels.company') }} :
+                    </label>
                     <b-form-input
                             id="company"
                             :class="{ 'is-invalid' : validation.hasError('company')}"
@@ -33,9 +35,11 @@
                 </b-form-group>
                 <b-form-group>
                     <label v-if="experience.isCurrentJob" for="experience-from-to">
+                        <font-awesome-icon icon="calendar-alt" />
                         {{ $t('labels.fromTo') | current }} :
                     </label>
                     <label v-else for="experience-from-to">
+                        <font-awesome-icon icon="calendar-alt" />
                         {{ $t('labels.fromTo') }} :
                     </label>
                     <date-picker
@@ -62,6 +66,7 @@
                 </b-form-group>
                 <b-form-group>
                     <label for="experience-description">
+                        <font-awesome-icon icon="pencil-alt" />
                         {{$t('labels.description')}}:
                     </label>
                     <markdown-editor
@@ -74,7 +79,11 @@
                             :toolbar="'redo undo | bold italic heading | link | numlist bullist quote | preview'"
                     ></markdown-editor>
                 </b-form-group>
-                <b-form-group :label="$t('labels.tags')+':'" label-for="experience-tags">
+                <b-form-group>
+                    <label for="experience-tags">
+                        <font-awesome-icon icon="tags" />
+                        {{ $t('labels.tags') }} :
+                    </label>
                     <b-form-tags
                             tag-variant="info"
                             input-id="experience-tags"
