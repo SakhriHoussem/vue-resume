@@ -53,13 +53,14 @@
                     :label="$t('labels.description')+':'"
                     label-for="education-description"
             >
-                <b-form-textarea
+                <markdown-editor
                         id="education-description"
                         v-model="description"
-                        :placeholder="$t('placeholders.description')"
-                        rows="3"
-                        max-rows="6"
-                ></b-form-textarea>
+                        theme="info"
+                        :placeholder="$t('placeholders.description')+'...'"
+                        height="200px"
+                        :toolbar="'redo undo | bold italic heading | link | numlist bullist quote | preview'"
+                ></markdown-editor>
             </b-form-group>
             <b-form-group :label="$t('labels.tags')+':'" label-for="education-tags">
                 <b-form-tags

@@ -5,6 +5,7 @@ import store from './store';
 import i18n from "./i18n";
 import { BootstrapVue } from 'bootstrap-vue'
 import SimpleVueValidation from 'simple-vue-validator';
+import Editor from 'v-markdown-editor'
 import DatePicker from 'vue2-datepicker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -69,12 +70,13 @@ Vue.use(Vuex);
 Vue.use(DatePicker);
 Vue.use(SimpleVueValidation);
 Vue.use(VueGitHubButtons, { useCache: true });
-
+Vue.use(Editor);
 //you need to import the CSS manually (in case you want to override it)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue2-datepicker/index.css';
-
+import 'v-markdown-editor/dist/v-markdown-editor.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 Vue.config.productionTip = false;
 
 

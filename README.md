@@ -47,3 +47,4 @@ those are some dependencies used on this project
 - lang : [vue-i18n](https://github.com/kazupon/vue-i18n)
 - drag & drop : [Vue-Draggable](https://github.com/SortableJS/Vue.Draggable)
 - PDF generation : [jsPDF](https://github.com/MrRio/jsPDF)
+- text Editor : [v-markdown-editor](https://github.com/nasa8x/v-markdown-editor)

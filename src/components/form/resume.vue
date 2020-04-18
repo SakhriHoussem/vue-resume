@@ -3,19 +3,16 @@
     >
         <label for="resume">
             {{$t('labels.resume')}}:
-            <b-link class="text-muted small" target="_blank" href="https://miaolz123.github.io/vue-markdown/">
-                <font-awesome-icon  icon="info" />
-            </b-link>
-
         </label>
-        <b-form-textarea
+        <markdown-editor
                 id="resume"
                 :value="getResume"
                 @input="updateResume"
+                theme="info"
                 :placeholder="$t('placeholders.resume')+'...'"
-                rows="3"
-                max-rows="6"
-        ></b-form-textarea>
+                height="200px"
+                :toolbar="'redo undo | bold italic heading | link | numlist bullist quote | preview'"
+        ></markdown-editor>
     </b-form-group>
 </template>
 <script>

@@ -61,19 +61,18 @@
                     <small class="text-danger">{{ validation.firstError('fromTo')}}</small>
                 </b-form-group>
                 <b-form-group>
-                    <label for="experience-description">{{$t('labels.description')}}:
-                        <b-link class="text-muted small" target="_blank" href="https://miaolz123.github.io/vue-markdown/">
-                            <font-awesome-icon  icon="info" />
-                        </b-link>
+                    <label for="experience-description">
+                        {{$t('labels.description')}}:
                     </label>
-                    <b-form-textarea
+                    <markdown-editor
                             id="experience-description"
                             v-model="description"
-                            :placeholder="$t('placeholders.description')+'...'"
-                            rows="3"
+                            theme="info"
                             required
-                            max-rows="6"
-                    ></b-form-textarea>
+                            :placeholder="$t('placeholders.description')+'...'"
+                            height="200px"
+                            :toolbar="'redo undo | bold italic heading | link | numlist bullist quote | preview'"
+                    ></markdown-editor>
                 </b-form-group>
                 <b-form-group :label="$t('labels.tags')+':'" label-for="experience-tags">
                     <b-form-tags

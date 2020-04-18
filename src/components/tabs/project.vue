@@ -51,13 +51,14 @@
                         :label="$t('labels.description')+':'"
                         label-for="project-description"
             >
-                <b-form-textarea
+                <markdown-editor
                         id="project-description"
                         v-model="description"
+                        theme="info"
                         :placeholder="$t('placeholders.description')+'...'"
-                        rows="3"
-                        max-rows="6"
-                ></b-form-textarea>
+                        height="200px"
+                        :toolbar="'redo undo | bold italic heading | link | numlist bullist quote | preview'"
+                ></markdown-editor>
             </b-form-group>
 
             <b-form-group
